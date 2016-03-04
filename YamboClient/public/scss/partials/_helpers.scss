@@ -1,0 +1,41 @@
+@import "compass/utilities/general/clearfix";
+
+.clr {
+    clear: both;
+}
+
+.handle {
+    background-color: $monotone2;
+    cursor: move;
+    display: block;
+    height: 10px;
+    border-radius: 10px;
+}
+
+.minimizable {
+    float: right;
+    margin: 20px;
+}
+
+.minimize {
+    border-radius: 24px;
+    box-shadow: 1px 1px 2px 2px $monotone9;
+    color: $global-white;
+    font-size: 28px;
+    height: 50px;
+    left: -24px;
+    padding: 4px;
+    position: absolute;
+    top: -22px;
+    width: 50px;
+    z-index: 99;
+
+    &:hover,
+    &.hover {
+        box-shadow: 1px 1px 3px 3px $global-white;
+    }
+}
+
+.minimized {
+    z-index: 999 !important;
+}

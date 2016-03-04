@@ -1,0 +1,46 @@
+/* Theme Halloween */
+@include font-face( 'bloodthirstyregular', font-files( '#{$font-path}themes/halloween/bloodthirsty-webfont.woff', '#{$font-path}themes/halloween/bloodthirsty-webfont.eot', "#{$font-path}themes/halloween/bloodthirsty-webfont.ttf", "#{$font-path}themes/halloween/bloodthirsty-webfont.svg" ) );
+
+.theme-halloween {
+    $brand-color2: #111222;
+    $brand-color3: #8b0d0e;
+
+    background: url(#{$img-path}bg_halloween.jpg) repeat fixed 0 0;
+
+    .toolbar,
+    .panel {
+        border: 3px solid $monotone1;
+        background: none repeat scroll 0 0 $brand-color2;
+        opacity: 0.9;
+        border-radius: 10px;
+    }
+
+    fieldset {
+        background: url(#{$img-path}bg_blood_black.jpg) repeat scroll 0 0 transparent;
+        border: 3px solid $monotone1;
+        border-radius: 10px;
+    }
+
+    legend {
+        text-shadow: none;
+        color: $brand-color3;
+        font: 20px 'bloodthirstyregular' !important;
+        letter-spacing: 0;
+        text-align: center;
+    }
+
+    .options {
+        select {
+            background-color: $global-white;
+        }
+    }
+
+    .log {
+        #message {
+            background-color: $brand-color2;
+            color: $global-white;
+            border-color: $monotone1;
+            border-radius: 10px;
+        }
+    }
+}

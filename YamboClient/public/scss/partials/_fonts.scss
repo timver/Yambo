@@ -1,0 +1,231 @@
+@include font-face( 'yambo', font-files( '#{$font-path}icons/yambo.woff', '#{$font-path}icons/yambo.eot', "#{$font-path}icons/yambo.ttf", "#{$font-path}icons/yambo.svg" ) );
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'yambo' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mic:before {
+    content: "\e91e";
+}
+
+.icon-library:before {
+    content: "\e921";
+}
+
+.icon-lifebuoy:before {
+    content: "\e941";
+}
+
+.icon-stopwatch:before {
+    content: "\e952";
+}
+
+.icon-desktop:before {
+    content: "\e956";
+}
+
+.icon-mobile:before {
+    content: "\e958";
+}
+
+.icon-tablet:before {
+    content: "\e95a";
+}
+
+.icon-clipboard:before {
+    content: "\e900";
+}
+
+.icon-attachment:before {
+    content: "\e901";
+}
+
+.icon-refresh:before {
+    content: "\e902";
+}
+
+.icon-refresh2:before {
+    content: "\e903";
+}
+
+.icon-user:before {
+    content: "\e904";
+}
+
+.icon-users:before {
+    content: "\e905";
+}
+
+.icon-user-plus:before {
+    content: "\e906";
+}
+
+.icon-user-min:before {
+    content: "\e907";
+}
+
+.icon-user-check:before {
+    content: "\e908";
+}
+
+.icon-user-tie:before {
+    content: "\e909";
+}
+
+.icon-bubble:before {
+    content: "\e90a";
+}
+
+.icon-bubbles:before {
+    content: "\e90b";
+}
+
+.icon-bubbles2:before {
+    content: "\e90c";
+}
+
+.icon-bubble2:before {
+    content: "\e90d";
+}
+
+.icon-bubbles3:before {
+    content: "\e90e";
+}
+
+.icon-bubbles4:before {
+    content: "\e90f";
+}
+
+.icon-cog:before {
+    content: "\e910";
+}
+
+.icon-cogs:before {
+    content: "\e911";
+}
+
+.icon-volume-high:before {
+    content: "\e912";
+}
+
+.icon-volume-medium:before {
+    content: "\e913";
+}
+
+.icon-volume-low:before {
+    content: "\e914";
+}
+
+.icon-volume-mute:before {
+    content: "\e915";
+}
+
+.icon-volume-mute2:before {
+    content: "\e916";
+}
+
+.icon-volume-plus:before {
+    content: "\e917";
+}
+
+.icon-volume-min:before {
+    content: "\e918";
+}
+
+.icon-radio-unchecked:before {
+    content: "\e92d";
+}
+
+.icon-dice:before {
+    content: "\e91a";
+}
+
+.icon-calculator:before {
+    content: "\e91b";
+}
+
+.icon-undo:before {
+    content: "\e91c";
+}
+
+.icon-redo:before {
+    content: "\e91d";
+}
+
+.icon-lock:before {
+    content: "\e91f";
+}
+
+.icon-unlocked:before {
+    content: "\e920";
+}
+
+.icon-bug:before {
+    content: "\e922";
+}
+
+.icon-shield:before {
+    content: "\e923";
+}
+
+.icon-warning:before {
+    content: "\e92c";
+}
+
+.icon-notification:before {
+    content: "\e924";
+}
+
+.icon-arrow-up:before {
+    content: "\e925";
+}
+
+.icon-arrow-down:before {
+    content: "\e926";
+}
+
+.icon-filter:before {
+    content: "\e927";
+}
+
+.icon-table:before {
+    content: "\e928";
+}
+
+.icon-share:before {
+    content: "\e929";
+}
+
+.icon-finder:before {
+    content: "\e92a";
+}
+
+.icon-android:before {
+    content: "\e92b";
+}
+
+.ico-setup {
+    background: url(#{$img-path}icons/40x40/Settings_grayscale.png) no-repeat scroll 4px 4px #FFFFFF;
+}
+
+.ico-result {
+    background: url(#{$img-path}icons/40x40/Home_grayscale.png) no-repeat scroll 4px 4px #FFFFFF;
+}
+
+.ico-log {
+    background: url(#{$img-path}icons/40x40/Messages_grayscale.png) no-repeat scroll 4px 4px #FFFFFF;
+}
+
+.ico-dice {
+    background: url(#{$img-path}icons/40x40/Calculator_grayscale.png) no-repeat scroll 4px 4px #FFFFFF;
+}

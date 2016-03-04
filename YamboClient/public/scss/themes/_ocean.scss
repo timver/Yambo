@@ -1,0 +1,36 @@
+/* Theme Ocean */
+.theme-ocean {
+    $brand-color2: #026691;
+    $brand-color3: #0d3b52;
+
+    background: url(#{$img-path}bg_ocean.jpg) repeat fixed 0 0;
+
+    .toolbar,
+    .panel {
+        background: none repeat scroll 0 0 $brand-color3;
+        border: 3px solid $brand-color2;
+        border-radius: 10px;
+        box-shadow: 3px 3px 40px $global-black;
+        opacity: 0.9;
+    }
+
+    fieldset {
+        background: url(#{$img-path}bg_marble_blue.jpg) repeat scroll 0 0 transparent;
+        border: 3px solid $brand-color2;
+        border-radius: 10px;
+    }
+
+    .options {
+        select {
+            background-color: $global-white;
+        }
+    }
+
+    .log {
+        #message {
+            background-color: $brand-color3;
+            color: $global-white;
+            border-color: $brand-color3;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+/* PARTIALS > LAYOUT */
+$max-width: 960 !default;
+$column-count: 12 !default;
+$column-width: 100 / $column-count !default;
+$gutter-width: 20 !default;
+
+// 1. Container, rows en cols
+.container {
+    height: 100%;
+    margin: 0 auto;
+    max-width: #{$max-width}px;
+    padding: 20px;
+}
+
+.row {
+    @include pie-clearfix;
+    padding: 0 #{$gutter-width}px;
+    margin: 0 auto;
+}
+
+.col {
+    padding: 0 #{$gutter-width}px;
+    float: left;
+    height: 100%;
+    position: relative;
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+}
+
+// 2. Column widths (% / 12 columns)
+@for $i from 1 through 100 {
+    .g#{$i} {
+        width: #{$i}unquote("%");
+    }
+}
+
+// 3. Column widths (xof12)
+@for $i from 1 through $column-count {
+    .g#{$i}of#{$column-count} {
+        width: #{($column-width * $i)}unquote("%");
+    }
+}

@@ -1,0 +1,68 @@
+/* Theme Tron */
+@include font-face( 'tr2nregular', font-files( '#{$font-path}themes/tron/tr2n-webfont.woff', '#{$font-path}themes/tron/tr2n-webfont.eot', "#{$font-path}themes/tron/tr2n-webfont.ttf", "#{$font-path}themes/tron/tr2n-webfont.svg" ) );
+
+.theme-tron {
+    $brand-color1: #28f6f4;
+    $brand-color2: #001b26;
+
+    background: url(#{$img-path}bg_movie_tron.jpg) repeat fixed 0 0 transparent;
+
+    .minimize {
+        border: 2px solid $brand-color1;
+        box-shadow: 0 0 5px 1px $brand-color1;
+        background-color: $monotone2;
+
+        &.hover {
+            box-shadow: 0 0 5px 1px $brand-color1;
+            background-color: $global-white;
+        }
+    }
+
+    .toolbar,
+    .panel {
+        background: none $monotone1;
+        border: 2px solid $brand-color1;
+        border-radius: 20px;
+        opacity: 0.9;
+        box-shadow: 0 0 5px 1px $brand-color1;
+    }
+
+    fieldset {
+        background: none repeat scroll 0 0 $brand-color2;
+        border: 2px solid $brand-color1;
+        border-radius: 20px !important;
+        box-shadow: 0 0 5px 1px $brand-color1;
+    }
+
+    legend {
+        text-shadow: none;
+        color: $brand-color1;
+        font: 20px 'tr2nregular';
+        letter-spacing: 0;
+        text-align: center;
+    }
+
+    label {
+        color: $brand-color1;
+    }
+
+    .options {
+        select {
+            background-color: $global-white;
+        }
+    }
+
+    .log {
+        input[type=text] {
+            color: $brand-color1;
+        }
+
+        #message {
+            border: 2px solid $brand-color1;
+            border-radius: 20px;
+            color: $brand-color1;
+            box-shadow: 0 0 5px 1px $brand-color1;
+            background-color: $monotone1;
+        }
+    }
+}

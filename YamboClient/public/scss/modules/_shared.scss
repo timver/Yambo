@@ -1,0 +1,48 @@
+.panel {
+    background: url(#{$img-path}bg_marble.jpg) repeat scroll 0 0 transparent;
+    border: 3px outset $monotone9;
+    border-radius: 3px;
+    box-shadow: 3px 3px 40px $global-black;
+    width: 100%;
+    display: block;
+    float: left;
+    height: auto;
+    padding: 30px;
+    position: relative;
+    margin-bottom: 40px;
+
+    fieldset {
+        background: url(#{$img-path}bg_marble_green.jpg) repeat scroll 0 0 transparent;
+        border: 3px inset $monotone9;
+        display: block;
+        padding: 10px;
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+
+    legend {
+        color: $monotone9;
+        display: block;
+        font: bold 20px Helvetica;
+        left: -3px;
+        letter-spacing: 5px;
+        padding: 0;
+        position: absolute;
+        text-align: left;
+        text-shadow: 1px 1px $global-white, -1px -1px $monotone4;
+        top: -30px;
+        width: 100%;
+
+        &:hover {
+            cursor: default;
+        }
+    }
+
+    label {
+        color: $global-white;
+        display: inline-block;
+        font: bold 14px/24px Arial;
+        height: 24px;
+    }
+}

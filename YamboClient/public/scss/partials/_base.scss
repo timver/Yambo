@@ -1,0 +1,28 @@
+// Global colors
+$global-white: #fff !default;
+$global-black: #000 !default;
+
+// Brand colors
+$brand-color1: #009933 !default;
+$brand-color2: #2f2727 !default;
+$brand-color3: #ff6a00 !default;
+
+// Monotone colors
+$monotone1: #111 !default;
+$monotone2: #222 !default;
+$monotone3: #333 !default;
+$monotone4: #444 !default;
+$monotone5: #555 !default;
+$monotone6: #666 !default;
+$monotone7: #777 !default;
+$monotone8: #888 !default;
+$monotone9: #999 !default;
+
+// Images
+$img-path: unquote("/public/art/") !default;
+
+// font
+$font-path: unquote("/public/fonts/") !default;
+$font-size-pct: 62.5% !default;
+$font-size-px: 15px !default;
+$font-size-rem: 1.5rem !default;
