@@ -1,14 +1,14 @@
 {
-    "name": "yambo",
-    "description": "bèta",
     "authors": [
         "Tim Vermaelen"
     ],
-    "license": "MIT",
-    "private": true,
     "dependencies": {
         "jquery": "^2.2.0",
         "jquery-ui": "^1.11.4",
         "jquery-uniform": "*"
-    }
+    },
+    "description": "bèta",
+    "license": "MIT",
+    "name": "yambo",
+    "private": true
 }

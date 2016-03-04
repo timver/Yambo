@@ -1,11 +1,7 @@
 {
-    "name": "yambo",
-    "version": "2.0.0",
-    "description": "beta",
-    "main": "server.js",
     "author": "Tim Vermaelen",
-    "private": true,
-    "preferGlobal": true,
+    "dependencies": { },
+    "description": "beta",
     "devDependencies": {
         "bower": "^1.7.7",
         "express": "^4.13.4",
@@ -16,5 +12,9 @@
         "grunt-contrib-watch": "^0.6.1",
         "grunt-modernizr": "^1.0.2"
     },
-    "dependencies": { }
+    "main": "server.js",
+    "name": "yambo",
+    "preferGlobal": true,
+    "private": true,
+    "version": "2.0.0"
 }
