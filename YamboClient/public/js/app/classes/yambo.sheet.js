@@ -88,7 +88,6 @@ window.Yambo = (function ($, ns) {
 
         /**
          * Intitialise app
-         * @constant {Object} this.settings : cfg like object
          */
         init: function () {
             var settings = this.settings,
@@ -99,7 +98,7 @@ window.Yambo = (function ($, ns) {
             this.cache(selectors);
 
             if (this.app.length) {
-                this.activate(events);
+                this.bind(events, selectors);
             } else {
                 console.warn(log.error.notfound);
             }
@@ -107,7 +106,7 @@ window.Yambo = (function ($, ns) {
 
         /**
          * Cache app selectors
-         * @param {Object} selectors : cfg.selectors like object
+         * @param {Object} selectors : settings.selectors
          */
         cache: function (selectors) {
             this.app = $(selectors.app);
@@ -115,50 +114,140 @@ window.Yambo = (function ($, ns) {
             this.columnPlayerName = this.app.find(selectors.columnPlayerName);
         },
 
-        activate: function(events) {
-            var self = this;
-
-            $(function() {
-                self.bind(events);
-            });
+        /**
+         * Bind options to events
+         * @param {Object} events : settings.events
+         * @param {Object} selectors : settings.selectors
+         */
+        bind: function (events, selectors) {
+            this.app.on(events.click, selectors.fldsave, this.saveScore.bind(this));
+            this.columns.on(events.click, this.toggleColumnState.bind(this));
         },
 
         /**
-         * Bind options to events
-         * @param {Object} events: cfg.events like object
+         * Event handler to switch between column state
+         * @param {Object} ev : event arguments
          */
-        bind: function (events) {
-            var self = this,
-                settings = this.settings,
-                selectors = settings.selectors,
+        toggleColumnState: function (ev) {
+            var settings = this.settings,
                 classes = settings.classes,
                 audio = ns.instance.audio,
-                audiofx = audio.settings.fx;
+                audiofx = audio.settings.fx,
+                arrClasses = [classes.low, classes.high, ''];
 
-            this.app.on(events.click, selectors.fldsave, function () {
-                self.saveScore(this, true);
-            });
+            ev.currentTarget.className = arrClasses[($.inArray(ev.currentTarget.className, arrClasses) + 1) % arrClasses.length];
+            this.addScores(ev.currentTarget.className === classes.low);
+            audio.play(audiofx.save);
+        },
 
-            this.columns.toggleClick(
-                function () {
-                    $(this).addClass(classes.low);
-                    audio.play(audiofx.save);
-                },
-                function () {
-                    $(this).toggleClass([classes.low, classes.high].join(' '));
-                    self.addScores(false);
-                    audio.play(audiofx.save);
-                },
-                function () {
-                    $(this).removeClass(classes.high);
-                    audio.play(audiofx.save);
+        /**
+         * Add possible scores to the sheet
+         * @param {Boolean} isCleanup : clear the possible scores 
+         */
+        addScores: function (isCleanup) {
+            var settings = this.settings,
+                selectors = settings.selectors,
+                tok1 = $(selectors.tok1).filter('.save').val(''),
+                tok2 = $(selectors.tok2).filter('.save').val(''),
+                tok3 = $(selectors.tok3).filter('.save').val(''),
+                tok4 = $(selectors.tok4).filter('.save').val(''),
+                tok5 = $(selectors.tok5).filter('.save').val(''),
+                tok6 = $(selectors.tok6).filter('.save').val(''),
+                fullhouse = $(selectors.fullhouse).filter('.save').val(''),
+                street = $(selectors.street).filter('.save').val(''),
+                chanceplus = $(selectors.chanceplus).filter('.save').val(''),
+                chancemin = $(selectors.chancemin).filter('.save').val(''),
+                yam = $(selectors.yam).filter('.save').val('');
+
+            if (!isCleanup) {
+                try {
+                    var dicetotal = ns.instance.dice.getDiceTotal(),
+                        dicecounts = ns.instance.dice.getDiceCounts();
+
+                    // top rows
+                    this.filterCells(tok1).val(dicecounts[0] || '');
+                    this.filterCells(tok2).val(dicecounts[1] * 2 || '');
+                    this.filterCells(tok3).val(dicecounts[2] * 3 || '');
+                    this.filterCells(tok4).val(dicecounts[3] * 4 || '');
+                    this.filterCells(tok5).val(dicecounts[4] * 5 || '');
+                    this.filterCells(tok6).val(dicecounts[5] * 6 || '');
+
+                    // full house
+                    if (ns.instance.dice.isFullhouse()) {
+                        this.filterCells(fullhouse).val(20);
+                    }
+
+                    // street
+                    if (ns.instance.dice.isStreet()) {
+                        this.filterCells(street).val(30);
+                    }
+
+                    // chance +/-
+                    this.filterCells(chanceplus).val(dicetotal);
+                    this.filterCells(chancemin).val(dicetotal);
+
+                    // yambo
+                    if (ns.instance.dice.isYam()) {
+                        this.filterCells(yam).val(40);
+                    }
+                } catch (e) {
+                    ns.instance.log.addMessage({ message: 'jquery.yambo.js > addScores: ' + e, isTimed: true, isError: true, isNewline: true });
                 }
-            );
+            }
+        },
+
+        /**
+         * Save score on the sheet
+         * @param {Object} ev : event arguments
+         * @returns {} 
+         */
+        saveScore: function (ev) {
+            var settings = this.settings,
+                classes = settings.classes,
+                audio = ns.instance.audio,
+                audiofx = audio.settings.fx,
+                msgOptions = {
+                    message: '',
+                    isTimed: true,
+                    isError: false,
+                    isNewline: true
+                },
+                el = ev.currentTarget,
+                isValid = ev.hasOwnProperty('isValidate') || this.validSave(el);
+
+            // disable input edit mode
+            el.blur();
+
+            if (isValid) {
+                // change to saved state
+                if (!el.value) {
+                    $(el).val('\u00D7');
+                    $(el).parent().removeClass(classes.high).addClass(classes.low);
+                    msgOptions.message = 'scratched ' + this.getRowElement(el).text() + ' in column ' + this.getColElement(el).prop('title') + '\n';
+                    audio.play(audiofx.scratch);
+                } else {
+                    $(el).parent().addClass(classes.high);
+                    msgOptions.message = 'Added ' + ($(el).val() || 0) + ' of ' + this.getRowElement(el).text() + ' in column ' + this.getColElement(el).prop('title') + '\n';
+                }
+
+                $(el).removeClass(classes.save).addClass(classes.saved);
+                $(ns.instance.dice.dice).removeClass(classes.checked);
+                $(ns.instance.dice.roll).val('First roll');
+                $(ns.instance.log.fieldTurn).val(0);
+                $.uniform.update(ns.instance.dice.roll);
+
+                this.addScores(true);
+                this.calcTotal(el);
+
+                ns.instance.log.addMessage(msgOptions);
+                //audio.pause(audiofx.timer);
+                audio.play(audiofx.save);
+            }
         },
 
         /**
          * Determine whether a save is valid
-         * @param {Object} el : selectors.fldsave
+         * @param {Object} el : settings.selectors.fldsave
          * @returns {Boolean} true when all requirements are met to save a score
          */
         validSave: function (el) {
@@ -253,69 +342,14 @@ window.Yambo = (function ($, ns) {
                     // scratch values
                     min.val('');
                     plus.val('');
-                    this.saveScore(min[0], false);
-                    this.saveScore(plus[0], false);
+                    this.saveScore({ currentTarget: min.get(0), isValidate: false });
+                    this.saveScore({ currentTarget: plus.get(0), isValidate: false });
+
                     return false;
                 }
             }
 
             return true;
-        },
-
-        /**
-         * Add possible scores to the sheet
-         * @param {Boolean} isCleanup : clear the possible scores 
-         */
-        addScores: function (isCleanup) {
-            var settings = this.settings,
-                selectors = settings.selectors,
-                tok1 = $(selectors.tok1).filter('.save').val(''),
-                tok2 = $(selectors.tok2).filter('.save').val(''),
-                tok3 = $(selectors.tok3).filter('.save').val(''),
-                tok4 = $(selectors.tok4).filter('.save').val(''),
-                tok5 = $(selectors.tok5).filter('.save').val(''),
-                tok6 = $(selectors.tok6).filter('.save').val(''),
-                fullhouse = $(selectors.fullhouse).filter('.save').val(''),
-                street = $(selectors.street).filter('.save').val(''),
-                chanceplus = $(selectors.chanceplus).filter('.save').val(''),
-                chancemin = $(selectors.chancemin).filter('.save').val(''),
-                yam = $(selectors.yam).filter('.save').val('');
-
-            if (!isCleanup) {
-                try {
-                    var dicetotal = ns.instance.dice.getDiceTotal(),
-                        dicecounts = ns.instance.dice.getDiceCounts();
-
-                    // top rows
-                    this.filterCells(tok1).val(dicecounts[0] || '');
-                    this.filterCells(tok2).val(dicecounts[1] * 2 || '');
-                    this.filterCells(tok3).val(dicecounts[2] * 3 || '');
-                    this.filterCells(tok4).val(dicecounts[3] * 4 || '');
-                    this.filterCells(tok5).val(dicecounts[4] * 5 || '');
-                    this.filterCells(tok6).val(dicecounts[5] * 6 || '');
-
-                    // full house
-                    if (ns.instance.dice.isFullhouse()) {
-                        this.filterCells(fullhouse).val(20);
-                    }
-
-                    // street
-                    if (ns.instance.dice.isStreet()) {
-                        this.filterCells(street).val(30);
-                    }
-
-                    // chance +/-
-                    this.filterCells(chanceplus).val(dicetotal);
-                    this.filterCells(chancemin).val(dicetotal);
-
-                    // yambo
-                    if (ns.instance.dice.isYam()) {
-                        this.filterCells(yam).val(40);
-                    }
-                } catch (e) {
-                    ns.instance.log.addMessage({ message: 'jquery.yambo.js > addScores: ' + e, isTimed: true, isError: true, isNewline: true });
-                }
-            }
         },
 
         /**
@@ -415,55 +449,6 @@ window.Yambo = (function ($, ns) {
                 subtotal.val(newvaltop + newvalbtm + newvalbon);
             } catch (e) {
                 ns.instance.log.addMessage({ message: 'yambo.js > calcTotal' + e, isTimed: true, isError: true, isNewline: true });
-            }
-        },
-
-        /**
-         * Save score
-         * @param {Object} el : cell to save
-         * @param {Boolean} isCheck : validate the save
-         */
-        saveScore: function (el, isCheck) {
-            var settings = this.settings,
-                classes = settings.classes,
-                events = settings.events,
-                audio = ns.instance.audio,
-                audiofx = audio.settings.fx,
-                valid = isCheck ? this.validSave(el) : true,
-                msgOptions = {
-                    message: '',
-                    isTimed: true,
-                    isError: false,
-                    isNewline: true
-                };
-
-            // disable input edit mode
-            el.blur();
-
-            if (valid) {
-                // change to saved state
-                if (!$(el).val()) {
-                    $(el).val('\u00D7');
-                    $(el).parent().removeClass(classes.high).addClass(classes.low);
-                    msgOptions.message = 'scratched ' + this.getRowElement(el).text() + ' in column ' + this.getColElement(el).prop('title') + '\n';
-                    audio.play(audiofx.scratch);
-                } else {
-                    $(el).parent().addClass(classes.high);
-                    msgOptions.message = 'Added ' + ($(el).val() || 0) + ' of ' + this.getRowElement(el).text() + ' in column ' + this.getColElement(el).prop('title') + '\n';
-                }
-
-                $(el).removeClass(classes.save).addClass(classes.saved).unbind(events.click);
-                $(ns.instance.dice.dice).removeClass(classes.checked);
-                $(ns.instance.dice.roll).val('First roll');
-                $(ns.instance.log.fieldTurn).val(0);
-                $.uniform.update(ns.instance.dice.roll);
-
-                this.addScores(true);
-                this.calcTotal(el);
-
-                ns.instance.log.addMessage(msgOptions);
-                //audio.pause(audiofx.timer);
-                audio.play(audiofx.save);
             }
         },
 

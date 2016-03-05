@@ -121,6 +121,27 @@ window.Yambo = (function ($, ns) {
 
     // Namespace extends
     ns.fn = {
+        /**
+         * @description delay events with the same id, good for window resize events, scroll, keystroke, etc ...
+         * @param {Function} func : callback function to be run when done
+         * @param {Integer} wait : integer in milliseconds
+         * @param {String} id : unique event id
+         */
+        debounce: (function () {
+            var timers = {};
+
+            return function (func, wait, id) {
+                wait = wait || 200;
+                id = id || 'anonymous';
+
+                if (timers[id]) {
+                    clearTimeout(timers[id]);
+                }
+
+                timers[id] = setTimeout(func, wait);
+            };
+        }()),
+
         getObjectProperty: function (obj, val) {
             var prop = '',
                 item;
