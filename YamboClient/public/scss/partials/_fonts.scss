@@ -1,4 +1,4 @@
-@include font-face( 'yambo', font-files( '#{$font-path}icons/yambo.woff', '#{$font-path}icons/yambo.eot', "#{$font-path}icons/yambo.ttf", "#{$font-path}icons/yambo.svg" ) );
+@include font-face( 'yambo', font-files( '#{$font-path}icons/yambo.woff', "#{$font-path}icons/yambo.ttf", "#{$font-path}icons/yambo.svg" ) );
 
 [class^="icon-"], [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */

@@ -199,13 +199,15 @@ window.Yambo = (function ($, ns) {
         /**
          * Save score on the sheet
          * @param {Object} ev : event arguments
-         * @returns {} 
          */
         saveScore: function (ev) {
-            var settings = this.settings,
-                classes = settings.classes,
-                audio = ns.instance.audio,
+            var instance = ns.instance,
+                dice = instance.dice,
+                log = instance.log,
+                audio = instance.audio,
                 audiofx = audio.settings.fx,
+                settings = this.settings,
+                classes = settings.classes,
                 msgOptions = {
                     message: '',
                     isTimed: true,
@@ -231,10 +233,10 @@ window.Yambo = (function ($, ns) {
                 }
 
                 $(el).removeClass(classes.save).addClass(classes.saved);
-                $(ns.instance.dice.dice).removeClass(classes.checked);
-                $(ns.instance.dice.roll).val('First roll');
-                $(ns.instance.log.fieldTurn).val(0);
-                $.uniform.update(ns.instance.dice.roll);
+                $(dice.dice).removeClass(classes.checked);
+                $(dice.button).val('First roll');
+                $(log.fieldTurn).val(0);
+                $.uniform.update(dice.button);
 
                 this.addScores(true);
                 this.calcTotal(el);

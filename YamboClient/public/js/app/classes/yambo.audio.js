@@ -45,7 +45,7 @@ window.Yambo = (function ($, modernizr, ns) {
     ns.Audio = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
         this.init();
-    }
+    };
 
     ns.Audio.prototype = {
         /**

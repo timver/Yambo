@@ -12,10 +12,10 @@
  * @param {Object} ns: Yambo namespace
  */
 window.Yambo = (function ($, ns) {
-
+    
     // ECMA-262/5
     'use strict';
-
+    
     // CONFIG
     var cfg = {
         selectors: {
@@ -24,13 +24,16 @@ window.Yambo = (function ($, ns) {
             fieldTurn: '#turn',
             areaMessage: '#message'
         },
+        classes: {
+            checked: 'checked'
+        },
         log: {
             error: {
                 notfound: 'The log could not be found.'
             }
         }
     };
-
+    
     /**
      * @constructor Yambo.Log
      * @param {Object} options : cfg like object
@@ -39,12 +42,12 @@ window.Yambo = (function ($, ns) {
         this.settings = $.extend(true, {}, cfg, options);
         this.init();
     };
-
+    
     /**
      * @extends Yambo.Log
      */
     ns.Log.prototype = {
-
+        
         /**
          * Intitialise app
          * @constant {Object} this.settings : cfg like object
@@ -54,16 +57,16 @@ window.Yambo = (function ($, ns) {
                 selectors = settings.selectors,
                 options = settings.options,
                 log = settings.log;
-
+            
             this.cache(selectors);
-
+            
             if (this.app.length) {
                 this.create(options);
             } else {
                 console.warn(log.error.notfound);
             }
         },
-
+        
         /**
          * Cache app selectors
          * @param {Object} selectors : cfg.selectors like object
@@ -74,7 +77,7 @@ window.Yambo = (function ($, ns) {
             this.fieldTurn = $(selectors.fieldTurn);
             this.areaMessage = $(selectors.areaMessage);
         },
-
+        
         /**
          * Create app
          */
@@ -85,20 +88,20 @@ window.Yambo = (function ($, ns) {
                     var i = 0,
                         time = [],
                         len = time.push(this.getHours(), this.getMinutes(), this.getSeconds());
-
+                    
                     for (; i < len; i += 1) {
                         var tick = time[i];
                         time[i] = tick < 10 ? '0' + tick : tick;
                     }
-
+                    
                     return time.join(':');
                 }
             });
-
+            
             // start the timer
             this.startTime();
         },
-
+        
         /**
          * Gets the field value of your turn
          * @returns {Integer} of the current turn
@@ -107,102 +110,108 @@ window.Yambo = (function ($, ns) {
         getTurn: function () {
             return parseInt(this.fieldTurn.val(), 10) || 0;
         },
-
+        
         /**
          * Validate your turn
          * @returns {Boolean} true when all requirements are met
          */
         isValidTurn: function () {
-            var turn = this.getTurn(),
-                diceLen = ns.instance.dice.filter(false).length;
-
+            var instance = ns.instance,
+                dice = instance.dice,
+                sheet = instance.sheet,
+                turn = this.getTurn(),
+                diceLen = dice.filter(false).length;
+            
             if (turn === 3 || diceLen === 5) {
                 return false;
-            } else if (turn === 2 && ns.instance.sheet.isComplete3Col() && !ns.instance.sheet.isComplete2Col()) {
+            } else if (turn === 2 && sheet.isComplete3Col() && !sheet.isComplete2Col()) {
                 return false;
-            } else if (turn === 1 && ns.instance.sheet.isComplete3Col() && ns.instance.sheet.isComplete2Col()) {
+            } else if (turn === 1 && sheet.isComplete3Col() && sheet.isComplete2Col()) {
                 return false;
             }
-
+            
             return true;
         },
-
+        
         /**
          * Changes the turn value and displays a message
          * @returns {Boolean} true when no error messages were created
          */
         handleTurn: function () {
-            var btn = ns.instance.dice.roll,
+            var instance = ns.instance,
+                dice = instance.dice,
+                sheet = instance.sheet,
+                settings = this.settings,
+                classes = settings.classes,
                 turn = this.getTurn(),
-                diceLen = ns.instance.dice.filter(false).length,
+                diceLen = dice.filter(false).length,
                 msgOptions = {
                     message: ' -- Save your score --',
                     isTimed: false,
                     isError: true,
                     isNewline: true
                 };
-
+            
             if (diceLen !== 5) {
                 // increase the turn value
                 if (turn < 4) {
                     turn += 1;
                 }
-
+                
                 // handle errors
-                if (ns.instance.sheet.isGameOver()) {
+                if (sheet.isGameOver()) {
                     msgOptions.message = ' -- GAME OVER --';
                 } else if (turn > 3) {
                     turn = 3;
-                } else if (turn > 2 && ns.instance.sheet.isComplete3Col() && !ns.instance.sheet.isComplete2Col()) {
+                } else if (turn > 2 && sheet.isComplete3Col() && !sheet.isComplete2Col()) {
                     turn = 2;
-                } else if (turn > 1 && ns.instance.sheet.isComplete3Col() && ns.instance.sheet.isComplete2Col()) {
+                } else if (turn > 1 && sheet.isComplete3Col() && sheet.isComplete2Col()) {
                     turn = 1;
                 } else {
                     msgOptions.isTimed = true;
                     msgOptions.isError = false;
                     msgOptions.isNewline = false;
-
+                    
                     switch (turn) {
                         case 1:
                             msgOptions.message = 'First roll';
-                            btn.val('2nd roll');
-                            ns.instance.dice.dice.removeClass('checked');
+                            dice.button.val('2nd roll');
+                            dice.dice.removeClass(classes.checked);
                             break;
                         case 2:
                             msgOptions.message = 'Second roll';
-                            btn.val('3rd roll');
+                            dice.button.val('3rd roll');
                             break;
                         case 3:
                             msgOptions.message = 'Last roll';
-                            btn.val('roll dice');
+                            dice.button.val('roll dice');
                             break;
                     }
-
+                    
                     msgOptions.isError = false;
                 }
-
+                
                 // set the turn
                 this.fieldTurn.val(turn);
             } else {
                 msgOptions.message = '-- Deselect a die --';
             }
-
+            
             // output
             this.addMessage(msgOptions);
-
+            
             return !msgOptions.isError;
         },
-
-        /**
-         * Displays time
+        
+        /**         * Displays time
          */
         startTime: function () {
             var now = new Date().formatTime();
-
+            
             this.fieldClock.val(now);
             setTimeout(this.startTime.bind(this), 1000);
         },
-
+        
         /**
          * Add a message to the gamelog
          * @param {Object} options : allows custom output
@@ -216,27 +225,27 @@ window.Yambo = (function ($, ns) {
                 audio = instance.audio,
                 audiofx = audio.settings.fx,
                 history = this.areaMessage.val();
-
+            
             // isTimed?
             options.message = options.isTimed
                 ? history + this.fieldClock.val() + ': ' + options.message
                 : history + options.message;
-
+            
             // isNewline?
             if (options.isNewline) {
                 options.message = options.message + '\n';
             }
-
+            
             // message
             this.areaMessage.val(options.message);
             this.scrollTop(this.areaMessage);
-
+            
             // isError?
             if (options.isError) {
                 audio.play(audiofx.error);
             }
         },
-
+        
         /**
          * Automatically scroll down (from the top)
          * @param {Object} target : jQuery object
@@ -247,7 +256,7 @@ window.Yambo = (function ($, ns) {
         }
 
     };
-
+    
     // EXPOSE NAMESPACE
     return ns;
 

@@ -6,6 +6,7 @@
     <Name>YamboClient</Name>
     <RootNamespace>YamboClient</RootNamespace>
     <NameOfLastUsedPublishProfile>yambo</NameOfLastUsedPublishProfile>
+    <LaunchUrl>https://dev.yambo.be/public/</LaunchUrl>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -249,6 +250,30 @@
     <Content Include="public\fonts\themes\tron\tr2n-webfont.ttf" />
     <Content Include="public\fonts\themes\tron\tr2n-webfont.woff" />
     <Content Include="public\index.html" />
+    <Content Include="public\scss\adaptive\_desktop.scss" />
+    <Content Include="public\scss\adaptive\_mobile.scss" />
+    <Content Include="public\scss\adaptive\_tablet.scss" />
+    <Content Include="public\scss\default.scss" />
+    <Content Include="public\scss\media\_desktop.scss" />
+    <Content Include="public\scss\media\_mobile.scss" />
+    <Content Include="public\scss\media\_tablet.scss" />
+    <Content Include="public\scss\modules\_shared.scss" />
+    <Content Include="public\scss\modules\_sublayouts.scss" />
+    <Content Include="public\scss\modules\_widgets.scss" />
+    <Content Include="public\scss\partials\_base.scss" />
+    <Content Include="public\scss\partials\_fonts.scss" />
+    <Content Include="public\scss\partials\_grid.scss" />
+    <Content Include="public\scss\partials\_helpers.scss" />
+    <Content Include="public\scss\partials\_mixins.scss" />
+    <Content Include="public\scss\partials\_reset.scss" />
+    <Content Include="public\scss\themes\_abstract.scss" />
+    <Content Include="public\scss\themes\_basketball.scss" />
+    <Content Include="public\scss\themes\_future.scss" />
+    <Content Include="public\scss\themes\_halloween.scss" />
+    <Content Include="public\scss\themes\_nature.scss" />
+    <Content Include="public\scss\themes\_ocean.scss" />
+    <Content Include="public\scss\themes\_space.scss" />
+    <Content Include="public\scss\themes\_tron.scss" />
     <Content Include="web.config" />
     <None Include="yambo.pubxml" />
   </ItemGroup>
@@ -288,6 +313,12 @@
     <Folder Include="public\js\lib\jquery\dist\" />
     <Folder Include="public\js\lib\modernizr\" />
     <Folder Include="public\js\lib\modernizr\build\" />
+    <Folder Include="public\scss\" />
+    <Folder Include="public\scss\adaptive\" />
+    <Folder Include="public\scss\media\" />
+    <Folder Include="public\scss\modules\" />
+    <Folder Include="public\scss\partials\" />
+    <Folder Include="public\scss\themes\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
