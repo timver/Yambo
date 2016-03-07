@@ -284,7 +284,7 @@ h1 .version {
 }
 
 /* line 145, ../../scss/partials/_fonts.scss */
-.icon-radio-unchecked:before, .sheet table td.low:before, .sheet table td.high:before {
+.icon-radio-unchecked:before, .sheet table td.high:before {
   content: "\e92d";
 }
 
@@ -1073,11 +1073,7 @@ h1 .version {
   top: -30px;
   width: 100%;
 }
-/* line 37, ../../scss/modules/_shared.scss */
-.panel legend:hover {
-  cursor: default;
-}
-/* line 42, ../../scss/modules/_shared.scss */
+/* line 38, ../../scss/modules/_shared.scss */
 .panel label {
   color: #fff;
   display: inline-block;
@@ -1086,12 +1082,16 @@ h1 .version {
 }
 
 /* resultPanel */
-/* line 3, ../../scss/modules/_sublayouts.scss */
+/* line 2, ../../scss/modules/_sublayouts.scss */
+.sheet {
+  min-width: 320px;
+}
+/* line 5, ../../scss/modules/_sublayouts.scss */
 .sheet fieldset {
   clear: both;
   padding: 10px;
 }
-/* line 8, ../../scss/modules/_sublayouts.scss */
+/* line 10, ../../scss/modules/_sublayouts.scss */
 .sheet table {
   background: url(/public/art/bg_yampaper.png) repeat-x scroll center 0 transparent;
   display: block;
@@ -1101,19 +1101,19 @@ h1 .version {
   margin: 0 auto;
   width: 100%;
 }
-/* line 17, ../../scss/modules/_sublayouts.scss */
+/* line 19, ../../scss/modules/_sublayouts.scss */
 .sheet table tbody {
   border: 3px solid #333;
 }
-/* line 21, ../../scss/modules/_sublayouts.scss */
+/* line 23, ../../scss/modules/_sublayouts.scss */
 .sheet table thead {
   border-right: 3px solid #333;
 }
-/* line 24, ../../scss/modules/_sublayouts.scss */
+/* line 26, ../../scss/modules/_sublayouts.scss */
 .sheet table thead td {
   border-top: 3px solid #333;
 }
-/* line 29, ../../scss/modules/_sublayouts.scss */
+/* line 31, ../../scss/modules/_sublayouts.scss */
 .sheet table td {
   border: 1px solid #000;
   font: bold 14px arial;
@@ -1123,7 +1123,7 @@ h1 .version {
   width: 36px;
   height: 30px;
 }
-/* line 38, ../../scss/modules/_sublayouts.scss */
+/* line 40, ../../scss/modules/_sublayouts.scss */
 .sheet table td:first-child {
   color: #000;
   font: bold 14px Arial;
@@ -1131,12 +1131,12 @@ h1 .version {
   text-indent: 5px;
   width: auto;
 }
-/* line 46, ../../scss/modules/_sublayouts.scss */
+/* line 48, ../../scss/modules/_sublayouts.scss */
 .sheet table td:nth-child(2), .sheet table td:nth-child(5) {
   border-left: 3px solid #333;
 }
 /* line 56, ../../scss/modules/_sublayouts.scss */
-.sheet table td.low:before, .sheet table td.high:before {
+.sheet table td.high:before {
   color: #009933;
   font: 100 25px/1.2 yambo;
   height: 100%;
@@ -1189,29 +1189,37 @@ h1 .version {
 }
 
 /* optionsPanel */
-/* line 116, ../../scss/modules/_sublayouts.scss */
+/* line 115, ../../scss/modules/_sublayouts.scss */
+.options {
+  min-width: 220px;
+}
+/* line 118, ../../scss/modules/_sublayouts.scss */
 .options label {
   width: 160px;
 }
 
 /* dicePanel */
-/* line 123, ../../scss/modules/_sublayouts.scss */
+/* line 124, ../../scss/modules/_sublayouts.scss */
+.dice {
+  min-width: 160px;
+}
+/* line 127, ../../scss/modules/_sublayouts.scss */
 .dice fieldset {
   text-align: center;
 }
-/* line 127, ../../scss/modules/_sublayouts.scss */
+/* line 131, ../../scss/modules/_sublayouts.scss */
 .dice ul {
   display: block;
   margin-bottom: 20px;
 }
-/* line 132, ../../scss/modules/_sublayouts.scss */
+/* line 136, ../../scss/modules/_sublayouts.scss */
 .dice li {
   display: inline-block;
   height: 60px;
   width: 60px;
   margin: 5px;
 }
-/* line 138, ../../scss/modules/_sublayouts.scss */
+/* line 142, ../../scss/modules/_sublayouts.scss */
 .dice li input {
   background: url(/public/art/spr_dice.png) repeat scroll 0 -300px transparent;
   border: medium none;
@@ -1226,14 +1234,27 @@ h1 .version {
   font-size: 0;
   line-height: 0;
 }
-/* line 152, ../../scss/modules/_sublayouts.scss */
+/* line 156, ../../scss/modules/_sublayouts.scss */
 .dice li input.checked {
   box-shadow: 0 0 3px 1px #999;
   opacity: 0.7;
 }
+/* line 164, ../../scss/modules/_sublayouts.scss */
+.dice .button span {
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
 /* logPanel */
-/* line 162, ../../scss/modules/_sublayouts.scss */
+/* line 171, ../../scss/modules/_sublayouts.scss */
+.log {
+  min-width: 230px;
+}
+/* line 174, ../../scss/modules/_sublayouts.scss */
 .log input {
   background: none repeat scroll 0 0 transparent;
   border: medium none;
@@ -1241,12 +1262,12 @@ h1 .version {
   font: 14px Arial;
   height: 24px;
 }
-/* line 170, ../../scss/modules/_sublayouts.scss */
+/* line 182, ../../scss/modules/_sublayouts.scss */
 .log #clock {
   float: right;
   text-align: right;
 }
-/* line 175, ../../scss/modules/_sublayouts.scss */
+/* line 187, ../../scss/modules/_sublayouts.scss */
 .log #message {
   background-color: #2f2727;
   border: 2px inset #2f2727;
@@ -1264,6 +1285,11 @@ h1 .version {
   opacity: 0;
   top: 0;
   width: 100%;
+}
+
+/* line 11, ../../scss/modules/_widgets.scss */
+.ui-resizable-helper {
+  border: 1px dotted #666;
 }
 
 /* Theme Abstract */
@@ -1634,29 +1660,60 @@ h1 .version {
   .col {
     padding: 0 10px;
   }
+
+  /* line 14, ../../scss/media/_desktop.scss */
+  .panel {
+    margin-bottom: 20px;
+  }
 }
 @media only screen and (max-width: 820px) {
-  /* line 16, ../../scss/media/_desktop.scss */
+  /* line 20, ../../scss/media/_desktop.scss */
   .container {
     padding: 5px;
   }
 
-  /* line 20, ../../scss/media/_desktop.scss */
+  /* line 24, ../../scss/media/_desktop.scss */
   .row,
   .col {
     padding: 0 5px;
   }
 }
 @media only screen and (max-width: 780px) {
-  /* line 27, ../../scss/media/_desktop.scss */
+  /* line 31, ../../scss/media/_desktop.scss */
   .panel {
     padding: 30px 10px 10px;
+    margin-bottom: 10px;
   }
 }
 @media only screen and (max-width: 720px) {
-  /* line 33, ../../scss/media/_desktop.scss */
+  /* line 38, ../../scss/media/_desktop.scss */
   .col {
     width: 100% !important;
+  }
+  /* line 41, ../../scss/media/_desktop.scss */
+  .col:first-child {
+    padding-right: 0;
+  }
+  /* line 45, ../../scss/media/_desktop.scss */
+  .col:last-child {
+    padding-left: 0;
+  }
+
+  /* line 50, ../../scss/media/_desktop.scss */
+  .panel {
+    float: none;
+  }
+}
+@media only screen and (max-width: 350px) {
+  /* line 56, ../../scss/media/_desktop.scss */
+  .container {
+    padding: 2px;
+  }
+
+  /* line 60, ../../scss/media/_desktop.scss */
+  .row,
+  .col {
+    padding: 0;
   }
 }
 /* ----------- iPad mini ----------- */

@@ -1,5 +1,7 @@
 /* resultPanel */
 .sheet {
+    min-width: 320px;
+
     fieldset {
         clear: both;
         padding: 10px;
@@ -47,9 +49,7 @@
             &:nth-child(5) {
                 border-left: 3px solid $monotone3;
             }
-
-            // column state (saved, lost, open)
-            &.low,
+            // column state (saved, lost, open) &.low,
             &.high {
                 @extend .icon-radio-unchecked;
 
@@ -113,6 +113,8 @@
 
 /* optionsPanel */
 .options {
+    min-width: 220px;
+
     label {
         width: 160px;
     }
@@ -120,6 +122,8 @@
 
 /* dicePanel */
 .dice {
+    min-width: 160px;
+
     fieldset {
         text-align: center;
     }
@@ -155,10 +159,18 @@
             }
         }
     }
+
+    .button {
+        span {
+            @include ellipsis;
+        }
+    }
 }
 
 /* logPanel */
 .log {
+    min-width: 230px;
+
     input {
         background: none repeat scroll 0 0 transparent;
         border: medium none;

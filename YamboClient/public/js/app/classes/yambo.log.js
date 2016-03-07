@@ -1,22 +1,18 @@
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Log]
- * @requires     [jQuery, Yambo]
- * @revision     [0.1]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} ns: Yambo namespace
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Log
+ * @description The Log panel shows game messages and handles your turn
+ * @requires jQuery, Yambo
  */
 window.Yambo = (function ($, ns) {
-    
+
     // ECMA-262/5
     'use strict';
-    
-    // CONFIG
+
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         selectors: {
             app: '[data-app="log"]',
@@ -33,21 +29,22 @@ window.Yambo = (function ($, ns) {
             }
         }
     };
-    
+
     /**
-     * @constructor Yambo.Log
-     * @param {Object} options : cfg like object
+     * Creates a new Log panel
+     * @class
+     * @param {Object} options - cfg alike
      */
     ns.Log = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
         this.init();
     };
-    
+
     /**
-     * @extends Yambo.Log
+     * @augments Log
      */
     ns.Log.prototype = {
-        
+
         /**
          * Intitialise app
          * @constant {Object} this.settings : cfg like object
@@ -57,16 +54,16 @@ window.Yambo = (function ($, ns) {
                 selectors = settings.selectors,
                 options = settings.options,
                 log = settings.log;
-            
+
             this.cache(selectors);
-            
+
             if (this.app.length) {
                 this.create(options);
             } else {
                 console.warn(log.error.notfound);
             }
         },
-        
+
         /**
          * Cache app selectors
          * @param {Object} selectors : cfg.selectors like object
@@ -77,7 +74,7 @@ window.Yambo = (function ($, ns) {
             this.fieldTurn = $(selectors.fieldTurn);
             this.areaMessage = $(selectors.areaMessage);
         },
-        
+
         /**
          * Create app
          */
@@ -88,20 +85,20 @@ window.Yambo = (function ($, ns) {
                     var i = 0,
                         time = [],
                         len = time.push(this.getHours(), this.getMinutes(), this.getSeconds());
-                    
+
                     for (; i < len; i += 1) {
                         var tick = time[i];
                         time[i] = tick < 10 ? '0' + tick : tick;
                     }
-                    
+
                     return time.join(':');
                 }
             });
-            
+
             // start the timer
             this.startTime();
         },
-        
+
         /**
          * Gets the field value of your turn
          * @returns {Integer} of the current turn
@@ -110,7 +107,7 @@ window.Yambo = (function ($, ns) {
         getTurn: function () {
             return parseInt(this.fieldTurn.val(), 10) || 0;
         },
-        
+
         /**
          * Validate your turn
          * @returns {Boolean} true when all requirements are met
@@ -121,7 +118,7 @@ window.Yambo = (function ($, ns) {
                 sheet = instance.sheet,
                 turn = this.getTurn(),
                 diceLen = dice.filter(false).length;
-            
+
             if (turn === 3 || diceLen === 5) {
                 return false;
             } else if (turn === 2 && sheet.isComplete3Col() && !sheet.isComplete2Col()) {
@@ -129,10 +126,10 @@ window.Yambo = (function ($, ns) {
             } else if (turn === 1 && sheet.isComplete3Col() && sheet.isComplete2Col()) {
                 return false;
             }
-            
+
             return true;
         },
-        
+
         /**
          * Changes the turn value and displays a message
          * @returns {Boolean} true when no error messages were created
@@ -151,13 +148,13 @@ window.Yambo = (function ($, ns) {
                     isError: true,
                     isNewline: true
                 };
-            
+
             if (diceLen !== 5) {
                 // increase the turn value
                 if (turn < 4) {
                     turn += 1;
                 }
-                
+
                 // handle errors
                 if (sheet.isGameOver()) {
                     msgOptions.message = ' -- GAME OVER --';
@@ -171,7 +168,7 @@ window.Yambo = (function ($, ns) {
                     msgOptions.isTimed = true;
                     msgOptions.isError = false;
                     msgOptions.isNewline = false;
-                    
+
                     switch (turn) {
                         case 1:
                             msgOptions.message = 'First roll';
@@ -187,31 +184,31 @@ window.Yambo = (function ($, ns) {
                             dice.button.val('roll dice');
                             break;
                     }
-                    
+
                     msgOptions.isError = false;
                 }
-                
+
                 // set the turn
                 this.fieldTurn.val(turn);
             } else {
                 msgOptions.message = '-- Deselect a die --';
             }
-            
+
             // output
             this.addMessage(msgOptions);
-            
+
             return !msgOptions.isError;
         },
-        
+
         /**         * Displays time
          */
         startTime: function () {
             var now = new Date().formatTime();
-            
+
             this.fieldClock.val(now);
             setTimeout(this.startTime.bind(this), 1000);
         },
-        
+
         /**
          * Add a message to the gamelog
          * @param {Object} options : allows custom output
@@ -225,27 +222,27 @@ window.Yambo = (function ($, ns) {
                 audio = instance.audio,
                 audiofx = audio.settings.fx,
                 history = this.areaMessage.val();
-            
+
             // isTimed?
             options.message = options.isTimed
                 ? history + this.fieldClock.val() + ': ' + options.message
                 : history + options.message;
-            
+
             // isNewline?
             if (options.isNewline) {
                 options.message = options.message + '\n';
             }
-            
+
             // message
             this.areaMessage.val(options.message);
             this.scrollTop(this.areaMessage);
-            
+
             // isError?
             if (options.isError) {
                 audio.play(audiofx.error);
             }
         },
-        
+
         /**
          * Automatically scroll down (from the top)
          * @param {Object} target : jQuery object
@@ -256,7 +253,7 @@ window.Yambo = (function ($, ns) {
         }
 
     };
-    
+
     // EXPOSE NAMESPACE
     return ns;
 

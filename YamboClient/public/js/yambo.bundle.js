@@ -17676,25 +17676,20 @@ Enjoy!
 }(jQuery));
 
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Audio]
- * @requires     [jQuery, Yambo]
- * @revision     [0.1]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} modernizr: Modernizr
- * @param {Object} ns: Yambo namespace
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Audio
+ * @description The Audio Object handles browser support, loading and decoding, audio context and buffering
+ * @requires jQuery, Modernizr, Yambo
  */
 window.Yambo = (function ($, modernizr, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         fx: {
             fullh: 'fullhouse',
@@ -17719,12 +17714,21 @@ window.Yambo = (function ($, modernizr, ns) {
         }
     };
 
+    /**
+     * Creates new Audio
+     * @class
+     * @param {Object} options - cfg alike
+     */
     ns.Audio = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
         this.init();
     };
 
+    /**
+     * @augments Audio
+     */
     ns.Audio.prototype = {
+
         /**
          * Determine the file extension to be used for audio files
          * @returns {String} wav|mp3|ogg
@@ -17737,7 +17741,10 @@ window.Yambo = (function ($, modernizr, ns) {
                 : 'wav';
         }()),
 
-        isSupported: (function() {
+        /**
+         * See if we can activate the audio
+         */
+        isSupported: (function () {
             return modernizr.xhr2 && modernizr.dataview && modernizr.audio;
         }()),
 
@@ -17755,6 +17762,9 @@ window.Yambo = (function ($, modernizr, ns) {
             this.buffer = [];
         },
 
+        /**
+         * Creates an audio context and starts loading audio files
+         */
         activate: function () {
             var settings = this.settings,
                 fx = settings.fx;
@@ -17768,12 +17778,16 @@ window.Yambo = (function ($, modernizr, ns) {
             }
         },
 
-        loadFile: function (filename) {
+        /**
+         * Load a single audio file and decode it
+         * @param {String} fileName audio to load
+         */
+        loadFile: function (fileName) {
             var self = this,
                 settings = this.settings,
                 options = settings.options,
                 fx = settings.fx,
-                filepath = [[options.path, this.extension, fx[filename]].join('/'), this.extension].join('.'),
+                filepath = [[options.path, this.extension, fx[fileName]].join('/'), this.extension].join('.'),
                 request = new XMLHttpRequest;
 
             request.open('GET', filepath, true);
@@ -17781,7 +17795,7 @@ window.Yambo = (function ($, modernizr, ns) {
 
             request.onload = function () {
                 self.context.decodeAudioData(request.response, function (audio) {
-                    self.buffer[fx[filename]] = audio;
+                    self.buffer[fx[fileName]] = audio;
                 });
             };
 
@@ -17790,15 +17804,15 @@ window.Yambo = (function ($, modernizr, ns) {
 
         /**
          * Plays an audio buffered file
-         * @param {String} id : audio file id
+         * @param {String} fileName : audio file name
          * @param {Boolean} isLoop : set to true to play the audio file in a loop
          */
-        play: function (id, isLoop) {
+        play: function (fileName, isLoop) {
             var audiofx;
 
-            if (id && ns.instance.options.isSoundOn()) {
-                audiofx = this.buffer[id];
-                
+            if (fileName && ns.instance.options.isSoundOn()) {
+                audiofx = this.buffer[fileName];
+
                 if (audiofx) {
                     this.source = this.context.createBufferSource();
                     this.source.buffer = audiofx;
@@ -17809,6 +17823,9 @@ window.Yambo = (function ($, modernizr, ns) {
             }
         },
 
+        /**
+         * Stops the audio
+         */
         stop: function () {
             this.source.stop(0);
         },
@@ -17876,24 +17893,20 @@ window.Yambo = (function ($, modernizr, ns) {
 
 }(window.jQuery, window.Modernizr, window.Yambo || {}));
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Dice]
- * @requires     [jQuery, Yambo]
- * @revision     [0.2]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} ns: Yambo namespace
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Dice
+ * @description The Dice panel handles the dice events, filtering, combinations and math
+ * @requires jQuery, Yambo
  */
 window.Yambo = (function ($, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         selectors: {
             app: '[data-app="dice"]',
@@ -17916,8 +17929,9 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @constructor Yambo.Dice
-     * @param {Object} options : cfg like object
+     * Creates a new Dice panel
+     * @class
+     * @param {Object} options - cfg alike
      */
     ns.Dice = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
@@ -17925,7 +17939,7 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @extends Yambo.Toolbar
+     * @augments Dice
      */
     ns.Dice.prototype = {
 
@@ -18224,24 +18238,20 @@ window.Yambo = (function ($, ns) {
 
 }(window.jQuery, window.Yambo || {}));
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Log]
- * @requires     [jQuery, Yambo]
- * @revision     [0.1]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} ns: Yambo namespace
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Log
+ * @description The Log panel shows game messages and handles your turn
+ * @requires jQuery, Yambo
  */
 window.Yambo = (function ($, ns) {
-    
+
     // ECMA-262/5
     'use strict';
-    
-    // CONFIG
+
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         selectors: {
             app: '[data-app="log"]',
@@ -18258,21 +18268,22 @@ window.Yambo = (function ($, ns) {
             }
         }
     };
-    
+
     /**
-     * @constructor Yambo.Log
-     * @param {Object} options : cfg like object
+     * Creates a new Log panel
+     * @class
+     * @param {Object} options - cfg alike
      */
     ns.Log = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
         this.init();
     };
-    
+
     /**
-     * @extends Yambo.Log
+     * @augments Log
      */
     ns.Log.prototype = {
-        
+
         /**
          * Intitialise app
          * @constant {Object} this.settings : cfg like object
@@ -18282,16 +18293,16 @@ window.Yambo = (function ($, ns) {
                 selectors = settings.selectors,
                 options = settings.options,
                 log = settings.log;
-            
+
             this.cache(selectors);
-            
+
             if (this.app.length) {
                 this.create(options);
             } else {
                 console.warn(log.error.notfound);
             }
         },
-        
+
         /**
          * Cache app selectors
          * @param {Object} selectors : cfg.selectors like object
@@ -18302,7 +18313,7 @@ window.Yambo = (function ($, ns) {
             this.fieldTurn = $(selectors.fieldTurn);
             this.areaMessage = $(selectors.areaMessage);
         },
-        
+
         /**
          * Create app
          */
@@ -18313,20 +18324,20 @@ window.Yambo = (function ($, ns) {
                     var i = 0,
                         time = [],
                         len = time.push(this.getHours(), this.getMinutes(), this.getSeconds());
-                    
+
                     for (; i < len; i += 1) {
                         var tick = time[i];
                         time[i] = tick < 10 ? '0' + tick : tick;
                     }
-                    
+
                     return time.join(':');
                 }
             });
-            
+
             // start the timer
             this.startTime();
         },
-        
+
         /**
          * Gets the field value of your turn
          * @returns {Integer} of the current turn
@@ -18335,7 +18346,7 @@ window.Yambo = (function ($, ns) {
         getTurn: function () {
             return parseInt(this.fieldTurn.val(), 10) || 0;
         },
-        
+
         /**
          * Validate your turn
          * @returns {Boolean} true when all requirements are met
@@ -18346,7 +18357,7 @@ window.Yambo = (function ($, ns) {
                 sheet = instance.sheet,
                 turn = this.getTurn(),
                 diceLen = dice.filter(false).length;
-            
+
             if (turn === 3 || diceLen === 5) {
                 return false;
             } else if (turn === 2 && sheet.isComplete3Col() && !sheet.isComplete2Col()) {
@@ -18354,10 +18365,10 @@ window.Yambo = (function ($, ns) {
             } else if (turn === 1 && sheet.isComplete3Col() && sheet.isComplete2Col()) {
                 return false;
             }
-            
+
             return true;
         },
-        
+
         /**
          * Changes the turn value and displays a message
          * @returns {Boolean} true when no error messages were created
@@ -18376,13 +18387,13 @@ window.Yambo = (function ($, ns) {
                     isError: true,
                     isNewline: true
                 };
-            
+
             if (diceLen !== 5) {
                 // increase the turn value
                 if (turn < 4) {
                     turn += 1;
                 }
-                
+
                 // handle errors
                 if (sheet.isGameOver()) {
                     msgOptions.message = ' -- GAME OVER --';
@@ -18396,7 +18407,7 @@ window.Yambo = (function ($, ns) {
                     msgOptions.isTimed = true;
                     msgOptions.isError = false;
                     msgOptions.isNewline = false;
-                    
+
                     switch (turn) {
                         case 1:
                             msgOptions.message = 'First roll';
@@ -18412,31 +18423,31 @@ window.Yambo = (function ($, ns) {
                             dice.button.val('roll dice');
                             break;
                     }
-                    
+
                     msgOptions.isError = false;
                 }
-                
+
                 // set the turn
                 this.fieldTurn.val(turn);
             } else {
                 msgOptions.message = '-- Deselect a die --';
             }
-            
+
             // output
             this.addMessage(msgOptions);
-            
+
             return !msgOptions.isError;
         },
-        
+
         /**         * Displays time
          */
         startTime: function () {
             var now = new Date().formatTime();
-            
+
             this.fieldClock.val(now);
             setTimeout(this.startTime.bind(this), 1000);
         },
-        
+
         /**
          * Add a message to the gamelog
          * @param {Object} options : allows custom output
@@ -18450,27 +18461,27 @@ window.Yambo = (function ($, ns) {
                 audio = instance.audio,
                 audiofx = audio.settings.fx,
                 history = this.areaMessage.val();
-            
+
             // isTimed?
             options.message = options.isTimed
                 ? history + this.fieldClock.val() + ': ' + options.message
                 : history + options.message;
-            
+
             // isNewline?
             if (options.isNewline) {
                 options.message = options.message + '\n';
             }
-            
+
             // message
             this.areaMessage.val(options.message);
             this.scrollTop(this.areaMessage);
-            
+
             // isError?
             if (options.isError) {
                 audio.play(audiofx.error);
             }
         },
-        
+
         /**
          * Automatically scroll down (from the top)
          * @param {Object} target : jQuery object
@@ -18481,31 +18492,26 @@ window.Yambo = (function ($, ns) {
         }
 
     };
-    
+
     // EXPOSE NAMESPACE
     return ns;
 
 }(window.jQuery, window.Yambo || {}));
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Options]
- * @requires     [jQuery, Yambo]
- * @revision     [0.2]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} modernizr: Modernizr
- * @param {Object} ns: Yambo
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Options
+ * @description The Options panel handles the client UI preferences
+ * @requires jQuery, Modernizr, Yambo
  */
 window.Yambo = (function ($, modernizr, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         selectors: {
             app: '[data-app="options"]',
@@ -18544,8 +18550,9 @@ window.Yambo = (function ($, modernizr, ns) {
     };
 
     /**
-     * @constructor Yambo.Options
-     * @param {Object} options : cfg like object
+     * Creates a new Options panel
+     * @class
+     * @param {Object} options - cfg alike
      */
     ns.Options = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
@@ -18553,14 +18560,10 @@ window.Yambo = (function ($, modernizr, ns) {
     };
 
     /**
-     * @extends Yambo.Options
+     * @augments Options
      */
     ns.Options.prototype = {
 
-        /**
-         * Intitialise app
-         * @constant {Object} this.settings : cfg like object
-         */
         init: function () {
             var settings = this.settings,
                 selectors = settings.selectors,
@@ -18757,24 +18760,20 @@ window.Yambo = (function ($, modernizr, ns) {
 
 }(window.jQuery, window.Modernizr, window.Yambo || {}));
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Sheet]
- * @requires     [jQuery, Yambo]
- * @revision     [0.1]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} ns: Yambo
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Sheet
+ * @description The Sheet panel shows game results, handles score, columns, cells and errors
+ * @requires jQuery, Yambo
  */
 window.Yambo = (function ($, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         selectors: {
             app: '[data-app="sheet"]',
@@ -18831,8 +18830,9 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @constructor Yambo.Sheet
-     * @param {Object} options : cfg like object
+     * Creates a new player Sheet
+     * @class
+     * @param {Object} options - cfg alike
      */
     ns.Sheet = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
@@ -18840,13 +18840,10 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @extends Yambo.Sheet
+     * @augments Sheet
      */
     ns.Sheet.prototype = {
 
-        /**
-         * Intitialise app
-         */
         init: function () {
             var settings = this.settings,
                 selectors = settings.selectors,
@@ -19113,7 +19110,7 @@ window.Yambo = (function ($, ns) {
         },
 
         /**
-         * Filter cells in cols and in rows
+         * Filter cells in cols and rows
          * @param {Object} obj : jQuery object of cells
          * @returns {Object} jQuery object of empty cells
          */
@@ -19240,7 +19237,7 @@ window.Yambo = (function ($, ns) {
         },
 
         /**
-         * Determine whether the columns "in 3 turns" are complete
+         * Determine whether all columns "in 3 turns" are complete
          * @returns {Boolean} true if all cells are saved, in all 3 columns (down, willy, up)
          */
         isComplete3Col: function () {
@@ -19251,7 +19248,7 @@ window.Yambo = (function ($, ns) {
         },
 
         /**
-         * Determine whether the column "in 2 turns" are complete
+         * Determine whether the column "in 2 turns" is complete
          * @returns {Boolean} true if all cells are saved in the 2-column
          */
         isComplete2Col: function () {
@@ -19268,7 +19265,7 @@ window.Yambo = (function ($, ns) {
 
         /**
          * Determine whether all columns are complete
-         * @returns {Boolean} true if all cells of all columns are saved
+         * @returns {Boolean} true when all cells of all columns are saved
          */
         isGameOver: function () {
             return this.isComplete3Col() && this.isComplete2Col() && this.isComplete1Col();
@@ -19281,24 +19278,20 @@ window.Yambo = (function ($, ns) {
 
 }(window.jQuery, window.Yambo || {}));
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Toolbar]
- * @requires     [jQuery, Yambo]
- * @revision     [0.1]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} ns: Yambo namespace
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Toolbar
+ * @description The Toolbar handles dragging and positioning
+ * @requires jQuery, Yambo
  */
 window.Yambo = (function ($, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         selectors: {
             app: '[data-app="toolbar"]',
@@ -19327,7 +19320,8 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @constructor Yambo.Toolbar
+     * Creates a new Toolbar
+     * @class
      * @param {Object} options : cfg like object
      */
     ns.Toolbar = function (options) {
@@ -19336,7 +19330,7 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @extends Yambo.Toolbar
+     * @augments Toolbar
      */
     ns.Toolbar.prototype = {
 
@@ -19375,11 +19369,11 @@ window.Yambo = (function ($, ns) {
                 classes = settings.classes,
                 options = settings.options;
 
-            $(function() {
+            $(function () {
                 self.create(selectors, classes, options);
                 self.bind(options.draggable);
             });
-            
+
         },
 
         /**
@@ -19447,133 +19441,150 @@ window.Yambo = (function ($, ns) {
 
 }(window.jQuery, window.Yambo || {}));
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.fn]
- * @requires     [jQuery, Yambo]
- * @revision     [0.1]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} ns: Yambo
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.fn
+ * @desc The functions object is private inside the namespace. Some extra additions to jQuery.
+ * @requires jQuery, Yambo
  */
 window.Yambo = (function ($, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // jQuery extends
-    $.fn.roll = function (options, callback) {
-        var die = $(this),
-            defaults = {
-                keepJuggling: false,
-                juggleTimeout: 200
-            },
-            init = function () {
-                die.animate(
-                    { zIndex: 0 },
-                    {
-                        step: function () {
-                            options.number = Math.floor(Math.random() * 6) + 1;
-                            die.css({ backgroundPosition: (options.number - 1) * -60 + 'px ' + options.color + 'px' });
-                        },
-                        duration: options.juggleTimeout,
-                        complete: function () {
-                            if (options.keepJuggling) {
-                                die.roll(options);
-                            } else {
-                                die.stop(true, true).val(options.number);
-                                callback(options.number);
+    /**
+     * @augments jQuery functions
+     */
+    $.fn.extend({
+        /**
+         * Roll a single die
+         * @desc Handles the background animation while randomizing
+         * @param {Object} options to keep randomizing and stop after amount of ms
+         * @param {Function} callback after animation is done
+         */
+        roll: function (options, callback) {
+            var die = $(this),
+                defaults = {
+                    keepJuggling: false,
+                    juggleTimeout: 200
+                },
+                init = function () {
+                    die.animate(
+                        { zIndex: 0 },
+                        {
+                            step: function () {
+                                options.number = Math.floor(Math.random() * 6) + 1;
+                                die.css({ backgroundPosition: (options.number - 1) * -60 + 'px ' + options.color + 'px' });
+                            },
+                            duration: options.juggleTimeout,
+                            complete: function () {
+                                if (options.keepJuggling) {
+                                    die.roll(options);
+                                } else {
+                                    die.stop(true, true).val(options.number);
+                                    callback(options.number);
+                                }
                             }
                         }
-                    }
-                );
-            };
+                    );
+                };
 
-        options = $.extend(defaults, options);
+            options = $.extend(defaults, options);
 
-        init();
-    };
+            init();
+        },
 
-    $.fn.toggleEvent = function (eventType) {
-        var i = 0,
-            handlers = $.makeArray(arguments).slice(1);
+        /**
+         * Toggle an event to different functions
+         * @param {String} eventType event.eventType
+         * @returns {Function} eventListener
+         */
+        toggleEvent: function (eventType) {
+            var i = 0,
+                handlers = $.makeArray(arguments).slice(1);
 
-        return this.bind(eventType, function () {
-            handlers[i].apply(this, arguments);
-            i = (i + 1) % handlers.length;
-        });
-    };
+            return this.bind(eventType, function () {
+                handlers[i].apply(this, arguments);
+                i = (i + 1) % handlers.length;
+            });
+        },
 
-    $.fn.toggleClick = function () {
-        var i = 0,
-            functions = arguments;
+        /**
+         * @todo refactor to toggleEvent or revise
+         * @returns {Function} toggled click function
+         */
+        toggleClick: function () {
+            var i = 0,
+                functions = arguments;
 
-        return this.click(function () {
-            functions[i].apply(this, arguments);
-            i = (i + 1) % functions.length;
-        });
-    };
+            return this.click(function () {
+                functions[i].apply(this, arguments);
+                i = (i + 1) % functions.length;
+            });
+        },
 
-    $.fn.minimizable = function () {
-        var instance = ns.instance,
-            toolbar = instance.toolbar,
-            audio = instance.audio,
-            positions = [];
+        /**
+         * Handles animation during minimizing and positioning
+         */
+        minimizable: function () {
+            var instance = ns.instance,
+                toolbar = instance.toolbar,
+                audio = instance.audio,
+                positions = [];
 
-        $(this).each(function (idx) {
-            // store draggable positions
-            positions.push($(this).position());
+            $(this).each(function (idx) {
+                // store draggable positions
+                positions.push($(this).position());
 
-            $(this)
-                .find('.minimize')
-                .toggleClick(
-                    function () {
-                        // toolbar icon position
-                        var icon = toolbar.icons.eq(idx).offset(),
-                            coords = $(this).parent().position(),
-                            x = icon.left - coords.left - 15,
-                            y = icon.top - coords.top - 15;
+                $(this)
+                    .find('.minimize')
+                    .toggleClick(
+                        function () {
+                            // toolbar icon position
+                            var icon = toolbar.icons.eq(idx).offset(),
+                                coords = $(this).parent().position(),
+                                x = icon.left - coords.left - 15,
+                                y = icon.top - coords.top - 15;
 
-                        // ui fx
-                        $(this).next().hide(200);
-                        $(this).addClass('minimized').animate({ left: x, top: y }, { duration: 200, easing: 'easeOutBounce' });
+                            // ui fx
+                            $(this).next().hide(200);
+                            $(this).addClass('minimized').animate({ left: x, top: y }, { duration: 200, easing: 'easeOutBounce' });
 
-                        // sound fx
-                        audio.play(audio.settings.fx.minimize);
-                    },
-                    function () {
-                        $(this).next().show(200);
-                        $(this).removeClass('minimized').animate({ left: -24, top: -22 }, { duration: 200, easing: 'easeOutCubic' });
+                            // sound fx
+                            audio.play(audio.settings.fx.minimize);
+                        },
+                        function () {
+                            $(this).next().show(200);
+                            $(this).removeClass('minimized').animate({ left: -24, top: -22 }, { duration: 200, easing: 'easeOutCubic' });
 
-                        audio.play(audio.settings.fx.maximize);
-                    }
-                )
-                .hover(
-                    function () {
-                        $(this).addClass('hover');
-                    },
-                    function () {
-                        $(this).removeClass('hover');
-                    }
-                );
-        });
+                            audio.play(audio.settings.fx.maximize);
+                        }
+                    )
+                    .hover(
+                        function () {
+                            $(this).addClass('hover');
+                        },
+                        function () {
+                            $(this).removeClass('hover');
+                        }
+                    );
+            });
 
-        $(this).each(function (idx) {
-            $(this).css({ position: 'absolute', top: positions[idx].top, left: positions[idx].left });
-        });
+            $(this).each(function (idx) {
+                $(this).css({ position: 'absolute', top: positions[idx].top, left: positions[idx].left });
+            });
 
-    };
+        }
+    });
 
-    // Namespace extends
+    /**
+     * @augments namespace functions
+     */
     ns.fn = {
         /**
-         * @description delay events with the same id, good for window resize events, scroll, keystroke, etc ...
-         * @param {Function} func : callback function to be run when done
-         * @param {Integer} wait : integer in milliseconds
-         * @param {String} id : unique event id
+         * @description Debounce events with the same id, good for window resize, document scroll, keystroke, ...
+         * @param {Function} func - callback function to be run when done
+         * @param {Integer} wait - integer in ms
+         * @param {String} id - unique event id
          */
         debounce: (function () {
             var timers = {};
@@ -19590,6 +19601,12 @@ window.Yambo = (function ($, ns) {
             };
         }()),
 
+        /**
+         * Finds a property of an object
+         * @param {Object} obj - to search through
+         * @param {String|Integer} val - to search for
+         * @returns {Object} property
+         */
         getObjectProperty: function (obj, val) {
             var prop = '',
                 item;
@@ -19614,34 +19631,70 @@ window.Yambo = (function ($, ns) {
     return ns;
 
 }(window.jQuery, window.Yambo || {}));
+/**
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.instance
+ * @description The instance allows passing info over objects
+ * @requires jQuery, Yambo
+ */
 window.Yambo = (function ($, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // PRIVATE CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         version: '2.0.0 b&egrave;ta',
         modules: {
             draggable: '.ui-draggable',
             minimizable: '.panel',
-            resizable: '.panel',
+            resizable: '.ui-resizable',
             uniform: '.uniform',
             version: '.version'
+        },
+        options: {
+            draggable: {
+                stack: '.panel',
+                handle: '.ui-dialog-titlebar',
+                snap: true
+            },
+            resizable: {
+                //animate: true,
+                //helper: '.ui-resizable-helper',
+                //minWidth: 160,
+                //containment: '.container',
+                //alsoResize: 'fieldset'
+                //aspectRatio: 16 / 9
+            }
         }
     };
 
-    // PRIVATE FUNCTIONS
+    /**
+     * @private
+     * @function
+     */
     function loadModules() {
-        $(cfg.modules.uniform).uniform();
-        //$(cfg.modules.minimizable).minimizable();
-        //$(cfg.modules.minimizable).draggable({ stack: cfg.modules.draggable });
-        //$(cfg.modules.resizable).resizable();
-        $(cfg.modules.version).html(cfg.version);
+        var mod = cfg.modules,
+            opt = cfg.options;
+
+        $(mod.uniform).uniform();
+        //$(mod.minimizable).minimizable();
+        $(mod.draggable).draggable(opt.draggable);
+        $(mod.resizable).resizable(opt.resizable);
+        $(mod.version).html(cfg.version);
     }
 
-    // INSTANCE CROSS-REFERENCE
+    /**
+     * @version
+     */
     ns.version = cfg.version;
+
+    /**
+     * @augments namespace instance
+     */
     ns.instance = {
         toolbar: new ns.Toolbar,
         sheet: new ns.Sheet,
@@ -19651,7 +19704,9 @@ window.Yambo = (function ($, ns) {
         audio: new ns.Audio
     };
 
-    // ON DOM READY
+    /**
+     * @event DOM ready
+     */
     $(function () {
         loadModules();
     });

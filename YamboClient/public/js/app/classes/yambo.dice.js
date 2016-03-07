@@ -1,22 +1,18 @@
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Dice]
- * @requires     [jQuery, Yambo]
- * @revision     [0.2]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} ns: Yambo namespace
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Dice
+ * @description The Dice panel handles the dice events, filtering, combinations and math
+ * @requires jQuery, Yambo
  */
 window.Yambo = (function ($, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         selectors: {
             app: '[data-app="dice"]',
@@ -39,8 +35,9 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @constructor Yambo.Dice
-     * @param {Object} options : cfg like object
+     * Creates a new Dice panel
+     * @class
+     * @param {Object} options - cfg alike
      */
     ns.Dice = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
@@ -48,7 +45,7 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @extends Yambo.Toolbar
+     * @augments Dice
      */
     ns.Dice.prototype = {
 

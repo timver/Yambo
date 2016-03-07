@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Yambo!</title>
+    <title>Yambo - Dice Game</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,89 +19,9 @@
         </div>
         <div class="row">
             <div class="col g55">
-                <!-- dice -->
-                <form action="/" class="panel dice" data-app="dice">
+                <form action="/" class="panel sheet ui-draggable ui-resizable" data-app="sheet">
                     <fieldset>
-                        <legend>Dice</legend>
-                        <ul>
-                            <li><input type="button" value="1" /></li>
-                            <li><input type="button" value="2" /></li>
-                            <li><input type="button" value="3" /></li>
-                            <li><input type="button" value="4" /></li>
-                            <li><input type="button" value="5" /></li>
-                        </ul>
-                        <input type="button" class="btn roll uniform" value="roll dice" />
-                    </fieldset>
-                </form>
-
-                <!-- log -->
-                <form action="/" class="panel log" data-app="log">
-                    <fieldset>
-                        <legend>Game Log</legend>
-                        <label for="turn">Turn:</label>
-                        <input type="text" id="turn" value="0" class="txt" />
-                        <input type="text" id="clock" />
-                        <br />
-                        <br />
-                        <textarea id="message" rows="10" cols="5"></textarea>
-                        <br />
-                    </fieldset>
-                </form>
-
-                <!-- options -->
-                <form action="/" class="panel options" data-app="options">
-                    <fieldset>
-                        <legend>Options</legend>
-                        <input type="hidden" id="playercount" value="0" />
-                        <label for="playerName">Player name</label>
-                        <input type="text" id="playerName" maxlength="25" class="uniform" />
-                        <input type="button" value="Enter" class="btn player uniform" />
-                        <div class="clr"></div>
-                        <label for="theme">Theme</label>
-                        <select id="theme" class="uniform">
-                            <option value="" selected="selected">[ none ]</option>
-                            <option value="theme-abstract">Abstract</option>
-                            <option value="theme-basketball">Basketball</option>
-                            <option value="theme-future">Future</option>
-                            <option value="theme-halloween">Halloween</option>
-                            <option value="theme-nature">Nature</option>
-                            <option value="theme-ocean">Ocean</option>
-                            <option value="theme-space">Space</option>
-                            <option value="theme-tron">Tron</option>
-                        </select>
-                        <div class="clr"></div>
-                        <label for="dicecolor">Dice color</label>
-                        <select id="dicecolor" class="uniform">
-                            <option value="0">Red</option>
-                            <option value="60">Yellow</option>
-                            <option value="120">Green</option>
-                            <option value="180">Blue</option>
-                            <option value="240">Pink</option>
-                            <option value="300" selected="selected">White</option>
-                            <option value="360">Black</option>
-                        </select>
-                        <div class="clr"></div>
-                        <label for="juggletime">Juggle time</label>
-                        <select id="juggletime" class="uniform">
-                            <option value="200" selected="selected">fast</option>
-                            <option value="400">average</option>
-                            <option value="800">slow</option>
-                            <option value="1600">snail</option>
-                        </select>
-                        <div class="clr"></div>
-                        <label for="soundfx">Sound fx On/Off</label>
-                        <input type="checkbox" id="soundfx" checked="checked" class="uniform" />
-                        <div class="clr"></div>
-                        <label for="tooltips">Tooltips On/Off</label>
-                        <input type="checkbox" id="tooltips" class="uniform" />
-                    </fieldset>
-                </form>
-            </div>
-            <div class="col g45">
-                <!-- sheet -->
-                <form action="/" class="panel sheet" data-app="sheet">
-                    <fieldset>
-                        <legend>Result</legend>
+                        <legend class="ui-dialog-titlebar">Result</legend>
                         <table>
                             <thead>
                                 <tr>
@@ -242,6 +162,82 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col g45">
+                <form action="/" class="panel dice ui-draggable ui-resizable" data-app="dice">
+                    <fieldset>
+                        <legend class="ui-dialog-titlebar">Dice</legend>
+                        <ul>
+                            <li><input type="button" value="1"/></li>
+                            <li><input type="button" value="2"/></li>
+                            <li><input type="button" value="3"/></li>
+                            <li><input type="button" value="4"/></li>
+                            <li><input type="button" value="5"/></li>
+                        </ul>
+                        <input type="button" class="btn roll uniform" value="roll dice"/>
+                    </fieldset>
+                </form>
+
+                <form action="/" class="panel log ui-draggable ui-resizable" data-app="log">
+                    <fieldset>
+                        <legend class="ui-dialog-titlebar">Game Log</legend>
+                        <label for="turn">Turn:</label>
+                        <input type="text" id="turn" value="0" class="txt"/>
+                        <input type="text" id="clock"/>
+                        <br/>
+                        <br/>
+                        <textarea id="message" rows="10" cols="5"></textarea>
+                        <br/>
+                    </fieldset>
+                </form>
+
+                <form action="/" class="panel options ui-draggable ui-resizable" data-app="options">
+                    <fieldset>
+                        <legend class="ui-dialog-titlebar">Options</legend>
+                        <input type="hidden" id="playercount" value="0"/>
+                        <label for="playerName">Player name</label>
+                        <input type="text" id="playerName" maxlength="25" class="uniform"/>
+                        <input type="button" value="Enter" class="btn player uniform"/>
+                        <div class="clr"></div>
+                        <label for="theme">Theme</label>
+                        <select id="theme" class="uniform">
+                            <option value="" selected="selected">[ none ]</option>
+                            <option value="theme-abstract">Abstract</option>
+                            <option value="theme-basketball">Basketball</option>
+                            <option value="theme-future">Future</option>
+                            <option value="theme-halloween">Halloween</option>
+                            <option value="theme-nature">Nature</option>
+                            <option value="theme-ocean">Ocean</option>
+                            <option value="theme-space">Space</option>
+                            <option value="theme-tron">Tron</option>
+                        </select>
+                        <div class="clr"></div>
+                        <label for="dicecolor">Dice color</label>
+                        <select id="dicecolor" class="uniform">
+                            <option value="0">Red</option>
+                            <option value="60">Yellow</option>
+                            <option value="120">Green</option>
+                            <option value="180">Blue</option>
+                            <option value="240">Pink</option>
+                            <option value="300" selected="selected">White</option>
+                            <option value="360">Black</option>
+                        </select>
+                        <div class="clr"></div>
+                        <label for="juggletime">Juggle time</label>
+                        <select id="juggletime" class="uniform">
+                            <option value="200" selected="selected">fast</option>
+                            <option value="400">average</option>
+                            <option value="800">slow</option>
+                            <option value="1600">snail</option>
+                        </select>
+                        <div class="clr"></div>
+                        <label for="soundfx">Sound fx On/Off</label>
+                        <input type="checkbox" id="soundfx" checked="checked" class="uniform"/>
+                        <div class="clr"></div>
+                        <label for="tooltips">Tooltips On/Off</label>
+                        <input type="checkbox" id="tooltips" class="uniform"/>
                     </fieldset>
                 </form>
             </div>

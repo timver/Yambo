@@ -1,23 +1,18 @@
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Options]
- * @requires     [jQuery, Yambo]
- * @revision     [0.2]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} modernizr: Modernizr
- * @param {Object} ns: Yambo
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Options
+ * @description The Options panel handles the client UI preferences
+ * @requires jQuery, Modernizr, Yambo
  */
 window.Yambo = (function ($, modernizr, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         selectors: {
             app: '[data-app="options"]',
@@ -56,8 +51,9 @@ window.Yambo = (function ($, modernizr, ns) {
     };
 
     /**
-     * @constructor Yambo.Options
-     * @param {Object} options : cfg like object
+     * Creates a new Options panel
+     * @class
+     * @param {Object} options - cfg alike
      */
     ns.Options = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
@@ -65,14 +61,10 @@ window.Yambo = (function ($, modernizr, ns) {
     };
 
     /**
-     * @extends Yambo.Options
+     * @augments Options
      */
     ns.Options.prototype = {
 
-        /**
-         * Intitialise app
-         * @constant {Object} this.settings : cfg like object
-         */
         init: function () {
             var settings = this.settings,
                 selectors = settings.selectors,

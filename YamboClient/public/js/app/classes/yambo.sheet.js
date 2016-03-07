@@ -1,22 +1,18 @@
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Sheet]
- * @requires     [jQuery, Yambo]
- * @revision     [0.1]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} ns: Yambo
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Sheet
+ * @description The Sheet panel shows game results, handles score, columns, cells and errors
+ * @requires jQuery, Yambo
  */
 window.Yambo = (function ($, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         selectors: {
             app: '[data-app="sheet"]',
@@ -73,8 +69,9 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @constructor Yambo.Sheet
-     * @param {Object} options : cfg like object
+     * Creates a new player Sheet
+     * @class
+     * @param {Object} options - cfg alike
      */
     ns.Sheet = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
@@ -82,13 +79,10 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @extends Yambo.Sheet
+     * @augments Sheet
      */
     ns.Sheet.prototype = {
 
-        /**
-         * Intitialise app
-         */
         init: function () {
             var settings = this.settings,
                 selectors = settings.selectors,
@@ -355,7 +349,7 @@ window.Yambo = (function ($, ns) {
         },
 
         /**
-         * Filter cells in cols and in rows
+         * Filter cells in cols and rows
          * @param {Object} obj : jQuery object of cells
          * @returns {Object} jQuery object of empty cells
          */
@@ -482,7 +476,7 @@ window.Yambo = (function ($, ns) {
         },
 
         /**
-         * Determine whether the columns "in 3 turns" are complete
+         * Determine whether all columns "in 3 turns" are complete
          * @returns {Boolean} true if all cells are saved, in all 3 columns (down, willy, up)
          */
         isComplete3Col: function () {
@@ -493,7 +487,7 @@ window.Yambo = (function ($, ns) {
         },
 
         /**
-         * Determine whether the column "in 2 turns" are complete
+         * Determine whether the column "in 2 turns" is complete
          * @returns {Boolean} true if all cells are saved in the 2-column
          */
         isComplete2Col: function () {
@@ -510,7 +504,7 @@ window.Yambo = (function ($, ns) {
 
         /**
          * Determine whether all columns are complete
-         * @returns {Boolean} true if all cells of all columns are saved
+         * @returns {Boolean} true when all cells of all columns are saved
          */
         isGameOver: function () {
             return this.isComplete3Col() && this.isComplete2Col() && this.isComplete1Col();

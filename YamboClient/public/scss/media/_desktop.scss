@@ -10,6 +10,10 @@
     .col {
         padding: 0 10px;
     }
+
+    .panel {
+        margin-bottom: 20px;
+    }
 }
 
 @media only screen and (max-width: 820px) {
@@ -26,11 +30,35 @@
 @media only screen and (max-width: 780px) {
     .panel {
         padding: 30px 10px 10px;
+        margin-bottom: 10px;
     }
 }
 
 @media only screen and (max-width: 720px) {
     .col {
         width: 100% !important;
+
+        &:first-child {
+            padding-right: 0;
+        }
+
+        &:last-child {
+            padding-left: 0;
+        }
+    }
+
+    .panel {
+        float: none;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .container {
+        padding: 2px;
+    }
+
+    .row,
+    .col {
+        padding: 0;
     }
 }

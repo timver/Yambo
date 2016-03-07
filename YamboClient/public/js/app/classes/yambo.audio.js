@@ -1,23 +1,18 @@
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Audio]
- * @requires     [jQuery, Yambo]
- * @revision     [0.1]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} modernizr: Modernizr
- * @param {Object} ns: Yambo namespace
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Audio
+ * @description The Audio Object handles browser support, loading and decoding, audio context and buffering
+ * @requires jQuery, Modernizr, Yambo
  */
 window.Yambo = (function ($, modernizr, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         fx: {
             fullh: 'fullhouse',
@@ -42,12 +37,21 @@ window.Yambo = (function ($, modernizr, ns) {
         }
     };
 
+    /**
+     * Creates new Audio
+     * @class
+     * @param {Object} options - cfg alike
+     */
     ns.Audio = function (options) {
         this.settings = $.extend(true, {}, cfg, options);
         this.init();
     };
 
+    /**
+     * @augments Audio
+     */
     ns.Audio.prototype = {
+
         /**
          * Determine the file extension to be used for audio files
          * @returns {String} wav|mp3|ogg
@@ -60,7 +64,10 @@ window.Yambo = (function ($, modernizr, ns) {
                 : 'wav';
         }()),
 
-        isSupported: (function() {
+        /**
+         * See if we can activate the audio
+         */
+        isSupported: (function () {
             return modernizr.xhr2 && modernizr.dataview && modernizr.audio;
         }()),
 
@@ -78,6 +85,9 @@ window.Yambo = (function ($, modernizr, ns) {
             this.buffer = [];
         },
 
+        /**
+         * Creates an audio context and starts loading audio files
+         */
         activate: function () {
             var settings = this.settings,
                 fx = settings.fx;
@@ -91,12 +101,16 @@ window.Yambo = (function ($, modernizr, ns) {
             }
         },
 
-        loadFile: function (filename) {
+        /**
+         * Load a single audio file and decode it
+         * @param {String} fileName audio to load
+         */
+        loadFile: function (fileName) {
             var self = this,
                 settings = this.settings,
                 options = settings.options,
                 fx = settings.fx,
-                filepath = [[options.path, this.extension, fx[filename]].join('/'), this.extension].join('.'),
+                filepath = [[options.path, this.extension, fx[fileName]].join('/'), this.extension].join('.'),
                 request = new XMLHttpRequest;
 
             request.open('GET', filepath, true);
@@ -104,7 +118,7 @@ window.Yambo = (function ($, modernizr, ns) {
 
             request.onload = function () {
                 self.context.decodeAudioData(request.response, function (audio) {
-                    self.buffer[fx[filename]] = audio;
+                    self.buffer[fx[fileName]] = audio;
                 });
             };
 
@@ -113,15 +127,15 @@ window.Yambo = (function ($, modernizr, ns) {
 
         /**
          * Plays an audio buffered file
-         * @param {String} id : audio file id
+         * @param {String} fileName : audio file name
          * @param {Boolean} isLoop : set to true to play the audio file in a loop
          */
-        play: function (id, isLoop) {
+        play: function (fileName, isLoop) {
             var audiofx;
 
-            if (id && ns.instance.options.isSoundOn()) {
-                audiofx = this.buffer[id];
-                
+            if (fileName && ns.instance.options.isSoundOn()) {
+                audiofx = this.buffer[fileName];
+
                 if (audiofx) {
                     this.source = this.context.createBufferSource();
                     this.source.buffer = audiofx;
@@ -132,6 +146,9 @@ window.Yambo = (function ($, modernizr, ns) {
             }
         },
 
+        /**
+         * Stops the audio
+         */
         stop: function () {
             this.source.stop(0);
         },

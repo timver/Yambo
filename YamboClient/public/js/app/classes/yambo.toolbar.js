@@ -1,22 +1,18 @@
 /**
- * @author       [Tim Vermaelen] - sidewalk.be
- * @date         [26.01.2016]
- * @link         [http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html]
- * @namespace    [Yambo.Toolbar]
- * @requires     [jQuery, Yambo]
- * @revision     [0.1]
- */
-
-/**
- * @param {Function} $: jQuery
- * @param {Object} ns: Yambo namespace
+ * @author Tim Vermaelen<tim.vermaelen@telenet.be>
+ * @namespace Yambo.Toolbar
+ * @description The Toolbar handles dragging and positioning
+ * @requires jQuery, Yambo
  */
 window.Yambo = (function ($, ns) {
 
     // ECMA-262/5
     'use strict';
 
-    // CONFIG
+    /**
+     * @default
+     * @global
+     */
     var cfg = {
         selectors: {
             app: '[data-app="toolbar"]',
@@ -45,7 +41,8 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @constructor Yambo.Toolbar
+     * Creates a new Toolbar
+     * @class
      * @param {Object} options : cfg like object
      */
     ns.Toolbar = function (options) {
@@ -54,7 +51,7 @@ window.Yambo = (function ($, ns) {
     };
 
     /**
-     * @extends Yambo.Toolbar
+     * @augments Toolbar
      */
     ns.Toolbar.prototype = {
 
@@ -93,11 +90,11 @@ window.Yambo = (function ($, ns) {
                 classes = settings.classes,
                 options = settings.options;
 
-            $(function() {
+            $(function () {
                 self.create(selectors, classes, options);
                 self.bind(options.draggable);
             });
-            
+
         },
 
         /**
