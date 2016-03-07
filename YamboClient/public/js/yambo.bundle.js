@@ -17742,7 +17742,8 @@ window.Yambo = (function ($, modernizr, ns) {
         }()),
 
         /**
-         * See if we can activate the audio
+         * See if browser supports audio
+         * @returns {Boolean} true if audio can be decoded and played
          */
         isSupported: (function () {
             return modernizr.xhr2 && modernizr.dataview && modernizr.audio;
