@@ -16,7 +16,7 @@ window.Yambo = (function ($, ns) {
     var cfg = {
         selectors: {
             app: '[data-app="sheet"]',
-            thead: 'thead td',
+            thead: 'thead th',
             tbody: 'tbody td',
             columnPlayerName: '#colplayer',
             tok1: 'input.tok1',

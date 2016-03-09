@@ -9,19 +9,32 @@ window.Yambo = (function ($, ns) {
         modules: {
             draggable: '.ui-draggable',
             minimizable: '.panel',
-            resizable: '.panel',
+            resizable: '.ui-resizable',
             uniform: '.uniform',
             version: '.version'
+        },
+        options: {
+            draggable: {
+                stack: '.panel',
+                snap: true,
+                snapMode: 'both',
+                handle: '.ui-dialog-titlebar'
+            }
         }
     };
 
     // PRIVATE FUNCTIONS
     function loadModules() {
-        $(cfg.modules.uniform).uniform();
-        //$(cfg.modules.minimizable).minimizable();
-        //$(cfg.modules.minimizable).draggable({ stack: cfg.modules.draggable });
-        //$(cfg.modules.resizable).resizable();
-        $(cfg.modules.version).html(cfg.version);
+        var mod = cfg.modules,
+            opt = cfg.options;
+
+        $(mod.uniform).uniform();
+        //$(mod.minimizable).minimizable();
+        //$(mod.draggable).draggable(opt.draggable);
+        //$('[draggable="true"]').handleDrag();
+        dragula([document.querySelector('.col.g45'), document.querySelector('.col.g55')]);
+        //$(mod.resizable).resizable();
+        $(mod.version).html(cfg.version);
     }
 
     // INSTANCE CROSS-REFERENCE

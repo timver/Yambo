@@ -12,7 +12,9 @@
     }
 
     .panel {
-        margin-bottom: 20px;
+        + .panel {
+            margin-top: 20px;
+        }
     }
 }
 
@@ -30,7 +32,10 @@
 @media only screen and (max-width: 780px) {
     .panel {
         padding: 30px 10px 10px;
-        margin-bottom: 10px;
+        
+        + .panel {
+            margin-top: 10px;
+        }
     }
 }
 
@@ -46,19 +51,15 @@
             padding-left: 0;
         }
     }
-
-    .panel {
-        float: none;
-    }
 }
 
 @media only screen and (max-width: 350px) {
     .container {
-        padding: 2px;
+        padding: 1px;
     }
 
     .row,
     .col {
-        padding: 0;
+        padding: 0 1px;
     }
 }

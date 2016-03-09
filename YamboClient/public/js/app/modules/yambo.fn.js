@@ -131,6 +131,72 @@ window.Yambo = (function ($, ns) {
                 $(this).css({ position: 'absolute', top: positions[idx].top, left: positions[idx].left });
             });
 
+        },
+
+        handleDrag: function() {
+            var cols = $(this);
+            var dragSrcEl = null;
+
+            function handleDragStart(e) {
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/html', $(this).html());
+
+                dragSrcEl = this;
+
+                // this/e.target is the source node.
+                $(this).addClass('moving');
+            }
+
+            function handleDragOver (e) {
+                if (e.preventDefault) {
+                    e.preventDefault(); // Allows us to drop.
+                }
+
+                e.dataTransfer.dropEffect = 'move';
+
+                return false;
+            };
+
+            function handleDragEnter (e) {
+                $(this).addClass('over');
+            }
+
+            function handleDragLeave (e) {
+                // this/e.target is previous target element.
+                $(this).removeClass('over');
+            }
+
+            function handleDrop (e) {
+                if (e.stopPropagation) {
+                    e.stopPropagation(); // stops the browser from redirecting.
+                }
+
+                // Don't do anything if we're dropping on the same column we're dragging.
+                if (dragSrcEl !== this) {
+                    $(dragSrcEl).html($(e.currentTarget).html());
+                    $(e.currentTarget).html(e.dataTransfer.getData('text/html'));
+                }
+
+                return false;
+            }
+
+            function handleDragEnd (e) {
+                // this/e.target is the source node.
+                [].forEach.call(cols, function (col) {
+                    $(col).removeClass('over');
+                    $(col).removeClass('moving');
+                });
+            };
+
+            [].forEach.call(cols, function (col) {
+                $(col).prop({ draggable: true });
+                col.addEventListener('dragstart', handleDragStart, true);
+                col.addEventListener('dragenter', handleDragEnter, true);
+                col.addEventListener('dragover', handleDragOver, true);
+                col.addEventListener('dragleave', handleDragLeave, true);
+                col.addEventListener('drop', handleDrop, true);
+                col.addEventListener('dragend', handleDragEnd, true);
+            });
         }
     });
 

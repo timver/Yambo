@@ -37,7 +37,7 @@ module.exports = function (grunt) {
         },
 
         copy: {
-            main: {
+            js: {
                 files: [
                     {
                         expand: true,
@@ -45,17 +45,24 @@ module.exports = function (grunt) {
                         src: [
                             'modernizr/build/modernizr.custom.js',
                             'jquery/dist/jquery.js',
-                            'jquery-ui/ui/core.js',
-                            'jquery-ui/ui/widget.js',
-                            'jquery-ui/ui/position.js',
-                            'jquery-ui/ui/effect.js',
-                            'jquery-ui/ui/mouse.js',
-                            'jquery-ui/ui/draggable.js',
-                            'jquery-ui/ui/resizable.js',
-                            'jquery-ui/ui/tooltip.js',
-                            'jquery-uniform/jquery.uniform.js'
+                            'jquery-uniform/jquery.uniform.js',
+                            'dragula/dist/dragula.js'
                         ],
                         dest: 'public/js/lib'
+                    }
+                ]
+            },
+            css: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'bower_components',
+                        src: [
+                            'jquery-uniform/css/uniform.default.css',
+                            'jquery-uniform/img/*.*',
+                            'dragula/dist/dragula.css'
+                        ],
+                        dest: 'public/css/lib'
                     }
                 ]
             }
@@ -79,6 +86,6 @@ module.exports = function (grunt) {
     });
 
     // Default task.
-    grunt.registerTask('default', ['clean', 'modernizr:dist', 'copy']);
+    grunt.registerTask('default', ['clean', 'modernizr:dist', 'copy:js', 'copy:css']);
     grunt.registerTask('watch', ['compass']);
 };

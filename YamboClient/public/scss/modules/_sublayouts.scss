@@ -2,18 +2,14 @@
 .sheet {
     min-width: 320px;
 
-    fieldset {
-        clear: both;
-        padding: 10px;
-    }
-
     table {
-        background: url(#{$img-path}bg_yampaper.png) repeat-x scroll center 0 transparent;
+        background: url(#{$bg-yampaper}) center center no-repeat scroll transparent;
         display: block;
-        min-height: 550px;
         padding: 30px 10px;
         max-width: 300px;
         margin: 0 auto;
+        min-height: 445px;
+        overflow: hidden;
         width: 100%;
 
         tbody {
@@ -23,23 +19,24 @@
         thead {
             border-right: 3px solid $monotone3;
 
-            td {
+            th {
                 border-top: 3px solid $monotone3;
             }
         }
 
+        th,
         td {
-            border: 1px solid $global-black;
+            border: 1px solid $monotone3;
             font: bold 14px arial;
             position: relative;
             text-align: center;
             vertical-align: middle;
+            outline: 0;
             width: 36px;
             height: 30px;
 
             &:first-child {
                 color: $global-black;
-                font: bold 14px Arial;
                 text-align: left;
                 text-indent: 5px;
                 width: auto;
@@ -49,7 +46,8 @@
             &:nth-child(5) {
                 border-left: 3px solid $monotone3;
             }
-            // column state (saved, lost, open) &.low,
+
+            &.low,
             &.high {
                 @extend .icon-radio-unchecked;
 
@@ -72,6 +70,13 @@
                 &:before {
                     color: $brand-color3;
                 }
+            }
+        }
+
+        th,
+        tr {
+            &:hover {
+                background-color: transparentize($monotone9, 0.8);
             }
         }
     }
@@ -140,7 +145,7 @@
         margin: 5px;
 
         input {
-            background: url(#{$img-path}spr_dice.png) repeat scroll 0 -300px transparent;
+            background: url(#{$spr-dice}) repeat scroll 0 -300px transparent;
             border: medium none;
             display: block;
             height: 60px;
