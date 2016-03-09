@@ -95,10 +95,6 @@
     <Content Include="public\art\bg_space.jpg" />
     <Content Include="public\art\bg_wood.jpg" />
     <Content Include="public\art\bg_yampaper.png" />
-    <Content Include="public\art\icons\40x40\Calculator_grayscale.png" />
-    <Content Include="public\art\icons\40x40\Home_grayscale.png" />
-    <Content Include="public\art\icons\40x40\Messages_grayscale.png" />
-    <Content Include="public\art\icons\40x40\Settings_grayscale.png" />
     <Content Include="public\art\spr_dice.png" />
     <Content Include="public\art\ui-themes\smoothness\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="public\art\ui-themes\smoothness\ui-bg_flat_75_ffffff_40x100.png" />
@@ -281,8 +277,6 @@
     <Folder Include="public\" />
     <Folder Include="public\" />
     <Folder Include="public\art\" />
-    <Folder Include="public\art\icons\" />
-    <Folder Include="public\art\icons\40x40\" />
     <Folder Include="public\art\ui-themes\" />
     <Folder Include="public\art\ui-themes\smoothness\" />
     <Folder Include="public\art\ui-themes\ui-lightness\" />
