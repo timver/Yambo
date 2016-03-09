@@ -3,13 +3,8 @@
         "inputFiles": [
             "public/js/lib/modernizr/build/*.js",
             "public/js/lib/jquery/dist/*.js",
-            "public/js/lib/jquery-ui/ui/core.js",
-            "public/js/lib/jquery-ui/ui/widget.js",
-            "public/js/lib/jquery-ui/ui/position.js",
-            "public/js/lib/jquery-ui/ui/effect.js",
-            "public/js/lib/jquery-ui/ui/mouse.js",
-            "public/js/lib/jquery-ui/ui/*.js",
             "public/js/lib/jquery-uniform/*.js",
+            "public/js/lib/dragula/dist/*.js",
             "public/js/app/classes/*.js",
             "public/js/app/modules/*.js",
             "public/js/app/*.js"
@@ -22,9 +17,9 @@
     },
     {
         "inputFiles": [
-            "public/css/app/default.css",
-            "public/css/lib/jquery-ui-1.9.1.custom.css",
-            "public/css/lib/uniform.aristo.css"
+            "public/css/lib/jquery-uniform/css/*.css",
+            "public/css/lib/dragula/dist/*.css",
+            "public/css/app/default.css"
         ],
         "minify": {
             "commentMode": "none",

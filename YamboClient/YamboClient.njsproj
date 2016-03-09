@@ -42,21 +42,28 @@
     <Content Include="public\audio\wav\juggledice2.wav" />
     <Content Include="public\audio\wav\juggledice3.wav" />
     <Content Include="public\css\app\default.css" />
-    <Content Include="public\css\yambo.bundle.css" />
-    <Content Include="public\css\yambo.bundle.min.css" />
-    <Content Include="public\js\lib\jquery-ui\ui\core.js" />
-    <Content Include="public\js\lib\jquery-ui\ui\draggable.js" />
-    <Content Include="public\js\lib\jquery-ui\ui\effect.js" />
-    <Content Include="public\js\lib\jquery-ui\ui\mouse.js" />
-    <Content Include="public\js\lib\jquery-ui\ui\position.js" />
-    <Content Include="public\js\lib\jquery-ui\ui\resizable.js" />
-    <Content Include="public\js\lib\jquery-ui\ui\tooltip.js" />
-    <Content Include="public\js\lib\jquery-ui\ui\widget.js" />
+    <Content Include="public\css\lib\dragula\dist\dragula.css" />
+    <Content Include="public\css\lib\jquery-uniform\css\uniform.default.css" />
+    <Content Include="public\css\lib\jquery-uniform\img\bg-input-focus.png" />
+    <Content Include="public\css\lib\jquery-uniform\img\bg-input.png" />
+    <Content Include="public\css\lib\jquery-uniform\img\sprite.png" />
+    <Content Include="public\css\lib\jquery-uniform\img\sprite_original.png" />
+    <Content Include="public\css\yambo.bundle.css">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="public\css\yambo.bundle.min.css">
+      <Publish>True</Publish>
+    </Content>
     <Content Include="public\js\lib\jquery-uniform\jquery.uniform.js" />
     <Content Include="public\js\lib\jquery\dist\jquery.js" />
     <Content Include="public\js\lib\modernizr\build\modernizr.custom.js" />
-    <Content Include="public\js\yambo.bundle.js" />
-    <Content Include="public\js\yambo.bundle.min.js" />
+    <Content Include="public\js\yambo.bundle.js">
+      <Publish>True</Publish>
+    </Content>
+    <Content Include="public\js\yambo.bundle.min.js">
+      <Publish>True</Publish>
+    </Content>
+    <Compile Include="public\js\lib\dragula\dist\dragula.js" />
     <Compile Include="server.js" />
     <Content Include="bower.json" />
     <Content Include="bundleconfig.json" />
@@ -95,10 +102,6 @@
     <Content Include="public\art\bg_space.jpg" />
     <Content Include="public\art\bg_wood.jpg" />
     <Content Include="public\art\bg_yampaper.png" />
-    <Content Include="public\art\icons\40x40\Calculator_grayscale.png" />
-    <Content Include="public\art\icons\40x40\Home_grayscale.png" />
-    <Content Include="public\art\icons\40x40\Messages_grayscale.png" />
-    <Content Include="public\art\icons\40x40\Settings_grayscale.png" />
     <Content Include="public\art\spr_dice.png" />
     <Content Include="public\art\ui-themes\smoothness\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="public\art\ui-themes\smoothness\ui-bg_flat_75_ffffff_40x100.png" />
@@ -230,9 +233,6 @@
     <Content Include="public\fonts\icons\yambo.svg" />
     <Content Include="public\fonts\icons\yambo.ttf" />
     <Content Include="public\fonts\icons\yambo.woff" />
-    <Content Include="public\css\lib\jquery-ui-1.9.1.custom.css" />
-    <Content Include="public\css\lib\uniform.aristo.css" />
-    <Content Include="public\css\lib\uniform.default.css" />
     <Content Include="public\fonts\themes\abstract\abstract-webfont.eot" />
     <Content Include="public\fonts\themes\abstract\abstract-webfont.svg" />
     <Content Include="public\fonts\themes\abstract\abstract-webfont.ttf" />
@@ -281,8 +281,6 @@
     <Folder Include="public\" />
     <Folder Include="public\" />
     <Folder Include="public\art\" />
-    <Folder Include="public\art\icons\" />
-    <Folder Include="public\art\icons\40x40\" />
     <Folder Include="public\art\ui-themes\" />
     <Folder Include="public\art\ui-themes\smoothness\" />
     <Folder Include="public\art\ui-themes\ui-lightness\" />
@@ -294,6 +292,11 @@
     <Folder Include="public\css\" />
     <Folder Include="public\css\app\" />
     <Folder Include="public\css\lib\" />
+    <Folder Include="public\css\lib\dragula\" />
+    <Folder Include="public\css\lib\dragula\dist\" />
+    <Folder Include="public\css\lib\jquery-uniform\" />
+    <Folder Include="public\css\lib\jquery-uniform\css\" />
+    <Folder Include="public\css\lib\jquery-uniform\img\" />
     <Folder Include="public\fonts\" />
     <Folder Include="public\fonts\icons\" />
     <Folder Include="public\fonts\themes\" />
@@ -306,8 +309,8 @@
     <Folder Include="public\js\app\classes\" />
     <Folder Include="public\js\app\modules\" />
     <Folder Include="public\js\lib\" />
-    <Folder Include="public\js\lib\jquery-ui\" />
-    <Folder Include="public\js\lib\jquery-ui\ui\" />
+    <Folder Include="public\js\lib\dragula\" />
+    <Folder Include="public\js\lib\dragula\dist\" />
     <Folder Include="public\js\lib\jquery-uniform\" />
     <Folder Include="public\js\lib\jquery\" />
     <Folder Include="public\js\lib\jquery\dist\" />
