@@ -841,8 +841,10 @@ h1 .version {
 /* line 15, ../../scss/partials/_grid.scss */
 .row {
   *zoom: 1;
-  padding: 0 20px;
+  display: table;
   margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
 }
 /* line 38, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/general/_clearfix.scss */
 .row:after {
@@ -850,584 +852,592 @@ h1 .version {
   display: table;
   clear: both;
 }
+/* line 22, ../../scss/partials/_grid.scss */
+.row + .row {
+  margin-top: 20px;
+}
 
-/* line 21, ../../scss/partials/_grid.scss */
+/* line 27, ../../scss/partials/_grid.scss */
 .col {
-  float: left;
+  *zoom: 1;
+  display: table-cell;
   height: 100%;
   min-height: 1px;
   padding: 0 20px;
   position: relative;
+  vertical-align: top;
 }
-/* line 28, ../../scss/partials/_grid.scss */
+/* line 38, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/general/_clearfix.scss */
+.col:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 36, ../../scss/partials/_grid.scss */
 .col:first-child {
   padding-left: 0;
 }
-/* line 32, ../../scss/partials/_grid.scss */
+/* line 40, ../../scss/partials/_grid.scss */
 .col:last-child {
   padding-right: 0;
 }
-/* line 36, ../../scss/partials/_grid.scss */
-.col.collapse {
-  min-height: 0;
-}
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g1 {
   width: 1%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g2 {
   width: 2%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g3 {
   width: 3%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g4 {
   width: 4%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g5 {
   width: 5%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g6 {
   width: 6%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g7 {
   width: 7%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g8 {
   width: 8%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g9 {
   width: 9%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g10 {
   width: 10%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g11 {
   width: 11%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g12 {
   width: 12%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g13 {
   width: 13%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g14 {
   width: 14%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g15 {
   width: 15%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g16 {
   width: 16%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g17 {
   width: 17%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g18 {
   width: 18%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g19 {
   width: 19%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g20 {
   width: 20%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g21 {
   width: 21%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g22 {
   width: 22%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g23 {
   width: 23%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g24 {
   width: 24%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g25 {
   width: 25%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g26 {
   width: 26%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g27 {
   width: 27%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g28 {
   width: 28%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g29 {
   width: 29%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g30 {
   width: 30%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g31 {
   width: 31%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g32 {
   width: 32%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g33 {
   width: 33%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g34 {
   width: 34%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g35 {
   width: 35%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g36 {
   width: 36%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g37 {
   width: 37%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g38 {
   width: 38%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g39 {
   width: 39%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g40 {
   width: 40%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g41 {
   width: 41%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g42 {
   width: 42%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g43 {
   width: 43%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g44 {
   width: 44%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g45 {
   width: 45%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g46 {
   width: 46%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g47 {
   width: 47%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g48 {
   width: 48%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g49 {
   width: 49%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g50 {
   width: 50%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g51 {
   width: 51%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g52 {
   width: 52%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g53 {
   width: 53%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g54 {
   width: 54%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g55 {
   width: 55%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g56 {
   width: 56%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g57 {
   width: 57%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g58 {
   width: 58%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g59 {
   width: 59%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g60 {
   width: 60%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g61 {
   width: 61%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g62 {
   width: 62%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g63 {
   width: 63%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g64 {
   width: 64%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g65 {
   width: 65%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g66 {
   width: 66%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g67 {
   width: 67%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g68 {
   width: 68%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g69 {
   width: 69%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g70 {
   width: 70%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g71 {
   width: 71%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g72 {
   width: 72%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g73 {
   width: 73%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g74 {
   width: 74%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g75 {
   width: 75%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g76 {
   width: 76%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g77 {
   width: 77%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g78 {
   width: 78%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g79 {
   width: 79%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g80 {
   width: 80%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g81 {
   width: 81%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g82 {
   width: 82%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g83 {
   width: 83%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g84 {
   width: 84%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g85 {
   width: 85%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g86 {
   width: 86%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g87 {
   width: 87%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g88 {
   width: 88%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g89 {
   width: 89%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g90 {
   width: 90%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g91 {
   width: 91%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g92 {
   width: 92%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g93 {
   width: 93%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g94 {
   width: 94%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g95 {
   width: 95%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g96 {
   width: 96%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g97 {
   width: 97%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g98 {
   width: 98%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g99 {
   width: 99%;
 }
 
-/* line 43, ../../scss/partials/_grid.scss */
+/* line 47, ../../scss/partials/_grid.scss */
 .g100 {
   width: 100%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g1of12 {
   width: 8.33333%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g2of12 {
   width: 16.66667%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g3of12 {
   width: 25%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g4of12 {
   width: 33.33333%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g5of12 {
   width: 41.66667%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g6of12 {
   width: 50%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g7of12 {
   width: 58.33333%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g8of12 {
   width: 66.66667%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g9of12 {
   width: 75%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g10of12 {
   width: 83.33333%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g11of12 {
   width: 91.66667%;
 }
 
-/* line 50, ../../scss/partials/_grid.scss */
+/* line 54, ../../scss/partials/_grid.scss */
 .g12of12 {
   width: 100%;
 }
@@ -1442,12 +1452,16 @@ h1 .version {
   height: auto;
   padding: 30px;
   position: relative;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
-/* line 11, ../../scss/modules/_shared.scss */
+/* line 15, ../../scss/modules/_shared.scss */
 .panel + .panel {
   margin-top: 40px;
 }
-/* line 15, ../../scss/modules/_shared.scss */
+/* line 19, ../../scss/modules/_shared.scss */
 .panel fieldset {
   background: url(data:image/jpeg;base64,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) repeat scroll 0 0 transparent;
   border: 3px inset #999;
@@ -1457,9 +1471,10 @@ h1 .version {
   height: 100%;
   width: 100%;
 }
-/* line 25, ../../scss/modules/_shared.scss */
+/* line 29, ../../scss/modules/_shared.scss */
 .panel legend {
   color: #999;
+  cursor: move;
   display: block;
   font: bold 20px Helvetica;
   left: -3px;
@@ -1471,17 +1486,7 @@ h1 .version {
   top: -30px;
   width: 100%;
 }
-/* line 38, ../../scss/modules/_shared.scss */
-.panel legend:before {
-  background-color: #333;
-  border-radius: 10px;
-  content: ' ';
-  cursor: move;
-  height: 10px;
-  width: 100%;
-  position: absolute;
-}
-/* line 49, ../../scss/modules/_shared.scss */
+/* line 44, ../../scss/modules/_shared.scss */
 .panel label {
   color: #fff;
   display: inline-block;
@@ -1492,7 +1497,7 @@ h1 .version {
 /* resultPanel */
 /* line 2, ../../scss/modules/_sublayouts.scss */
 .sheet {
-  min-width: 320px;
+  min-width: 308px;
 }
 /* line 5, ../../scss/modules/_sublayouts.scss */
 .sheet table {
@@ -2097,38 +2102,55 @@ h1 .version {
 }
 @media only screen and (max-width: 780px) {
   /* line 33, ../../scss/media/_desktop.scss */
+  .col {
+    display: block;
+    width: 100%;
+  }
+  /* line 37, ../../scss/media/_desktop.scss */
+  .col:first-child {
+    padding-right: 0;
+  }
+  /* line 41, ../../scss/media/_desktop.scss */
+  .col:last-child {
+    padding-left: 0;
+  }
+  /* line 45, ../../scss/media/_desktop.scss */
+  .col + .col {
+    margin-top: 10px;
+  }
+
+  /* line 50, ../../scss/media/_desktop.scss */
   .panel {
     padding: 30px 10px 10px;
   }
-  /* line 36, ../../scss/media/_desktop.scss */
+  /* line 53, ../../scss/media/_desktop.scss */
   .panel + .panel {
     margin-top: 10px;
   }
 }
-@media only screen and (max-width: 720px) {
-  /* line 43, ../../scss/media/_desktop.scss */
-  .col {
-    width: 100% !important;
-  }
-  /* line 46, ../../scss/media/_desktop.scss */
-  .col:first-child {
-    padding-right: 0;
-  }
-  /* line 50, ../../scss/media/_desktop.scss */
-  .col:last-child {
-    padding-left: 0;
-  }
-}
 @media only screen and (max-width: 350px) {
-  /* line 57, ../../scss/media/_desktop.scss */
+  /* line 60, ../../scss/media/_desktop.scss */
   .container {
     padding: 1px;
   }
 
-  /* line 61, ../../scss/media/_desktop.scss */
+  /* line 64, ../../scss/media/_desktop.scss */
   .row,
   .col {
     padding: 0 1px;
+  }
+
+  /* line 69, ../../scss/media/_desktop.scss */
+  .panel {
+    padding: 2px;
+  }
+  /* line 72, ../../scss/media/_desktop.scss */
+  .panel fieldset {
+    padding: 2px;
+  }
+  /* line 76, ../../scss/media/_desktop.scss */
+  .panel legend {
+    display: none;
   }
 }
 /* ----------- iPad mini ----------- */

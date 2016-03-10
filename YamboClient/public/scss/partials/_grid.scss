@@ -14,16 +14,24 @@ $gutter-width: 20 !default;
 
 .row {
     @include pie-clearfix;
-    padding: 0 #{$gutter-width}px;
+    display: table;
     margin: 0 auto;
+    padding: 0 #{$gutter-width}px;
+    width: 100%;
+
+    + .row {
+        margin-top: 20px;
+    }
 }
 
 .col {
-    float: left;
+    @include pie-clearfix;
+    display: table-cell;
     height: 100%;
-    min-height: 1px; // no collapse
+    min-height: 1px;
     padding: 0 #{$gutter-width}px;
     position: relative;
+    vertical-align: top;
 
     &:first-child {
         padding-left: 0;
@@ -31,10 +39,6 @@ $gutter-width: 20 !default;
 
     &:last-child {
         padding-right: 0;
-    }
-
-    &.collapse {
-        min-height: 0;
     }
 }
 
