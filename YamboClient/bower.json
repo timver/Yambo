@@ -6,7 +6,7 @@
         "jquery": "^2.2.0",
         "jquery-ui": "^1.11.4",
         "jquery-uniform": "*",
-        "dragula": "^3.6.8"
+        "gsap": "^1.18.2"
     },
     "description": "bèta",
     "license": "MIT",

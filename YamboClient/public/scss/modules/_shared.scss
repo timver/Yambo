@@ -1,3 +1,6 @@
+/*
+ * @todo slow performance for transitions in FF
+ */
 .panel {
     background: url(#{$bg-marble}) repeat scroll 0 0 transparent;
     border: 3px outset $monotone9;
@@ -7,6 +10,10 @@
     height: auto;
     padding: 30px;
     position: relative;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
 
     + .panel {
         margin-top: 40px;
@@ -24,6 +31,7 @@
 
     legend {
         color: $monotone9;
+        cursor: move;
         display: block;
         font: bold 20px Helvetica;
         left: -3px;
@@ -34,16 +42,6 @@
         text-shadow: 1px 1px $global-white, -1px -1px $monotone4;
         top: -30px;
         width: 100%;
-
-        &:before {
-            background-color: $monotone3;
-            border-radius: 10px;
-            content: ' ';
-            cursor: move;
-            height: 10px;
-            width: 100%;
-            position: absolute;
-        }
     }
 
     label {

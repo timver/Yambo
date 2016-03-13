@@ -42,7 +42,6 @@
     <Content Include="public\audio\wav\juggledice2.wav" />
     <Content Include="public\audio\wav\juggledice3.wav" />
     <Content Include="public\css\app\default.css" />
-    <Content Include="public\css\lib\dragula\dist\dragula.css" />
     <Content Include="public\css\lib\jquery-uniform\css\uniform.default.css" />
     <Content Include="public\css\lib\jquery-uniform\img\bg-input-focus.png" />
     <Content Include="public\css\lib\jquery-uniform\img\bg-input.png" />
@@ -54,16 +53,18 @@
     <Content Include="public\css\yambo.bundle.min.css">
       <Publish>True</Publish>
     </Content>
-    <Content Include="public\js\lib\jquery-uniform\jquery.uniform.js" />
-    <Content Include="public\js\lib\jquery\dist\jquery.js" />
-    <Content Include="public\js\lib\modernizr\build\modernizr.custom.js" />
     <Content Include="public\js\yambo.bundle.js">
       <Publish>True</Publish>
     </Content>
     <Content Include="public\js\yambo.bundle.min.js">
       <Publish>True</Publish>
     </Content>
-    <Compile Include="public\js\lib\dragula\dist\dragula.js" />
+    <Content Include="public\js\app\classes\yambo.grid.js" />
+    <Content Include="public\js\lib\gsap\src\uncompressed\TweenMax.js" />
+    <Content Include="public\js\lib\gsap\src\uncompressed\utils\Draggable.js" />
+    <Content Include="public\js\lib\jquery-uniform\jquery.uniform.js" />
+    <Content Include="public\js\lib\jquery\dist\jquery.js" />
+    <Content Include="public\js\lib\modernizr\build\modernizr.custom.js" />
     <Compile Include="server.js" />
     <Content Include="bower.json" />
     <Content Include="bundleconfig.json" />
@@ -292,8 +293,6 @@
     <Folder Include="public\css\" />
     <Folder Include="public\css\app\" />
     <Folder Include="public\css\lib\" />
-    <Folder Include="public\css\lib\dragula\" />
-    <Folder Include="public\css\lib\dragula\dist\" />
     <Folder Include="public\css\lib\jquery-uniform\" />
     <Folder Include="public\css\lib\jquery-uniform\css\" />
     <Folder Include="public\css\lib\jquery-uniform\img\" />
@@ -309,8 +308,10 @@
     <Folder Include="public\js\app\classes\" />
     <Folder Include="public\js\app\modules\" />
     <Folder Include="public\js\lib\" />
-    <Folder Include="public\js\lib\dragula\" />
-    <Folder Include="public\js\lib\dragula\dist\" />
+    <Folder Include="public\js\lib\gsap\" />
+    <Folder Include="public\js\lib\gsap\src\" />
+    <Folder Include="public\js\lib\gsap\src\uncompressed\" />
+    <Folder Include="public\js\lib\gsap\src\uncompressed\utils\" />
     <Folder Include="public\js\lib\jquery-uniform\" />
     <Folder Include="public\js\lib\jquery\" />
     <Folder Include="public\js\lib\jquery\dist\" />

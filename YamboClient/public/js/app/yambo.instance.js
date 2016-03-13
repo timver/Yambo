@@ -3,7 +3,10 @@ window.Yambo = (function ($, ns) {
     // ECMA-262/5
     'use strict';
 
-    // PRIVATE CONFIG
+    /**
+     * @private
+     * @constant
+     */
     var cfg = {
         version: '2.0.0 b&egrave;ta',
         modules: {
@@ -23,7 +26,10 @@ window.Yambo = (function ($, ns) {
         }
     };
 
-    // PRIVATE FUNCTIONS
+    /**
+     * @private
+     * @function
+     */
     function loadModules() {
         var mod = cfg.modules,
             opt = cfg.options;
@@ -31,15 +37,17 @@ window.Yambo = (function ($, ns) {
         $(mod.uniform).uniform();
         //$(mod.minimizable).minimizable();
         //$(mod.draggable).draggable(opt.draggable);
-        //$('[draggable="true"]').handleDrag();
-        dragula([document.querySelector('.col.g45'), document.querySelector('.col.g55')]);
-        //$(mod.resizable).resizable();
+        //dragula([document.querySelector('.col.g45'), document.querySelector('.col.g55')]);
+        $(mod.resizable).resizable();
         $(mod.version).html(cfg.version);
     }
 
-    // INSTANCE CROSS-REFERENCE
+    /**
+     * @instance
+     */
     ns.version = cfg.version;
     ns.instance = {
+        grid: new ns.Grid(),
         toolbar: new ns.Toolbar,
         sheet: new ns.Sheet,
         options: new ns.Options,
@@ -48,7 +56,9 @@ window.Yambo = (function ($, ns) {
         audio: new ns.Audio
     };
 
-    // ON DOM READY
+    /**
+     * @event DOM ready
+     */
     $(function () {
         loadModules();
     });
