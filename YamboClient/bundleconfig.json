@@ -3,8 +3,9 @@
         "inputFiles": [
             "public/js/lib/modernizr/build/*.js",
             "public/js/lib/jquery/dist/*.js",
+            "public/js/lib/gsap/src/uncompressed/*.js",
+            "public/js/lib/gsap/src/uncompressed/utils/*.js",
             "public/js/lib/jquery-uniform/*.js",
-            "public/js/lib/dragula/dist/*.js",
             "public/js/app/classes/*.js",
             "public/js/app/modules/*.js",
             "public/js/app/*.js"
@@ -18,7 +19,6 @@
     {
         "inputFiles": [
             "public/css/lib/jquery-uniform/css/*.css",
-            "public/css/lib/dragula/dist/*.css",
             "public/css/app/default.css"
         ],
         "minify": {

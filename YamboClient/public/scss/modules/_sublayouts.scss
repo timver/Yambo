@@ -164,12 +164,6 @@
             }
         }
     }
-
-    .button {
-        span {
-            @include ellipsis;
-        }
-    }
 }
 
 /* logPanel */

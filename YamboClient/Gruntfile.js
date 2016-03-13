@@ -45,8 +45,9 @@ module.exports = function (grunt) {
                         src: [
                             'modernizr/build/modernizr.custom.js',
                             'jquery/dist/jquery.js',
-                            'jquery-uniform/jquery.uniform.js',
-                            'dragula/dist/dragula.js'
+                            'gsap/src/uncompressed/TweenMax.js',
+                            'gsap/src/uncompressed/utils/Draggable.js',
+                            'jquery-uniform/jquery.uniform.js'
                         ],
                         dest: 'public/js/lib'
                     }
@@ -59,8 +60,7 @@ module.exports = function (grunt) {
                         cwd: 'bower_components',
                         src: [
                             'jquery-uniform/css/uniform.default.css',
-                            'jquery-uniform/img/*.*',
-                            'dragula/dist/dragula.css'
+                            'jquery-uniform/img/*.*'
                         ],
                         dest: 'public/css/lib'
                     }

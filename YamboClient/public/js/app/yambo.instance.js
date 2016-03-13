@@ -37,9 +37,8 @@ window.Yambo = (function ($, ns) {
         $(mod.uniform).uniform();
         //$(mod.minimizable).minimizable();
         //$(mod.draggable).draggable(opt.draggable);
-        //$('[draggable="true"]').handleDrag();
-        dragula([document.querySelector('.col.g45'), document.querySelector('.col.g55')]);
-        //$(mod.resizable).resizable();
+        //dragula([document.querySelector('.col.g45'), document.querySelector('.col.g55')]);
+        $(mod.resizable).resizable();
         $(mod.version).html(cfg.version);
     }
 
@@ -48,6 +47,7 @@ window.Yambo = (function ($, ns) {
      */
     ns.version = cfg.version;
     ns.instance = {
+        grid: new ns.Grid(),
         toolbar: new ns.Toolbar,
         sheet: new ns.Sheet,
         options: new ns.Options,
