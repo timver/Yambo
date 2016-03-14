@@ -45,9 +45,19 @@ module.exports = function (grunt) {
                         src: [
                             'modernizr/build/modernizr.custom.js',
                             'jquery/dist/jquery.js',
+                            'jquery-ui/ui/core.js',
+                            'jquery-ui/ui/widget.js',
+                            'jquery-ui/ui/mouse.js',
+                            'jquery-ui/ui/position.js',
+                            'jquery-ui/ui/effect.js',
+                            'jquery-ui/ui/draggable.js',
+                            'jquery-ui/ui/droppable.js',
+                            'jquery-ui/ui/tabs.js',
+                            'jquery-ui/ui/tooltip.js',
                             'gsap/src/uncompressed/TweenMax.js',
                             'gsap/src/uncompressed/utils/Draggable.js',
-                            'jquery-uniform/jquery.uniform.js'
+                            'jquery-uniform/jquery.uniform.js',
+                            'dragula/dist/dragula.js'
                         ],
                         dest: 'public/js/lib'
                     }
@@ -59,33 +69,48 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'bower_components',
                         src: [
-                            'jquery-uniform/css/uniform.default.css',
-                            'jquery-uniform/img/*.*'
+                            'dragula/dist/dragula.css'
                         ],
                         dest: 'public/css/lib'
+                    }
+                ]
+            },
+            scss: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'bower_components',
+                        src: [
+                            'bootstrap/scss/*.*',
+                            'bootstrap/scss/**/*.scss'
+
+                        ],
+                        dest: 'public/scss/lib'
                     }
                 ]
             }
         },
 
         compass: {
-            options: {
-                basePath: 'public/',
-                sassDir: 'scss',
-                cssDir: 'css/app'
-            },
-            watch: {
-                src: ['*.scss'],
-                tasks: ['compass'],
+            app: {
                 options: {
-                    spawn: false,
-                    watch: true
+                    basePath: 'public/',
+                    sassDir: 'scss/app',
+                    cssDir: 'css/app'
+                },
+                watch: {
+                    src: ['*.scss'],
+                    tasks: ['compass'],
+                    options: {
+                        spawn: false,
+                        watch: true
+                    }
                 }
             }
         }
     });
 
     // Default task.
-    grunt.registerTask('default', ['clean', 'modernizr:dist', 'copy:js', 'copy:css']);
+    grunt.registerTask('default', ['clean', 'modernizr:dist', 'copy:js', 'copy:scss', 'copy:css']);
     grunt.registerTask('watch', ['compass']);
 };

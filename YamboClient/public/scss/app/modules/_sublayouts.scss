@@ -1,0 +1,191 @@
+.sheet {
+    min-width: 308px;
+
+    table {
+        background: url(#{$bg-yampaper}) center center no-repeat scroll transparent;
+        display: block;
+        padding: 30px 10px;
+        max-width: 300px;
+        margin: 0 auto;
+        min-height: 445px;
+        overflow: hidden;
+        width: 100%;
+
+        tbody {
+            border: 3px solid $monotone3;
+        }
+
+        thead {
+            border-right: 3px solid $monotone3;
+
+            th {
+                border-top: 3px solid $monotone3;
+            }
+        }
+
+        th,
+        td {
+            border: 1px solid $monotone3;
+            font: bold 14px arial;
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            outline: 0;
+            width: 36px;
+            height: 30px;
+
+            &:first-child {
+                color: $global-black;
+                text-align: left;
+                text-indent: 5px;
+                width: auto;
+            }
+
+            &:nth-child(2),
+            &:nth-child(5) {
+                border-left: 3px solid $monotone3;
+            }
+
+            &.low,
+            &.high {
+                @extend .icon-radio-unchecked;
+
+                &:before {
+                    color: $brand-color1;
+                    font: 100 25px/1.2 yambo;
+                    height: 100%;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                }
+            }
+
+            &.medium {
+                background: none;
+            }
+
+            &.low {
+                &:before {
+                    color: $brand-color3;
+                }
+            }
+        }
+
+        th,
+        tr {
+            &:hover {
+                background-color: transparentize($monotone9, 0.8);
+            }
+        }
+    }
+
+    input {
+        &.txt {
+            background: none repeat scroll 0 0 transparent;
+            border: medium none;
+            color: $monotone9;
+            height: 22px;
+            text-align: center;
+            text-shadow: 1px 1px 1px;
+            width: 26px;
+            display: inline-block;
+            padding: 0;
+        }
+
+        &.saved {
+            color: $global-black;
+            text-shadow: none;
+        }
+
+        &.totaltop,
+        &.bonus,
+        &.totalbtm,
+        &.subtotal {
+            color: $global-black;
+            font: bold 12px arial;
+            text-shadow: none;
+        }
+    }
+
+    #colplayer {
+        @include ellipsis;
+        border: medium none;
+        width: 100px;
+    }
+}
+
+.options {
+    min-width: 220px;
+
+    label {
+        width: 160px;
+    }
+}
+
+.dice {
+    min-width: 160px;
+
+    fieldset {
+        text-align: center;
+    }
+
+    ul {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    li {
+        display: inline-block;
+        height: 60px;
+        width: 60px;
+        margin: 5px;
+
+        input {
+            background: url(#{$spr-dice}) repeat scroll 0 -300px transparent;
+            border: medium none;
+            display: block;
+            height: 60px;
+            text-indent: -999px;
+            width: 60px;
+            cursor: pointer;
+            box-shadow: 3px 3px 5px $global-black;
+            border-radius: 5px 5px 8px 8px;
+            padding: 0;
+            font-size: 0;
+            line-height: 0;
+
+            &.checked {
+                box-shadow: 0 0 3px 1px $monotone9;
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
+.log {
+    min-width: 230px;
+
+    input {
+        background: none repeat scroll 0 0 transparent;
+        border: medium none;
+        color: $global-white;
+        font: 14px Arial;
+        height: 24px;
+    }
+
+    #clock {
+        float: right;
+        text-align: right;
+    }
+
+    #message {
+        background-color: $brand-color2;
+        border: 2px inset $brand-color2;
+        border-radius: 10px;
+        color: $global-white;
+        font: bold 14px Arial;
+        height: 130px;
+        width: 100%;
+    }
+}

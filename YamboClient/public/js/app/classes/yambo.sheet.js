@@ -230,7 +230,6 @@ window.Yambo = (function ($, ns) {
                 $(dice.dice).removeClass(classes.checked);
                 $(dice.button).val('First roll');
                 $(log.fieldTurn).val(0);
-                $.uniform.update(dice.button);
 
                 this.addScores(true);
                 this.calcTotal(el);

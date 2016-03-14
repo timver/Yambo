@@ -124,7 +124,7 @@ window.Yambo = (function ($, ns) {
                 btn = $(ev.currentTarget);
 
             if (log.handleTurn()) {
-                $.uniform.update(btn.prop({ disabled: true }));
+                btn.prop({ disabled: true });
                 audio.stop();
                 this.rollDice({
                     color: options.settings.options.selected,
@@ -132,7 +132,7 @@ window.Yambo = (function ($, ns) {
                 }, function () {
                     sheet.addScores(false);
                     log.addMessage({ message: ' (' + self.getDiceValues().join(' : ') + ')', isTimed: false, isError: false, isNewline: true });
-                    $.uniform.update(btn.prop({ disabled: false }));
+                    btn.prop({ disabled: false });
                     audio.playCombinations();
                     audio.play(audiofx.rolldice);
                 });

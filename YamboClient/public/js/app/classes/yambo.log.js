@@ -4,7 +4,7 @@
  * @description The Log panel shows game messages and handles your turn
  * @requires jQuery, Yambo
  */
-window.Yambo = (function ($, ns) {
+window.Yambo = (function ($, draggable, ns) {
 
     // ECMA-262/5
     'use strict';
@@ -221,7 +221,7 @@ window.Yambo = (function ($, ns) {
             var instance = ns.instance,
                 audio = instance.audio,
                 audiofx = audio.settings.fx,
-                history = this.areaMessage.val();
+                history = this.areaMessage.html();
 
             // isTimed?
             options.message = options.isTimed
@@ -230,11 +230,11 @@ window.Yambo = (function ($, ns) {
 
             // isNewline?
             if (options.isNewline) {
-                options.message = options.message + '\n';
+                options.message = options.message + '<br />';
             }
 
             // message
-            this.areaMessage.val(options.message);
+            this.areaMessage.html(options.message);
             this.scrollTop(this.areaMessage);
 
             // isError?
@@ -257,4 +257,4 @@ window.Yambo = (function ($, ns) {
     // EXPOSE NAMESPACE
     return ns;
 
-}(window.jQuery, window.Yambo || {}));
+}(window.jQuery, window.Draggable, window.Yambo || {}));

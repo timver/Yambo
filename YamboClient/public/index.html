@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Yambo - Dice Game</title>
 
@@ -179,7 +179,7 @@
                                 <li><input type="button" value="4" /></li>
                                 <li><input type="button" value="5" /></li>
                             </ul>
-                            <input type="button" class="btn roll uniform" value="roll dice" />
+                            <input type="button" class="btn roll" value="roll dice" />
                         </fieldset>
                     </form>
                 </div>
@@ -193,88 +193,64 @@
                             <input type="text" id="clock" />
                             <br />
                             <br />
-                            <textarea id="message" rows="10" cols="5"></textarea>
+                            <div id="message"></div>
                             <br />
                         </fieldset>
                     </form>
                 </div>
 
                 <div class="panel" draggable="true">
-                    <form action="/" class="options" data-app="options">
+                    <form action="/" class="options form-horizontal" data-app="options">
                         <fieldset>
                             <legend class="ui-dialog-titlebar">Options</legend>
                             <input type="hidden" id="playercount" value="0" />
-                            <div class="row">
-                                <div class="col g40">
-                                    <label for="playerName">Player name</label>
-                                </div>
-                                <div class="col g60">
-                                    <input type="text" id="playerName" maxlength="25" class="uniform" />
-                                    <input type="button" value="Enter" class="btn player uniform" />
-                                </div>
+                            <div class="form-group">
+                                <label for="playerName" class="col-sm-2 control-label">Player name</label>
+                                <input type="text" id="playerName" maxlength="25" class="form-control" />
+                                <input type="button" value="Enter" class="btn btn-default player" />
                             </div>
-                            <div class="row">
-                                <div class="col g40">
-                                    <label for="theme">Theme</label>
-                                </div>
-                                <div class="col g60">
-                                    <select id="theme" class="uniform">
-                                        <option value="" selected="selected">[ none ]</option>
-                                        <option value="theme-abstract">Abstract</option>
-                                        <option value="theme-basketball">Basketball</option>
-                                        <option value="theme-future">Future</option>
-                                        <option value="theme-halloween">Halloween</option>
-                                        <option value="theme-nature">Nature</option>
-                                        <option value="theme-ocean">Ocean</option>
-                                        <option value="theme-space">Space</option>
-                                        <option value="theme-tron">Tron</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="theme" class="col-sm-2 control-label">Theme</label>
+                                <select id="theme" class="form-control">
+                                    <option value="" selected="selected">[ none ]</option>
+                                    <option value="theme-abstract">Abstract</option>
+                                    <option value="theme-basketball">Basketball</option>
+                                    <option value="theme-future">Future</option>
+                                    <option value="theme-halloween">Halloween</option>
+                                    <option value="theme-nature">Nature</option>
+                                    <option value="theme-ocean">Ocean</option>
+                                    <option value="theme-space">Space</option>
+                                    <option value="theme-tron">Tron</option>
+                                </select>
                             </div>
-                            <div class="row">
-                                <div class="col g40">
-                                    <label for="dicecolor">Dice color</label>
-                                </div>
-                                <div class="col g60">
-                                    <select id="dicecolor" class="uniform">
-                                        <option value="0">Red</option>
-                                        <option value="60">Yellow</option>
-                                        <option value="120">Green</option>
-                                        <option value="180">Blue</option>
-                                        <option value="240">Pink</option>
-                                        <option value="300" selected="selected">White</option>
-                                        <option value="360">Black</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="dicecolor" class="col-sm-2 control-label">Dice color</label>
+                                <select id="dicecolor" class="form-control">
+                                    <option value="0">Red</option>
+                                    <option value="60">Yellow</option>
+                                    <option value="120">Green</option>
+                                    <option value="180">Blue</option>
+                                    <option value="240">Pink</option>
+                                    <option value="300" selected="selected">White</option>
+                                    <option value="360">Black</option>
+                                </select>
                             </div>
-                            <div class="row">
-                                <div class="col g40">
-                                    <label for="juggletime">Juggle time</label>
-                                </div>
-                                <div class="col g60">
-                                    <select id="juggletime" class="uniform">
-                                        <option value="200" selected="selected">fast</option>
-                                        <option value="400">average</option>
-                                        <option value="800">slow</option>
-                                        <option value="1600">snail</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="juggletime" class="col-sm-2 control-label">Juggle time</label>
+                                <select id="juggletime" class="form-control">
+                                    <option value="200" selected="selected">fast</option>
+                                    <option value="400">average</option>
+                                    <option value="800">slow</option>
+                                    <option value="1600">snail</option>
+                                </select>
                             </div>
-                            <div class="row">
-                                <div class="col g40">
-                                    <label for="soundfx">Sound fx On/Off</label>
-                                </div>
-                                <div class="col g60">
-                                    <input type="checkbox" id="soundfx" checked="checked" class="uniform" />
-                                </div>
+                            <div class="form-group">
+                                <label for="soundfx" class="col-sm-2 control-label">Sound fx On/Off</label>
+                                <input type="checkbox" id="soundfx" class="form-control" checked="checked" />
                             </div>
-                            <div class="row">
-                                <div class="col g40">
-                                    <label for="tooltips">Tooltips On/Off</label>
-                                </div>
-                                <div class="col g60">
-                                    <input type="checkbox" id="tooltips" class="uniform" />
-                                </div>
+                            <div class="form-group">
+                                <label for="tooltips" class="col-sm-2 control-label">Tooltips On/Off</label>
+                                <input type="checkbox" id="tooltips" class="form-control" />
                             </div>
                         </fieldset>
                     </form>
@@ -282,12 +258,5 @@
             </div>
         </div>
     </div>
-    <div class="layout">
-        <label><input id="mixed" name="layout" type="radio" value="mixed" checked="" /> Mixed Tile Size</label>
-        <label><input id="fixed" name="layout" type="radio" value="fixed" /> Fixed Tile Size</label>
-        <label><input id="column" name="layout" type="radio" value="column" /> Single Column</label>
-    </div>
-    <button id="add">ADD TILE</button>
-    <div id="list"></div>
 </body>
 </html>
