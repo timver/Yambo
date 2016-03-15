@@ -16,6 +16,10 @@ window.Yambo = (function ($, ns) {
             version: '.version'
         },
         options: {
+            droppable: {
+                left: '[data-droppable="left"]',
+                right: '[data-droppable="right"]'
+            },
             draggable: {
                 stack: '.panel',
                 snap: true,
@@ -35,7 +39,7 @@ window.Yambo = (function ($, ns) {
 
         //$(mod.minimizable).minimizable();
         //$(mod.draggable).draggable(opt.draggable);
-        dragula([document.querySelector('.col.g45'), document.querySelector('.col.g55')]);
+        dragula([$(opt.droppable.left).get(0), $(opt.droppable.right).get(0)]);
         //$(mod.resizable).resizable();
         $(mod.version).html(cfg.version);
     }

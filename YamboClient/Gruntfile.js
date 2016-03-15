@@ -1,18 +1,18 @@
 /// <binding />
 module.exports = function (grunt) {
-
+    
     'use strict';
-
+    
     // Load tasks
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-modernizr');
-
+    
     // Project configuration.
     grunt.initConfig({
-
+        
         clean: {
             files: {
                 src: ['js/lib/**']
@@ -21,21 +21,21 @@ module.exports = function (grunt) {
                 force: true
             }
         },
-
+        
         modernizr: {
             dist: {
                 dest: 'bower_components/modernizr/build/modernizr.custom.js',
                 uglify: false,
                 options: [
-                  'setClasses',
-                  'addTest'
+                    'setClasses',
+                    'addTest'
                 ],
                 files: {
                     src: ['public/js/app/**/*.js']
                 }
             }
         },
-
+        
         copy: {
             js: {
                 files: [
@@ -83,33 +83,30 @@ module.exports = function (grunt) {
                         src: [
                             'bootstrap/scss/*.*',
                             'bootstrap/scss/**/*.scss'
-
                         ],
                         dest: 'public/scss/lib'
                     }
                 ]
             }
         },
-
+        
         compass: {
-            app: {
+            options: {
+                basePath: 'public/',
+                sassDir: 'scss/app',
+                cssDir: 'css/app'
+            },
+            watch: {
+                src: ['*.scss'],
+                tasks: ['compass'],
                 options: {
-                    basePath: 'public/',
-                    sassDir: 'scss/app',
-                    cssDir: 'css/app'
-                },
-                watch: {
-                    src: ['*.scss'],
-                    tasks: ['compass'],
-                    options: {
-                        spawn: false,
-                        watch: true
-                    }
+                    spawn: false,
+                    watch: true
                 }
             }
         }
     });
-
+    
     // Default task.
     grunt.registerTask('default', ['clean', 'modernizr:dist', 'copy:js', 'copy:scss', 'copy:css']);
     grunt.registerTask('watch', ['compass']);

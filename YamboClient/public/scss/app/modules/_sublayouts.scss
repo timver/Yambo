@@ -1,6 +1,4 @@
 .sheet {
-    min-width: 308px;
-
     table {
         background: url(#{$bg-yampaper}) center center no-repeat scroll transparent;
         display: block;
@@ -116,16 +114,12 @@
 }
 
 .options {
-    min-width: 220px;
-
     label {
         width: 160px;
     }
 }
 
 .dice {
-    min-width: 160px;
-
     fieldset {
         text-align: center;
     }
@@ -164,8 +158,6 @@
 }
 
 .log {
-    min-width: 230px;
-
     input {
         background: none repeat scroll 0 0 transparent;
         border: medium none;

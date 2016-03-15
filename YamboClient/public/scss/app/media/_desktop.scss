@@ -1,52 +1,17 @@
 /* --------------- General --------------- */
 
 /* Portrait and Landscape */
-@media only screen and (max-width: 880px) {
-    .container {
-        padding: 10px;
-    }
-
-    .row,
-    .col {
-        padding: 0 10px;
-    }
-
+@media only screen and (max-width: 992px) {
     .panel {
+        padding: 30px 20px 20px;
+
         + .panel {
             margin-top: 20px;
         }
     }
 }
 
-@media only screen and (max-width: 820px) {
-    .container {
-        padding: 5px;
-    }
-
-    .row,
-    .col {
-        padding: 0 5px;
-    }
-}
-
-@media only screen and (max-width: 780px) {
-    .col {
-        display: block;
-        width: 100%;
-
-        &:first-child {
-            padding-right: 0;
-        }
-
-        &:last-child {
-            padding-left: 0;
-        }
-
-        + .col {
-            margin-top: 10px;
-        }
-    }
-
+@media only screen and (max-width: 768px) {
     .panel {
         padding: 30px 10px 10px;
 
@@ -57,20 +22,11 @@
 }
 
 @media only screen and (max-width: 350px) {
-    .container {
-        padding: 1px;
-    }
-
-    .row,
-    .col {
-        padding: 0 1px;
-    }
-
     .panel {
-        padding: 2px;
+        padding: 1px;
 
         fieldset {
-            padding: 2px;
+            padding: 1px;
         }
 
         legend {
