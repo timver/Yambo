@@ -208,9 +208,13 @@
                                     <label for="playerName" class="control-label">Player name</label>
                                 </div>
                                 <div class="col-sm-12 col-md-8">
-                                    <input type="text" id="playerName" maxlength="25" class="form-control" />
-                                    <input type="hidden" id="playercount" value="0" />
-                                    <input type="button" value="Enter" class="btn btn-default player" />
+                                    <div class="input-group">
+                                        <input type="text" id="playerName" maxlength="25" class="form-control" />
+                                        <input type="hidden" id="playercount" value="0" />
+                                        <span class="input-group-btn">
+                                            <input type="button" value="Enter" class="btn player" />
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row form-group">
@@ -261,12 +265,22 @@
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <label for="soundfx" class="control-label">Sound fx On/Off</label>
-                                <input type="checkbox" id="soundfx" class="form-control" checked="checked"/>
+                                <div class="col-md-offset-4 col-md-8">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="soundfx" checked="checked" />&nbsp;Sound fx On/Off
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row form-group">
-                                <label for="tooltips" class="control-label">Tooltips On/Off</label>
-                                <input type="checkbox" id="tooltips" class="form-control" />
+                                <div class="col-md-offset-4 col-md-8">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="tooltips" />&nbsp;Tooltips On/Off
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </fieldset>
                     </form>
