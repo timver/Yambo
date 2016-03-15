@@ -34,7 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Gruntfile.js" />
+    <Content Include="public\art\bg_black.jpg" />
+    <Content Include="public\art\bg_black2.jpg" />
     <Content Include="public\art\bg_marble_white2.jpg" />
+    <Content Include="public\art\bg_pentagon.png" />
+    <Content Include="public\art\bg_puzzle.gif" />
     <Content Include="public\audio\mp3\juggledice2.mp3" />
     <Content Include="public\audio\mp3\juggledice3.mp3" />
     <Content Include="public\audio\ogg\juggledice2.ogg" />

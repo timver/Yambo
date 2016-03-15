@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-5" data-droppable="left">
+            <div class="col-sm-12 col-md-6" data-droppable="left">
                 <div class="panel" draggable="true">
                     <form action="/" class="sheet" data-app="sheet">
                         <fieldset>
@@ -167,7 +167,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-7" data-droppable="right">
+            <div class="col-sm-12 col-md-6" data-droppable="right">
                 <div class="panel" draggable="true">
                     <form action="/" class="dice" data-app="dice">
                         <fieldset>
@@ -179,7 +179,7 @@
                                 <li><input type="button" value="4" /></li>
                                 <li><input type="button" value="5" /></li>
                             </ul>
-                            <input type="button" class="btn roll" value="roll dice" />
+                            <input type="button" class="btn btn-lg roll" value="roll dice" />
                         </fieldset>
                     </form>
                 </div>
@@ -203,53 +203,69 @@
                     <form action="/" class="options form-horizontal" data-app="options">
                         <fieldset>
                             <legend class="ui-dialog-titlebar">Options</legend>
-                            <input type="hidden" id="playercount" value="0" />
-                            <div class="form-group">
-                                <label for="playerName" class="col-sm-2 control-label">Player name</label>
-                                <input type="text" id="playerName" maxlength="25" class="form-control" />
-                                <input type="button" value="Enter" class="btn btn-default player" />
+                            <div class="row form-group">
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="playerName" class="control-label">Player name</label>
+                                </div>
+                                <div class="col-sm-12 col-md-8">
+                                    <input type="text" id="playerName" maxlength="25" class="form-control" />
+                                    <input type="hidden" id="playercount" value="0" />
+                                    <input type="button" value="Enter" class="btn btn-default player" />
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="theme" class="col-sm-2 control-label">Theme</label>
-                                <select id="theme" class="form-control">
-                                    <option value="" selected="selected">[ none ]</option>
-                                    <option value="theme-abstract">Abstract</option>
-                                    <option value="theme-basketball">Basketball</option>
-                                    <option value="theme-future">Future</option>
-                                    <option value="theme-halloween">Halloween</option>
-                                    <option value="theme-nature">Nature</option>
-                                    <option value="theme-ocean">Ocean</option>
-                                    <option value="theme-space">Space</option>
-                                    <option value="theme-tron">Tron</option>
-                                </select>
+                            <div class="row form-group">
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="theme" class="control-label">Theme</label>
+                                </div>
+                                <div class="col-sm-12 col-md-8">
+                                    <select id="theme" class="form-control">
+                                        <option value="" selected="selected">[ none ]</option>
+                                        <option value="theme-abstract">Abstract</option>
+                                        <option value="theme-basketball">Basketball</option>
+                                        <option value="theme-future">Future</option>
+                                        <option value="theme-halloween">Halloween</option>
+                                        <option value="theme-nature">Nature</option>
+                                        <option value="theme-ocean">Ocean</option>
+                                        <option value="theme-space">Space</option>
+                                        <option value="theme-tron">Tron</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="dicecolor" class="col-sm-2 control-label">Dice color</label>
-                                <select id="dicecolor" class="form-control">
-                                    <option value="0">Red</option>
-                                    <option value="60">Yellow</option>
-                                    <option value="120">Green</option>
-                                    <option value="180">Blue</option>
-                                    <option value="240">Pink</option>
-                                    <option value="300" selected="selected">White</option>
-                                    <option value="360">Black</option>
-                                </select>
+                            <div class="row form-group">
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="dicecolor" class="control-label">Dice color</label>
+                                </div>
+                                <div class="col-sm-12 col-md-8">
+                                    <select id="dicecolor" class="form-control">
+                                        <option value="0">Red</option>
+                                        <option value="60">Yellow</option>
+                                        <option value="120">Green</option>
+                                        <option value="180">Blue</option>
+                                        <option value="240">Pink</option>
+                                        <option value="300" selected="selected">White</option>
+                                        <option value="360">Black</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="juggletime" class="col-sm-2 control-label">Juggle time</label>
-                                <select id="juggletime" class="form-control">
-                                    <option value="200" selected="selected">fast</option>
-                                    <option value="400">average</option>
-                                    <option value="800">slow</option>
-                                    <option value="1600">snail</option>
-                                </select>
+                            <div class="row form-group">
+                                <div class="col-sm-12 col-md-4">
+                                    <label for="juggletime" class="control-label">Juggle time</label>
+                                </div>
+                                <div class="col-sm-12 col-md-8">
+                                    <select id="juggletime" class="form-control">
+                                        <option value="200" selected="selected">fast</option>
+                                        <option value="400">average</option>
+                                        <option value="800">slow</option>
+                                        <option value="1600">snail</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="soundfx" class="col-sm-2 control-label">Sound fx On/Off</label>
-                                <input type="checkbox" id="soundfx" class="form-control" checked="checked" />
+                            <div class="row form-group">
+                                <label for="soundfx" class="control-label">Sound fx On/Off</label>
+                                <input type="checkbox" id="soundfx" class="form-control" checked="checked"/>
                             </div>
-                            <div class="form-group">
-                                <label for="tooltips" class="col-sm-2 control-label">Tooltips On/Off</label>
+                            <div class="row form-group">
+                                <label for="tooltips" class="control-label">Tooltips On/Off</label>
                                 <input type="checkbox" id="tooltips" class="form-control" />
                             </div>
                         </fieldset>
