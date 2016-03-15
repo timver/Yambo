@@ -4876,112 +4876,6 @@ a.text-danger:focus, a.text-danger:hover {
   z-index: 1030;
 }
 
-/* line 5, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-/* line 22, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-html {
-  line-height: 1;
-}
-
-/* line 24, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-ol, ul {
-  list-style: none;
-}
-
-/* line 26, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* line 28, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-/* line 30, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-q, blockquote {
-  quotes: none;
-}
-/* line 103, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-/* line 32, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-a img {
-  border: none;
-}
-
-/* line 116, ../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
-  display: block;
-}
-
-/* line 3, ../../scss/app/partials/_reset.scss */
-* {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-/* line 6, ../../scss/app/partials/_reset.scss */
-*:before, *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* line 12, ../../scss/app/partials/_reset.scss */
-html {
-  height: 100%;
-}
-
-/* line 16, ../../scss/app/partials/_reset.scss */
-body {
-  background-color: #2f2727;
-  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#009933), to(#2f2727));
-  background: -webkit-radial-gradient(circle, #009933, #2f2727);
-  background: -moz-radial-gradient(circle, #009933, #2f2727);
-  background: -ms-radial-gradient(circle, #009933, #2f2727);
-  height: 100%;
-}
-
-/* line 25, ../../scss/app/partials/_reset.scss */
-h1 {
-  color: #fff;
-  font: bold 36px arial;
-  text-shadow: -1px -1px #fff, 5px 5px #000;
-}
-/* line 30, ../../scss/app/partials/_reset.scss */
-h1 .version {
-  text-shadow: -1px -1px #fff, 2px 2px #000;
-  font-size: 12px;
-  padding: 0 20px;
-}
-
 @font-face {
   font-family: "yambo";
   src: url(/public/fonts/icons/yambo.woff) format('woff'), url(/public/fonts/icons/yambo.ttf) format('truetype'), url(/public/fonts/icons/yambo.svg) format('svg');
@@ -5291,10 +5185,10 @@ h1 .version {
   height: auto;
   padding: 30px;
   position: relative;
-  -moz-transition: all 0.4s ease-in;
+  /*-moz-transition: all 0.4s ease-in;
   -o-transition: all 0.4s ease-in;
   -webkit-transition: all 0.4s ease-in;
-  transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;*/
 }
 /* line 18, ../../scss/app/modules/_shared.scss */
 .panel + .panel {

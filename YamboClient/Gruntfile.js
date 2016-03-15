@@ -15,7 +15,7 @@ module.exports = function (grunt) {
         
         clean: {
             files: {
-                src: ['js/lib/**']
+                src: ['js/lib/**', 'css/lib/**', 'scss/lib/**']
             },
             options: {
                 force: true
@@ -44,19 +44,8 @@ module.exports = function (grunt) {
                         cwd: 'bower_components',
                         src: [
                             'modernizr/build/modernizr.custom.js',
-                            'jquery/dist/jquery.js',
-                            'jquery-ui/ui/core.js',
-                            'jquery-ui/ui/widget.js',
-                            'jquery-ui/ui/mouse.js',
-                            'jquery-ui/ui/position.js',
-                            'jquery-ui/ui/effect.js',
-                            'jquery-ui/ui/draggable.js',
-                            'jquery-ui/ui/droppable.js',
-                            'jquery-ui/ui/tabs.js',
-                            'jquery-ui/ui/tooltip.js',
                             'gsap/src/uncompressed/TweenMax.js',
                             'gsap/src/uncompressed/utils/Draggable.js',
-                            'jquery-uniform/jquery.uniform.js',
                             'dragula/dist/dragula.js'
                         ],
                         dest: 'public/js/lib'
