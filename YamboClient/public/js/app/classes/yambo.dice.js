@@ -20,11 +20,13 @@ window.Yambo = (function ($, ns) {
             button: '.roll'
         },
         classes: {
+            active: 'active',
             checked: 'checked'
         },
         events: {
             buttonHold: 'mousedown',
             buttonRelease: 'mouseup',
+            buttonLeave: 'mouseleave',
             diceClick: 'click'
         },
         log: {
@@ -89,16 +91,24 @@ window.Yambo = (function ($, ns) {
 
         /**
          * Event handler to keep rolling
-         * @event mousedown : settings.events.buttonHold
+         * @param {Object} ev : settings.events.buttonHold
          */
-        buttonHold: function () {
+        buttonHold: function (ev) {
             var instance = ns.instance,
                 options = instance.options,
                 audio = instance.audio,
                 audiofx = audio.settings.fx,
-                log = instance.log;
+                log = instance.log,
+                settings = this.settings,
+                classes = settings.classes,
+                events = settings.events;
+
+            ev.preventDefault();
+            ev.stopPropagation();
 
             if (log.isValidTurn()) {
+                this.button.one(events.buttonLeave, this.buttonRelease.bind(this)).addClass(classes.active);
+
                 this.rollDice({
                     color: options.settings.options.selected,
                     keepJuggling: true
@@ -111,9 +121,8 @@ window.Yambo = (function ($, ns) {
         /**
          * Event handler to release rolling
          * @event mouseup : settings.events.buttonRelease
-         * @param {Object} ev : default event type mouseup
          */
-        buttonRelease: function (ev) {
+        buttonRelease: function () {
             var self = this,
                 instance = ns.instance,
                 options = instance.options,
@@ -121,10 +130,14 @@ window.Yambo = (function ($, ns) {
                 audiofx = audio.settings.fx,
                 sheet = instance.sheet,
                 log = instance.log,
-                btn = $(ev.currentTarget);
+                settings = this.settings,
+                classes = settings.classes,
+                events = settings.events;
+
+            this.button.off(events.buttonLeave);
 
             if (log.handleTurn()) {
-                btn.prop({ disabled: true });
+                this.button.prop({ disabled: true });
                 audio.stop();
                 this.rollDice({
                     color: options.settings.options.selected,
@@ -132,7 +145,7 @@ window.Yambo = (function ($, ns) {
                 }, function () {
                     sheet.addScores(false);
                     log.addMessage({ message: ' (' + self.getDiceValues().join(' : ') + ')', isTimed: false, isError: false, isNewline: true });
-                    btn.prop({ disabled: false });
+                    self.button.prop({ disabled: false }).removeClass(classes.active);
                     audio.playCombinations();
                     audio.play(audiofx.rolldice);
                 });

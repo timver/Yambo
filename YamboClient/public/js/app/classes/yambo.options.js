@@ -22,8 +22,8 @@ window.Yambo = (function ($, modernizr, ns) {
             selectColor: '#dicecolor',
             selectTheme: '#theme',
             selectJuggleTime: '#juggletime',
-            radioSoundFx: '#soundfx',
-            radioTooltips: '#tooltips'
+            radioSoundFx: '.soundfx',
+            radioTooltips: '.tooltips'
         },
         events: {
             button: 'click',
@@ -93,8 +93,8 @@ window.Yambo = (function ($, modernizr, ns) {
             this.selectTheme = $(selectors.selectTheme);
             this.selectColor = $(selectors.selectColor);
             this.selectJuggleTime = $(selectors.selectJuggleTime);
-            this.radioSoundFx = $(selectors.radioSoundFx);
-            this.radioTooltips = $(selectors.radioTooltips);
+            this.radioSoundFx = this.app.find(selectors.radioSoundFx);
+            this.radioTooltips = this.app.find(selectors.radioTooltips);
         },
 
         /**

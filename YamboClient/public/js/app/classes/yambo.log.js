@@ -16,9 +16,9 @@ window.Yambo = (function ($, draggable, ns) {
     var cfg = {
         selectors: {
             app: '[data-app="log"]',
-            fieldClock: '#clock',
-            fieldTurn: '#turn',
-            areaMessage: '#message'
+            fieldClock: '.clock',
+            fieldTurn: '.turn',
+            areaMessage: '.message'
         },
         classes: {
             checked: 'checked'
@@ -70,9 +70,9 @@ window.Yambo = (function ($, draggable, ns) {
          */
         cache: function (selectors) {
             this.app = $(selectors.app);
-            this.fieldClock = $(selectors.fieldClock);
-            this.fieldTurn = $(selectors.fieldTurn);
-            this.areaMessage = $(selectors.areaMessage);
+            this.fieldClock = this.app.find(selectors.fieldClock);
+            this.fieldTurn = this.app.find(selectors.fieldTurn);
+            this.areaMessage = this.app.find(selectors.areaMessage);
         },
 
         /**

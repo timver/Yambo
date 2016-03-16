@@ -4,10 +4,9 @@
     ],
     "dependencies": {
         "bootstrap": "4.0.0-alpha.2",
-        "jquery": "^2.2.0",
-        "jquery-ui": "^1.11.4",
+        "dragula": "^3.6.8",
         "gsap": "^1.18.2",
-        "dragula": "^3.6.8"
+        "jquery": "^2.2.0"
     },
     "description": "bèta",
     "license": "MIT",

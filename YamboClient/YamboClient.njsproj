@@ -65,6 +65,7 @@
     <None Include="public\js\lib\gsap\src\uncompressed\TweenMax.js" />
     <None Include="public\js\lib\gsap\src\uncompressed\utils\Draggable.js" />
     <None Include="public\js\lib\modernizr\build\modernizr.custom.js" />
+    <None Include="public\js\lib\jquery\dist\jquery.js" />
     <Compile Include="server.js" />
     <None Include="bower.json" />
     <None Include="bundleconfig.json" />
@@ -257,7 +258,6 @@
     <None Include="public\scss\app\modules\_shared.scss" />
     <None Include="public\scss\app\modules\_sublayouts.scss" />
     <None Include="public\scss\app\modules\_widgets.scss" />
-    <None Include="public\scss\app\partials\_base.scss" />
     <None Include="public\scss\app\partials\_fonts.scss" />
     <None Include="public\scss\app\partials\_grid.scss" />
     <None Include="public\scss\app\partials\_helpers.scss" />
@@ -346,6 +346,7 @@
     <None Include="public\scss\lib\bootstrap\scss\_utilities-spacing.scss" />
     <None Include="public\scss\lib\bootstrap\scss\_utilities.scss" />
     <None Include="public\scss\lib\bootstrap\scss\_variables.scss" />
+    <Content Include="public\scss\app\partials\_variables.scss" />
     <Content Include="web.config" />
     <None Include="yambo.pubxml" />
   </ItemGroup>
@@ -383,6 +384,8 @@
     <Folder Include="public\js\lib\gsap\src\" />
     <Folder Include="public\js\lib\gsap\src\uncompressed\" />
     <Folder Include="public\js\lib\gsap\src\uncompressed\utils\" />
+    <Folder Include="public\js\lib\jquery\" />
+    <Folder Include="public\js\lib\jquery\dist\" />
     <Folder Include="public\js\lib\modernizr\" />
     <Folder Include="public\js\lib\modernizr\build\" />
     <Folder Include="public\scss\" />

@@ -151,7 +151,10 @@ window.Yambo = (function ($, modernizr, ns) {
          * Stops the audio
          */
         stop: function () {
-            this.source.stop(0);
+            if (this.source) {
+                this.source.stop(0);
+                this.source.disconnect();
+            }
         },
 
         /**

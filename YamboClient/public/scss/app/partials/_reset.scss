@@ -1,14 +1,5 @@
 @import "compass/reset";
 
-* {
-    @include box-sizing(border-box);
-
-    &:before,
-    &:after {
-        @include box-sizing(border-box);
-    }
-}
-
 html {
     height: 100%;
 }

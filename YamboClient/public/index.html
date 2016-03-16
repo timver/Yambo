@@ -172,29 +172,39 @@
                     <form action="/" class="dice" data-app="dice">
                         <fieldset>
                             <legend class="ui-dialog-titlebar">Dice</legend>
-                            <ul>
-                                <li><input type="button" value="1" /></li>
-                                <li><input type="button" value="2" /></li>
-                                <li><input type="button" value="3" /></li>
-                                <li><input type="button" value="4" /></li>
-                                <li><input type="button" value="5" /></li>
-                            </ul>
-                            <input type="button" class="btn btn-lg roll" value="roll dice" />
+                            <div class="form-group">
+                                <ul>
+                                    <li><input type="button" value="1" /></li>
+                                    <li><input type="button" value="2" /></li>
+                                    <li><input type="button" value="3" /></li>
+                                    <li><input type="button" value="4" /></li>
+                                    <li><input type="button" value="5" /></li>
+                                </ul>
+                                <input type="button" class="btn btn-lg roll" value="roll dice" />
+                            </div>
                         </fieldset>
                     </form>
                 </div>
 
                 <div class="panel" draggable="true">
-                    <form action="/" class="log" data-app="log">
+                    <form action="/" class="log form-horizontal" data-app="log">
                         <fieldset>
                             <legend class="ui-dialog-titlebar">Game Log</legend>
-                            <label for="turn">Turn:</label>
-                            <input type="text" id="turn" value="0" class="txt" />
-                            <input type="text" id="clock" />
-                            <br />
-                            <br />
-                            <div id="message"></div>
-                            <br />
+                            <div class="form-group form-group-lg">
+                                <div class="col-sm-12 col-md-6">
+                                    <label>
+                                        Turn:&nbsp;<input type="text" class="turn" value="0" />
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <label>
+                                        Time:&nbsp;<input type="text" class="clock" />
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-lg">
+                                <div class="message"></div>
+                            </div>
                         </fieldset>
                     </form>
                 </div>
@@ -268,7 +278,7 @@
                                 <div class="col-md-offset-4 col-md-8">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" id="soundfx" checked="checked" />&nbsp;Sound fx On/Off
+                                            <input type="checkbox" class="soundfx" checked="checked" />&nbsp;Sound
                                         </label>
                                     </div>
                                 </div>
@@ -277,7 +287,7 @@
                                 <div class="col-md-offset-4 col-md-8">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" id="tooltips" />&nbsp;Tooltips On/Off
+                                            <input type="checkbox" class="tooltips" />&nbsp;Tooltips
                                         </label>
                                     </div>
                                 </div>

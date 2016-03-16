@@ -1,23 +1,29 @@
 /*!
  * Bootstrap v4.0.0-alpha.2 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * YamboClient v2.0.0-bèta
+ * MIXED BUILD
  */
 
 // Core variables and mixins
 @import "../lib/bootstrap/scss/variables";
+@import "partials/variables";
 @import "../lib/bootstrap/scss/mixins";
+@import "partials/mixins";
 
 // Reset and dependencies
-@import "../lib/bootstrap/scss/normalize";
+//@import "../lib/bootstrap/scss/normalize";
+@import "partials/reset";
 //@import "print";
 
 // Core CSS
 @import "../lib/bootstrap/scss/reboot";
+@import "partials/fonts";
 @import "../lib/bootstrap/scss/type";
+@import "partials/helpers";
 //@import "../lib/bootstrap/scss/images";
 //@import "../lib/bootstrap/scss/code";
 @import "../lib/bootstrap/scss/grid";
+//@import "partials/grid";
 //@import "../lib/bootstrap/scss/tables";
 @import "../lib/bootstrap/scss/forms";
 @import "../lib/bootstrap/scss/buttons";
@@ -28,8 +34,8 @@
 @import "../lib/bootstrap/scss/button-group";
 @import "../lib/bootstrap/scss/input-group";
 //@import "custom-forms";
-@import "../lib/bootstrap/scss/nav";
-@import "../lib/bootstrap/scss/navbar";
+//@import "../lib/bootstrap/scss/nav";
+//@import "../lib/bootstrap/scss/navbar";
 //@import "card";
 //@import "breadcrumb";
 //@import "pagination";
@@ -37,7 +43,7 @@
 //@import "labels";
 //@import "jumbotron";
 //@import "alert";
-@import "../lib/bootstrap/scss/progress";
+//@import "../lib/bootstrap/scss/progress";
 //@import "media";
 //@import "list-group";
 //@import "responsive-embed";
@@ -55,16 +61,6 @@
 @import "../lib/bootstrap/scss/utilities-spacing";
 //@import "utilities-responsive";
 
-
-
-
-// Initialize
-@import "partials/base";
-@import "partials/mixins";
-//@import "partials/reset";
-@import "partials/fonts";
-@import "partials/helpers";
-//@import "partials/grid";
 
 // Modules
 @import "modules/shared";

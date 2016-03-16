@@ -44,6 +44,7 @@ module.exports = function (grunt) {
                         cwd: 'bower_components',
                         src: [
                             'modernizr/build/modernizr.custom.js',
+                            'jquery/dist/jquery.js',
                             'gsap/src/uncompressed/TweenMax.js',
                             'gsap/src/uncompressed/utils/Draggable.js',
                             'dragula/dist/dragula.js'
