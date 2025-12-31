@@ -4,161 +4,93 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Yambo is a browser-based dice game inspired by Yahtzee. The codebase is being modernized from ES5/jQuery to ES6+ modules with Web Components.
+Yambo is a browser-based dice game inspired by Yahtzee, with 5 simultaneous columns each with different rules. Fully modernized to ES6+ modules with Web Components.
 
-## Modern Stack (v3.0.0)
-
-### Build Commands
+## Build Commands
 
 All commands run from `YamboClient/` directory:
 
 ```bash
-# Install dependencies
-npm install
-
-# Development mode (watch + serve)
-npm run dev
-
-# Production build
-npm run build
-
-# Build JavaScript only
-npm run build:js
-
-# Build CSS only
-npm run build:css
-
-# Update browserslist database
-npm run update-browsers
+npm install          # Install dependencies
+npm run dev          # Development (watch + serve on localhost:3000)
+npm run build        # Production build (JS + CSS)
+npm run deploy       # Build and copy to IIS (C:\inetpub\wwwroot\dev.yambo.be)
+npm run clean        # Remove built files
 ```
 
-### Technology Stack
-- **Bundler**: esbuild
-- **Dev Server**: serve
-- **JavaScript**: ES6+ modules (no TypeScript)
+## Technology Stack
+
+- **Bundler**: esbuild (config in `esbuild.config.js`)
+- **CSS**: dart-sass + PostCSS + Autoprefixer
+- **JavaScript**: ES6+ modules, no TypeScript
 - **UI**: Vanilla Web Components with Shadow DOM
 - **Animations**: GSAP
-- **Styling**: SCSS with dart-sass + PostCSS + Autoprefixer
-- **CSS Framework**: Bootstrap 5 (selective imports)
-- **Theming**: CSS Custom Properties
+- **Framework**: Bootstrap 5 (selective SCSS imports)
+- **Theming**: 8 themes via CSS Custom Properties
+- **Server**: IIS with `web.config`
 
-### Modern Architecture (`YamboClient/src/`)
+## Architecture
 
 ```
-src/
-  main.js                  # Entry point, component wiring
-  bridge.js                # Legacy compatibility (window.Yambo)
+YamboClient/src/
+  main.js                  # Entry point, wires components together
 
-  components/              # Web Components (Shadow DOM)
-    yambo-sheet.js         # Score grid component
-    yambo-dice.js          # Dice rolling component
-    yambo-log.js           # Game log/messages component
-    yambo-options.js       # Settings panel component
-    yambo-toolbar.js       # Controls component
+  components/              # Web Components (Custom Elements + Shadow DOM)
+    yambo-sheet.js         # Score grid - most complex component
+    yambo-dice.js          # Dice rolling with hold/release mechanics
+    yambo-log.js           # Turn counter, clock, messages
+    yambo-options.js       # Settings panel, theme picker
+    yambo-toolbar.js       # Control buttons
 
-  services/                # Pure logic (no DOM)
-    dice-engine.js         # Dice calculations
-    audio-service.js       # Web Audio API wrapper
-    game-state.js          # Centralized state (EventTarget-based)
-    theme-manager.js       # Theme switching
+  services/                # Pure logic (no DOM dependencies)
+    dice-engine.js         # Dice math: isFullhouse, isStreet, isYam, etc.
+    audio-service.js       # Web Audio API for sound effects
+    game-state.js          # Centralized EventTarget-based state
+    theme-manager.js       # Theme switching via CSS classes
 
   utils/
-    dom-helpers.js         # jQuery replacement utilities
-    animation-helpers.js   # GSAP wrappers
+    dom-helpers.js         # querySelector wrappers
+    animation-helpers.js   # GSAP dice roll animation
 
   styles/
     main.scss              # Entry point
     _variables.scss        # CSS custom properties
     _bootstrap.scss        # Selective Bootstrap 5 imports
-    partials/              # Reset, fonts, helpers
-    modules/               # Shared, widgets, sublayouts
-    themes/                # 8 theme files
-    media/                 # Responsive breakpoints
-    adaptive/              # Device-class overrides
+    themes/                # 8 theme files (_tron, _ocean, etc.)
 ```
 
-### Key Patterns
+## Key Patterns
 
-**State Management**: `GameState` class extends `EventTarget` for reactive state:
+**State Management** - `GameState` extends `EventTarget`:
 ```javascript
 import { gameState } from './services/game-state.js';
+gameState.on('diceChange', (e) => console.log(e.detail.dice));
 gameState.on('turnChange', (e) => console.log(e.detail.turn));
 ```
 
-**Theme Switching**: CSS Custom Properties set on `:root`, themes override via class:
+**Component Communication** - Custom events bubble up:
 ```javascript
-import { themeManager } from './services/theme-manager.js';
-themeManager.theme = 'theme-tron';
+// yambo-dice emits 'rollcomplete', yambo-sheet listens
+this.dispatchEvent(new CustomEvent('rollcomplete', { bubbles: true, detail: { dice } }));
 ```
 
-**Component Events**: Web Components emit custom events for inter-component communication:
-```javascript
-diceComponent.addEventListener('rollcomplete', (e) => {
-  sheetComponent.updateScores();
-});
-```
+**Dynamic Max Rolls** - Columns have different try limits (1, 2, or 3). When 3-try columns are full, max rolls reduces dynamically based on remaining columns.
 
----
+## Game Rules
 
-## Legacy Stack (v2.x)
+5 columns played simultaneously:
+| Column | Symbol | Max Tries | Order | Points |
+|--------|--------|-----------|-------|--------|
+| 1st | ↓ | 3 | Top to bottom | 3 |
+| 2nd | W | 3 | Random | 2 |
+| 3rd | ↑ | 3 | Bottom to top | 4 |
+| 4th | 1 | 1 | Random | 3 |
+| 5th | 2 | 2 | Random | 3 |
 
-### Build Commands (Legacy)
+Upper total of 63+ earns 30 bonus points.
 
-```bash
-# Install dependencies
-npm install
-bower install
+## Deployment
 
-# Default build: clean, build Modernizr, copy bower libs
-grunt default
-
-# Watch SCSS and compile with Compass
-grunt watch
-```
-
-**Note**: Requires Ruby + Compass gem (`gem install compass`).
-
-### Legacy Architecture (`YamboClient/public/js/app/`)
-
-All code lives under `window.Yambo` namespace:
-
-- **yambo.instance.js** - Entry point, creates module instances
-- **classes/yambo.sheet.js** - Score sheet management
-- **classes/yambo.dice.js** - Dice rolling logic
-- **classes/yambo.audio.js** - Web Audio API wrapper
-- **classes/yambo.log.js** - Turn history, messages
-- **classes/yambo.options.js** - Settings, themes
-- **classes/yambo.toolbar.js** - Game controls
-- **modules/yambo.fn.js** - jQuery plugin extensions
-
-### Legacy Dependencies
-- Bootstrap 4 alpha - Grid/layout
-- jQuery 2.2 - DOM manipulation
-- GSAP TweenMax - Animations
-- Dragula - Drag-and-drop panels
-- Modernizr - Feature detection
-
----
-
-## Files Pending Cleanup
-
-Once the modern stack is fully tested, these legacy files can be removed:
-
-- `Gruntfile.js` - Grunt build config
-- `bower.json` - Bower dependencies
-- `public/js/lib/` - Bower-installed libraries (jquery, modernizr)
-- `public/js/yambo.bundle.js` - Old bundled JS
-- `public/js/yambo.bundle.min.js` - Old minified bundle
-- `public/scss/` - Old SCSS (replaced by `src/styles/`)
-- `bridge.js` - Once legacy compatibility not needed
-
----
-
-## Game Rules Context
-
-The game has 5 columns with different scoring rules:
-- Columns 1 & 3: Chronological order (top to bottom)
-- Columns 2, 4, 5: Random order (any row)
-- Column 4: Only 1 roll allowed
-- Column 5: Only 2 rolls allowed
-- Upper total of 63+ earns 30 bonus points
+- **Local dev**: `npm run dev` serves on `localhost:3000`
+- **IIS**: `npm run deploy` copies `public/` to `C:\inetpub\wwwroot\dev.yambo.be`
+- **VS 2025**: Open `dev.yambo.be.sln`, F5 runs `npm run serve`, Release build auto-deploys
