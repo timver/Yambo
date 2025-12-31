@@ -1,0 +1,74 @@
+// ==========================================================================
+// Bootstrap 5 - Selective Imports
+// Only importing what we need to reduce bundle size
+// ==========================================================================
+
+// Required: Functions and Variables
+@import "../../node_modules/bootstrap/scss/functions";
+
+// Override Bootstrap variables before importing them
+// These use our CSS custom properties where possible
+$primary: #009933;
+$secondary: #2f2727;
+$success: #28a745;
+$danger: #dc3545;
+$warning: #ffc107;
+$info: #17a2b8;
+$light: #f8f9fa;
+$dark: #343a40;
+
+$body-bg: transparent;
+$body-color: #fff;
+
+$font-family-base: 'Trebuchet MS', Arial, sans-serif;
+$font-size-base: 0.875rem;
+
+$border-radius: 0.5rem;
+$border-radius-lg: 0.75rem;
+$border-radius-sm: 0.25rem;
+
+$input-bg: rgba(255, 255, 255, 0.9);
+$input-border-color: #ccc;
+$input-focus-border-color: $primary;
+
+$btn-border-radius: 0.375rem;
+
+// Required: Bootstrap Variables and Mixins
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables-dark";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+// ==========================================================================
+// Layout & Content
+// ==========================================================================
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/containers";
+@import "../../node_modules/bootstrap/scss/grid";
+
+// ==========================================================================
+// Forms
+// ==========================================================================
+@import "../../node_modules/bootstrap/scss/forms";
+
+// ==========================================================================
+// Components
+// ==========================================================================
+@import "../../node_modules/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/button-group";
+@import "../../node_modules/bootstrap/scss/dropdown";
+@import "../../node_modules/bootstrap/scss/transitions";
+
+// Optional: Only if needed
+// @import "../../node_modules/bootstrap/scss/modal";
+// @import "../../node_modules/bootstrap/scss/tooltip";
+// @import "../../node_modules/bootstrap/scss/card";
+// @import "../../node_modules/bootstrap/scss/alert";
+
+// ==========================================================================
+// Utilities API (generates utility classes)
+// ==========================================================================
+@import "../../node_modules/bootstrap/scss/utilities/api";

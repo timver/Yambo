@@ -1,0 +1,57 @@
+// ==========================================================================
+// Theme: Basketball
+// ==========================================================================
+
+@font-face {
+  font-family: 'nba_bullsregular';
+  src: url('#{$font-path}themes/basketball/nba_bulls-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.theme-basketball {
+  // Brand colors (local overrides)
+  --yambo-brand-3: #8b0d0e;
+
+  // Background
+  --yambo-body-bg: transparent;
+  --yambo-body-bg-image: url('#{$img-path}bg_basketball.jpg') repeat fixed 0 0;
+
+  // Panel styling
+  --yambo-panel-bg: #fefefe;
+  --yambo-panel-border-color: var(--yambo-brand-3);
+  --yambo-panel-border-width: 3px;
+  --yambo-panel-border-radius: 10px;
+  --yambo-panel-opacity: 0.9;
+
+  // Fieldset styling
+  --yambo-fieldset-bg: url('#{$img-path}bg_wood.jpg') repeat scroll 0 0 transparent;
+  --yambo-fieldset-border-color: var(--yambo-brand-3);
+  --yambo-fieldset-border-radius: 10px;
+
+  // Typography
+  --yambo-font-family-heading: 'nba_bullsregular', sans-serif;
+  --yambo-legend-color: var(--yambo-brand-3);
+
+  // Toolbar
+  --yambo-toolbar-bg: #fefefe;
+  --yambo-toolbar-border: var(--yambo-brand-3);
+
+  // Log message area
+  --yambo-log-bg: #fefefe;
+  --yambo-log-border: var(--yambo-brand-3);
+  --yambo-log-text: var(--yambo-brand-3);
+
+  legend {
+    font-family: var(--yambo-font-family-heading);
+    font-size: 20px;
+    text-shadow: none;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  #message {
+    border-radius: 10px;
+  }
+}

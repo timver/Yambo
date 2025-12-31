@@ -1,0 +1,40 @@
+// ==========================================================================
+// Theme: Future
+// ==========================================================================
+
+.theme-future {
+  // Background
+  --yambo-body-bg: transparent;
+  --yambo-body-bg-image: url('#{$img-path}bg_future.jpg') repeat fixed 0 0;
+
+  // Panel styling
+  --yambo-panel-bg: url('#{$img-path}bg_marble_white.jpg') repeat scroll 0 0 transparent;
+  --yambo-panel-border-color: var(--yambo-mono-3);
+  --yambo-panel-border-width: 3px;
+  --yambo-panel-border-radius: 10px;
+  --yambo-panel-box-shadow: 3px 3px 40px var(--yambo-black);
+
+  // Fieldset styling
+  --yambo-fieldset-bg: url('#{$img-path}bg_marble.jpg') repeat scroll 0 0 transparent;
+  --yambo-fieldset-border-color: var(--yambo-mono-3);
+  --yambo-fieldset-border-radius: 10px;
+
+  // Toolbar
+  --yambo-toolbar-bg: url('#{$img-path}bg_marble_white.jpg') repeat scroll 0 0 transparent;
+  --yambo-toolbar-border: var(--yambo-mono-3);
+
+  // Log message area
+  --yambo-log-bg: var(--yambo-white);
+  --yambo-log-border: var(--yambo-white);
+  --yambo-log-text: var(--yambo-mono-3);
+
+  .panel,
+  .toolbar {
+    border-style: outset;
+  }
+
+  fieldset {
+    border-style: outset;
+    opacity: 0.9;
+  }
+}

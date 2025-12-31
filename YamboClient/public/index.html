@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Yambo - Dice Game</title>
@@ -7,296 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="css/yambo.bundle.css" rel="stylesheet" />
-    <script src="js/yambo.bundle.js" async="async"></script>
+    <link href="css/main.css" rel="stylesheet" />
+    <script src="js/yambo.modern.js" defer></script>
 </head>
-<body class="theme-default">
+<body>
     <div class="container">
         <div class="row">
-            <div class="col g100">
-                <h1>Yambo!<span class="version"></span></h1>
+            <div class="col">
+                <h1>Yambo!<span class="version"> v3.0</span></h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-6" data-droppable="left">
-                <div class="panel" draggable="true">
-                    <form action="/" class="sheet" data-app="sheet">
-                        <fieldset>
-                            <legend class="ui-dialog-titlebar">Result</legend>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th id="colplayer">&nbsp;</th>
-                                        <th id="coldn" title="Down">&darr;</th>
-                                        <th id="colw" title="Willy">W</th>
-                                        <th id="colup" title="Up">&uarr;</th>
-                                        <th id="colone" title="One">1</th>
-                                        <th id="coltwo" title="Two">2</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="top">
-                                    <tr>
-                                        <td title="passingscore: 3">Aces</td>
-                                        <td class="dn"><input type="text" id="dntok1" class="tok1 txt save" /></td>
-                                        <td class="w"><input type="text" id="wtok1" class="tok1 txt save" /></td>
-                                        <td class="up"><input type="text" id="uptok1" class="tok1 txt save" /></td>
-                                        <td class="one"><input type="text" id="onetok1" class="tok1 txt save" /></td>
-                                        <td class="two"><input type="text" id="twotok1" class="tok1 txt save" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td title="passingscore: 6">Twos</td>
-                                        <td class="dn"><input type="text" id="dntok2" class="tok2 txt save" /></td>
-                                        <td class="w"><input type="text" id="wtok2" class="tok2 txt save" /></td>
-                                        <td class="up"><input type="text" id="uptok2" class="tok2 txt save" /></td>
-                                        <td class="one"><input type="text" id="onetok2" class="tok2 txt save" /></td>
-                                        <td class="two"><input type="text" id="twotok2" class="tok2 txt save" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td title="passingscore: 9">Threes</td>
-                                        <td class="dn"><input type="text" id="dntok3" class="tok3 txt save" /></td>
-                                        <td class="w"><input type="text" id="wtok3" class="tok3 txt save" /></td>
-                                        <td class="up"><input type="text" id="uptok3" class="tok3 txt save" /></td>
-                                        <td class="one"><input type="text" id="onetok3" class="tok3 txt save" /></td>
-                                        <td class="two"><input type="text" id="twotok3" class="tok3 txt save" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td title="passingscore: 12">Fours</td>
-                                        <td class="dn"><input type="text" id="dntok4" class="tok4 txt save" /></td>
-                                        <td class="w"><input type="text" id="wtok4" class="tok4 txt save" /></td>
-                                        <td class="up"><input type="text" id="uptok4" class="tok4 txt save" /></td>
-                                        <td class="one"><input type="text" id="onetok4" class="tok4 txt save" /></td>
-                                        <td class="two"><input type="text" id="twotok4" class="tok4 txt save" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td title="passingscore: 15">Fives</td>
-                                        <td class="dn"><input type="text" id="dntok5" class="tok5 txt save" /></td>
-                                        <td class="w"><input type="text" id="wtok5" class="tok5 txt save" /></td>
-                                        <td class="up"><input type="text" id="uptok5" class="tok5 txt save" /></td>
-                                        <td class="one"><input type="text" id="onetok5" class="tok5 txt save" /></td>
-                                        <td class="two"><input type="text" id="twotok5" class="tok5 txt save" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td title="passingscore: 18">Sixes</td>
-                                        <td class="dn"><input type="text" id="dntok6" class="tok6 txt save" /></td>
-                                        <td class="w"><input type="text" id="wtok6" class="tok6 txt save" /></td>
-                                        <td class="up"><input type="text" id="uptok6" class="tok6 txt save" /></td>
-                                        <td class="one"><input type="text" id="onetok6" class="tok6 txt save" /></td>
-                                        <td class="two"><input type="text" id="twotok6" class="tok6 txt save" /></td>
-                                    </tr>
-                                </tbody>
-                                <tbody class="totaltop">
-                                    <tr>
-                                        <td title="Upper Total">Upper Total</td>
-                                        <td class="dn"><input type="text" id="dntotaltop" class="totaltop txt" /></td>
-                                        <td class="w"><input type="text" id="wtotaltop" class="totaltop txt" /></td>
-                                        <td class="up"><input type="text" id="uptotaltop" class="totaltop txt" /></td>
-                                        <td class="one"><input type="text" id="onetotaltop" class="totaltop txt" /></td>
-                                        <td class="two"><input type="text" id="twototaltop" class="totaltop txt" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td title="additional 30 points bonus > 62">Bonus</td>
-                                        <td class="dn"><input type="text" id="dnbonus" class="bonus txt" /></td>
-                                        <td class="w"><input type="text" id="wbonus" class="bonus txt" /></td>
-                                        <td class="up"><input type="text" id="upbonus" class="bonus txt" /></td>
-                                        <td class="one"><input type="text" id="onebonus" class="bonus txt" /></td>
-                                        <td class="two"><input type="text" id="twobonus" class="bonus txt" /></td>
-                                    </tr>
-                                </tbody>
-                                <tbody class="btm">
-                                    <tr>
-                                        <td title="3 dice of the same and 2 dice of the same">Full House</td>
-                                        <td class="dn"><input type="text" id="dnfullhouse" class="fullhouse txt save" /></td>
-                                        <td class="w"><input type="text" id="wfullhouse" class="fullhouse txt save" /></td>
-                                        <td class="up"><input type="text" id="upfullhouse" class="fullhouse txt save" /></td>
-                                        <td class="one"><input type="text" id="onefullhouse" class="fullhouse txt save" /></td>
-                                        <td class="two"><input type="text" id="twofullhouse" class="fullhouse txt save" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="vrleft" title="5 dice in order">Straight</td>
-                                        <td class="dn"><input type="text" id="dnstreet" class="street txt save" /></td>
-                                        <td class="w"><input type="text" id="wstreet" class="street txt save" /></td>
-                                        <td class="up"><input type="text" id="upstreet" class="street txt save" /></td>
-                                        <td class="one"><input type="text" id="onestreet" class="street txt save" /></td>
-                                        <td class="two"><input type="text" id="twostreet" class="street txt save" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td title="total amount of dice and greater than Chance -">Chance +</td>
-                                        <td class="dn"><input type="text" id="dnchanceplus" class="chanceplus txt save" /></td>
-                                        <td class="w"><input type="text" id="wchanceplus" class="chanceplus txt save" /></td>
-                                        <td class="up"><input type="text" id="upchanceplus" class="chanceplus txt save" /></td>
-                                        <td class="one"><input type="text" id="onechanceplus" class="chanceplus txt save" /></td>
-                                        <td class="two"><input type="text" id="twochanceplus" class="chanceplus txt save" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td title="total amount of dice and lower than Chance +">Chance -</td>
-                                        <td class="dn"><input type="text" id="dnchancemin" class="chancemin txt save" /></td>
-                                        <td class="w"><input type="text" id="wchancemin" class="chancemin txt save" /></td>
-                                        <td class="up"><input type="text" id="upchancemin" class="chancemin txt save" /></td>
-                                        <td class="one"><input type="text" id="onechancemin" class="chancemin txt save" /></td>
-                                        <td class="two"><input type="text" id="twochancemin" class="chancemin txt save" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td title="5 dice of the same">YAMBO!</td>
-                                        <td class="dn"><input type="text" id="dnyam" class="yam txt save" /></td>
-                                        <td class="w"><input type="text" id="wyam" class="yam txt save" /></td>
-                                        <td class="up"><input type="text" id="upyam" class="yam txt save" /></td>
-                                        <td class="one"><input type="text" id="oneyam" class="yam txt save" /></td>
-                                        <td class="two"><input type="text" id="twoyam" class="yam txt save" /></td>
-                                    </tr>
-                                </tbody>
-                                <tbody class="totalbtm">
-                                    <tr>
-                                        <td title="Lower Total">Lower Total</td>
-                                        <td class="dn"><input type="text" id="dntotalbtm" class="totalbtm txt" /></td>
-                                        <td class="w"><input type="text" id="wtotalbtm" class="totalbtm txt" /></td>
-                                        <td class="up"><input type="text" id="uptotalbtm" class="totalbtm txt" /></td>
-                                        <td class="one"><input type="text" id="onetotalbtm" class="totalbtm txt" /></td>
-                                        <td class="two"><input type="text" id="twototalbtm" class="totalbtm txt" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td title="Total Upper + Lower">Total</td>
-                                        <td class="dn"><input type="text" id="dnsubtotal" class="subtotal txt" /></td>
-                                        <td class="w"><input type="text" id="wsubtotal" class="subtotal txt" /></td>
-                                        <td class="up"><input type="text" id="upsubtotal" class="subtotal txt" /></td>
-                                        <td class="one"><input type="text" id="onesubtotal" class="subtotal txt" /></td>
-                                        <td class="two"><input type="text" id="twosubtotal" class="subtotal txt" /></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </fieldset>
-                    </form>
+            <div class="col-sm-12 col-md-6">
+                <div class="panel">
+                    <yambo-sheet></yambo-sheet>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6" data-droppable="right">
-                <div class="panel" draggable="true">
-                    <form action="/" class="dice" data-app="dice">
-                        <fieldset>
-                            <legend class="ui-dialog-titlebar">Dice</legend>
-                            <div class="form-group">
-                                <ul>
-                                    <li><input type="button" value="1" /></li>
-                                    <li><input type="button" value="2" /></li>
-                                    <li><input type="button" value="3" /></li>
-                                    <li><input type="button" value="4" /></li>
-                                    <li><input type="button" value="5" /></li>
-                                </ul>
-                                <input type="button" class="btn btn-lg roll" value="roll dice" />
-                            </div>
-                        </fieldset>
-                    </form>
+            <div class="col-sm-12 col-md-6">
+                <div class="panel">
+                    <yambo-dice></yambo-dice>
                 </div>
 
-                <div class="panel" draggable="true">
-                    <form action="/" class="log form-horizontal" data-app="log">
-                        <fieldset>
-                            <legend class="ui-dialog-titlebar">Game Log</legend>
-                            <div class="form-group form-group-lg">
-                                <div class="col-sm-12 col-md-6">
-                                    <label>
-                                        Turn:&nbsp;<input type="text" class="turn" value="0" />
-                                    </label>
-                                </div>
-                                <div class="col-sm-12 col-md-6">
-                                    <label>
-                                        Time:&nbsp;<input type="text" class="clock" />
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group form-group-lg">
-                                <div class="message"></div>
-                            </div>
-                        </fieldset>
-                    </form>
+                <div class="panel">
+                    <yambo-log></yambo-log>
                 </div>
 
-                <div class="panel" draggable="true">
-                    <form action="/" class="options form-horizontal" data-app="options">
-                        <fieldset>
-                            <legend class="ui-dialog-titlebar">Options</legend>
-                            <div class="row form-group">
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="playerName" class="control-label">Player name</label>
-                                </div>
-                                <div class="col-sm-12 col-md-8">
-                                    <div class="input-group">
-                                        <input type="text" id="playerName" maxlength="25" class="form-control" />
-                                        <input type="hidden" id="playercount" value="0" />
-                                        <span class="input-group-btn">
-                                            <input type="button" value="Enter" class="btn player" />
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="theme" class="control-label">Theme</label>
-                                </div>
-                                <div class="col-sm-12 col-md-8">
-                                    <select id="theme" class="form-control">
-                                        <option value="" selected="selected">[ none ]</option>
-                                        <option value="theme-abstract">Abstract</option>
-                                        <option value="theme-basketball">Basketball</option>
-                                        <option value="theme-future">Future</option>
-                                        <option value="theme-halloween">Halloween</option>
-                                        <option value="theme-nature">Nature</option>
-                                        <option value="theme-ocean">Ocean</option>
-                                        <option value="theme-space">Space</option>
-                                        <option value="theme-tron">Tron</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="dicecolor" class="control-label">Dice color</label>
-                                </div>
-                                <div class="col-sm-12 col-md-8">
-                                    <select id="dicecolor" class="form-control">
-                                        <option value="0">Red</option>
-                                        <option value="60">Yellow</option>
-                                        <option value="120">Green</option>
-                                        <option value="180">Blue</option>
-                                        <option value="240">Pink</option>
-                                        <option value="300" selected="selected">White</option>
-                                        <option value="360">Black</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-sm-12 col-md-4">
-                                    <label for="juggletime" class="control-label">Juggle time</label>
-                                </div>
-                                <div class="col-sm-12 col-md-8">
-                                    <select id="juggletime" class="form-control">
-                                        <option value="200" selected="selected">fast</option>
-                                        <option value="400">average</option>
-                                        <option value="800">slow</option>
-                                        <option value="1600">snail</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-offset-4 col-md-8">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" class="soundfx" checked="checked" />&nbsp;Sound
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-offset-4 col-md-8">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" class="tooltips" />&nbsp;Tooltips
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
+                <div class="panel">
+                    <yambo-options></yambo-options>
                 </div>
             </div>
         </div>
     </div>
+
+    <yambo-toolbar></yambo-toolbar>
 </body>
 </html>

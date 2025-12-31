@@ -1,0 +1,15 @@
+// ==========================================================================
+// Reset / Normalize additions
+// ==========================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--yambo-font-size);
+}
+
+// Note: body styles are defined in _variables.scss to apply CSS custom properties

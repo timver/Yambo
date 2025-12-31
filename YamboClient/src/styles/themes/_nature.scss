@@ -1,0 +1,85 @@
+// ==========================================================================
+// Theme: Nature
+// ==========================================================================
+
+.theme-nature {
+  // Colors
+  --yambo-nature-glass: rgba(50, 175, 255, 0.1);
+  --yambo-nature-border: rgba(212, 227, 243, 0.9);
+
+  // Background
+  --yambo-body-bg: transparent;
+  --yambo-body-bg-image: url('#{$img-path}bg_nature.jpg') repeat fixed 0 0;
+
+  // Panel styling
+  --yambo-panel-bg: var(--yambo-nature-glass);
+  --yambo-panel-border-color: var(--yambo-nature-border);
+  --yambo-panel-border-width: 1px;
+  --yambo-panel-border-radius: 10px;
+  --yambo-panel-box-shadow: 3px 3px 40px var(--yambo-black);
+
+  // Fieldset styling
+  --yambo-fieldset-bg: none;
+  --yambo-fieldset-border-color: var(--yambo-nature-border);
+  --yambo-fieldset-border-radius: 10px;
+
+  // Typography
+  --yambo-legend-color: var(--yambo-nature-border);
+
+  // Toolbar
+  --yambo-toolbar-bg: var(--yambo-nature-glass);
+  --yambo-toolbar-border: var(--yambo-nature-border);
+
+  // Log message area
+  --yambo-log-bg: transparent;
+  --yambo-log-border: var(--yambo-nature-border);
+  --yambo-log-text: var(--yambo-white);
+
+  .panel,
+  .toolbar {
+    border-style: groove;
+  }
+
+  fieldset {
+    position: relative;
+    z-index: 0;
+    border-width: 2px;
+    border-style: groove;
+
+    &::after {
+      content: '';
+      background: url('#{$img-path}bg_glass.jpg') repeat scroll 0 0 transparent;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0.6;
+      z-index: -1;
+      border-radius: 10px;
+      filter: blur(5px);
+    }
+  }
+
+  .toolbar::after {
+    content: '';
+    background: url('#{$img-path}bg_glass.jpg') repeat scroll 0 0 transparent;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.6;
+    z-index: -1;
+    border-radius: 10px;
+    filter: blur(5px);
+  }
+
+  legend {
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3), -1px -1px 0 rgba(0, 0, 0, 0.7);
+  }
+
+  #message {
+    border-style: groove;
+  }
+}

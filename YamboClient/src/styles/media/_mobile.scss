@@ -1,0 +1,13 @@
+// ==========================================================================
+// Media Queries: Mobile
+// ==========================================================================
+
+// Small devices and below (phones, 576px and below)
+@include media-breakpoint-down(sm) {
+  // Mobile-specific styles can be added here
+}
+
+// Extra small devices only (portrait phones, 575px and below)
+@include media-breakpoint-only(xs) {
+  // Extra small phone styles
+}

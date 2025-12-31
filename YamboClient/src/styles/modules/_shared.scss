@@ -1,0 +1,62 @@
+// ==========================================================================
+// Shared Component Styles
+// ==========================================================================
+
+// Panels
+.panel {
+  background: var(--yambo-panel-bg);
+  border: var(--yambo-panel-border-width) solid var(--yambo-panel-border-color);
+  border-radius: var(--yambo-panel-border-radius);
+  box-shadow: var(--yambo-panel-box-shadow);
+  opacity: var(--yambo-panel-opacity);
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  position: relative;
+
+  + .panel {
+    margin-top: 40px;
+  }
+}
+
+// Fieldsets
+fieldset {
+  background: var(--yambo-fieldset-bg);
+  border: var(--yambo-panel-border-width) solid var(--yambo-fieldset-border-color);
+  border-radius: var(--yambo-fieldset-border-radius);
+  box-shadow: var(--yambo-fieldset-box-shadow);
+  display: block;
+  padding: 10px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+legend {
+  color: var(--yambo-legend-color);
+  font-family: var(--yambo-font-family-heading);
+  cursor: move;
+  display: block;
+  font-weight: bold;
+  font-size: 20px;
+  left: -3px;
+  letter-spacing: 5px;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  top: -30px;
+  width: 100%;
+}
+
+label {
+  color: var(--yambo-label-color);
+}
+
+// Toolbar
+.toolbar {
+  background: var(--yambo-toolbar-bg);
+  border: var(--yambo-panel-border-width) solid var(--yambo-toolbar-border);
+  border-radius: var(--yambo-panel-border-radius);
+  box-shadow: var(--yambo-panel-box-shadow);
+  opacity: var(--yambo-panel-opacity);
+}

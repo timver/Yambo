@@ -1,0 +1,35 @@
+// ==========================================================================
+// Theme: Ocean
+// ==========================================================================
+
+.theme-ocean {
+  // Brand colors (local overrides)
+  --yambo-brand-2: #026691;
+  --yambo-brand-3: #0d3b52;
+
+  // Background
+  --yambo-body-bg: transparent;
+  --yambo-body-bg-image: url('#{$img-path}bg_ocean.jpg') repeat fixed 0 0;
+
+  // Panel styling
+  --yambo-panel-bg: var(--yambo-brand-3);
+  --yambo-panel-border-color: var(--yambo-brand-2);
+  --yambo-panel-border-width: 3px;
+  --yambo-panel-border-radius: 10px;
+  --yambo-panel-box-shadow: 3px 3px 40px var(--yambo-black);
+  --yambo-panel-opacity: 0.9;
+
+  // Fieldset styling
+  --yambo-fieldset-bg: url('#{$img-path}bg_marble_blue.jpg') repeat scroll 0 0 transparent;
+  --yambo-fieldset-border-color: var(--yambo-brand-2);
+  --yambo-fieldset-border-radius: 10px;
+
+  // Toolbar
+  --yambo-toolbar-bg: var(--yambo-brand-3);
+  --yambo-toolbar-border: var(--yambo-brand-2);
+
+  // Log message area
+  --yambo-log-bg: var(--yambo-brand-3);
+  --yambo-log-border: var(--yambo-brand-3);
+  --yambo-log-text: var(--yambo-white);
+}

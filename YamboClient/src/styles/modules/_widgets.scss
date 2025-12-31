@@ -1,0 +1,72 @@
+// ==========================================================================
+// Widget Styles (Dragula overrides, UI controls)
+// ==========================================================================
+
+// Dragula drag-and-drop override
+.gu-unselectable {
+  .row {
+    display: table;
+    width: calc(100% + 2 * 0.9375rem);
+  }
+
+  [class*="col-"] {
+    display: table-cell;
+    float: none;
+    vertical-align: top;
+  }
+
+  .panel [class*="col-"] {
+    float: left !important;
+  }
+}
+
+// Drag handle
+.ui-draggable-handle {
+  background-color: var(--yambo-mono-2);
+  cursor: move;
+  display: block;
+  height: 10px;
+  border-radius: 10px;
+}
+
+// Minimizable container
+.ui-minimizable {
+  float: right;
+  margin: 20px;
+}
+
+// Minimize button
+.minimize,
+.ui-minimize {
+  border: 2px solid var(--yambo-dice-border);
+  border-radius: 24px;
+  box-shadow: 1px 1px 2px 2px var(--yambo-mono-3);
+  color: var(--yambo-white);
+  font-size: 28px;
+  height: 50px;
+  left: -24px;
+  padding: 4px;
+  position: absolute;
+  top: -22px;
+  width: 50px;
+  z-index: 99;
+  cursor: pointer;
+  background-color: var(--yambo-mono-2);
+  transition: box-shadow 0.2s ease;
+
+  &:hover,
+  &.hover {
+    box-shadow: 0 0 5px 1px var(--yambo-dice-selected-glow);
+    background-color: var(--yambo-white);
+  }
+}
+
+// Minimized state
+.ui-minimized {
+  z-index: 999 !important;
+}
+
+// Resizable helper (for jquery-ui compatibility)
+.ui-resizable-helper {
+  border: 1px dotted var(--yambo-mono-3);
+}

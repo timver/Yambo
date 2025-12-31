@@ -1,8 +1,15 @@
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-CSS3-CC6699?logo=sass&logoColor=white)
+![GSAP](https://img.shields.io/badge/GSAP-3.12-88CE02?logo=greensock&logoColor=white)
+![esbuild](https://img.shields.io/badge/esbuild-0.24-FFCF00?logo=esbuild&logoColor=black)
+![IIS](https://img.shields.io/badge/IIS-Server-0078D4?logo=windows&logoColor=white)
+
 ## Yambo
 
-Yambo is a dice game based on the game Yathzee.
+Yambo is a dice game based on the game Yahtzee.
 
-Big difference: 
+Big difference:
 - You're playing in 5 columns at the same time.
 - Each column has slightly different rules and value.
 - The player with the highest `Total` in a column wins that column.
@@ -12,11 +19,11 @@ Big difference:
 
 ### Columns
 
-- **1st column**: *worth 3 points* - Chronological order, maximum 3 tries. You'll have to start by rolling for `Ones`, then `Twos` and so on.
-- **2nd column**: *worth 2 points* - Random order, maximum 3 tries.
-- **3th column**: *worth 4 points* - Chronological order, maximum 3 tries. You'll have to start by rolling a `YAMBO!`, then `Chance-` and so on.
-- **4th column**: *worth 3 points* - Random order, maximum 1 try.
-- **5th column**: *worth 3 points* - Random order, maximum 2 tries.
+- **1st column (↓)**: *worth 3 points* - Chronological order top-to-bottom, maximum 3 tries. You'll have to start by rolling for `Ones`, then `Twos` and so on.
+- **2nd column (W)**: *worth 2 points* - Random order, maximum 3 tries.
+- **3rd column (↑)**: *worth 4 points* - Chronological order bottom-to-top, maximum 3 tries. You'll have to start by rolling a `YAMBO!`, then `Chance-` and so on.
+- **4th column (1)**: *worth 3 points* - Random order, maximum 1 try.
+- **5th column (2)**: *worth 3 points* - Random order, maximum 2 tries.
 
 With each dice roll, you decide in which column you are playing. Just remember: if you've rolled 3 times you'll have to write down your score in one of the first 3 columns.
 If you don't feel like you're going to win a column, you can scratch it. This will open up some free slots to store your bad throws.
@@ -44,23 +51,43 @@ When you've thrown 3 of a kind for each `Ones` up to `Sixes`, you'll end up with
 
 ## Technology
 
-Yambo is developped using HTML5, javaScript (ECMA5), CSS3.
-In the future this will also use Node.js to deal with multiplayer support.
+### Stack
+
+- **JavaScript**: ES6+ modules with Web Components
+- **CSS**: SCSS with Bootstrap 5, CSS custom properties for themes
+- **Build**: esbuild (JS), dart-sass + PostCSS/Autoprefixer (CSS)
+- **Animation**: GSAP
+- **Server**: IIS with web.config
+
+### Development
+
+```bash
+# Install dependencies
+npm install
+
+# Development (watch + serve on localhost:3000)
+npm run dev
+
+# Production build
+npm run build
+
+# Deploy to IIS
+npm run deploy
+```
 
 ### IDE
 
-- Visual Studio 2015
-- ASP.NET 5 Scripts Task Runner
-- NPM Scripts Task Runner (installs node_modules => package.json)
-- Package Installer (install bower_components => bower.json)
-- Node.js Tools
-- Bundler & Minifier (bundleconfig.json)
-- Web Compiler
-- ReSharper (JavaScript validation)
+- Visual Studio 2025+
+- Or any editor with npm support
 
-### JavaScript Libaries
+### Project Structure
 
-- jQuery
-- jQuery UI
-- Modernizr
-- Uniform
+```
+YamboClient/
+  src/
+    components/       # Web Components (yambo-dice, yambo-sheet, etc.)
+    services/         # Pure logic (audio, dice-engine, game-state, themes)
+    styles/           # SCSS with themes
+    utils/            # DOM and animation helpers
+  public/             # Static files (deployed to IIS)
+```

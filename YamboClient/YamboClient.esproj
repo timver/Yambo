@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.3864779">
+  <PropertyGroup>
+    <StartupCommand>npm run serve</StartupCommand>
+    <BuildCommand>npm run build</BuildCommand>
+    <CleanCommand>npm run clean</CleanCommand>
+    <PublishAssetsDirectory>$(MSBuildProjectDirectory)\public</PublishAssetsDirectory>
+  </PropertyGroup>
+
+  <Target Name="CopyToIIS" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <Exec Command="robocopy public C:\inetpub\wwwroot\dev.yambo.be /MIR /XD node_modules" IgnoreExitCode="true" />
+  </Target>
+</Project>

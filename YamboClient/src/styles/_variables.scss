@@ -1,0 +1,96 @@
+// ==========================================================================
+// Yambo CSS Custom Properties (Themeable Variables)
+// ==========================================================================
+
+// Paths (SCSS variables for use in url())
+$font-path: '../fonts/' !default;
+$img-path: '../art/' !default;
+
+// Monotone palette (SCSS for calculations)
+$monotone1: rgba(0, 0, 0, 0.8) !default;
+$monotone2: rgba(0, 0, 0, 0.5) !default;
+$monotone3: rgba(128, 128, 128, 0.5) !default;
+
+// Global colors (SCSS)
+$global-white: #fff !default;
+$global-black: #000 !default;
+
+// ==========================================================================
+// CSS Custom Properties - Default Theme
+// ==========================================================================
+:root {
+  // Brand colors
+  --yambo-brand-1: #009933;
+  --yambo-brand-2: #2f2727;
+  --yambo-brand-3: #ff6a00;
+
+  // Global colors
+  --yambo-white: #fff;
+  --yambo-black: #000;
+
+  // Monotone palette
+  --yambo-mono-1: rgba(0, 0, 0, 0.8);
+  --yambo-mono-2: rgba(0, 0, 0, 0.5);
+  --yambo-mono-3: rgba(128, 128, 128, 0.5);
+
+  // Background
+  --yambo-body-bg: transparent;
+  --yambo-body-bg-image: none;
+
+  // Panel styling
+  --yambo-panel-bg: var(--yambo-mono-1);
+  --yambo-panel-border-color: var(--yambo-brand-2);
+  --yambo-panel-border-width: 2px;
+  --yambo-panel-border-radius: 10px;
+  --yambo-panel-box-shadow: none;
+  --yambo-panel-opacity: 1;
+
+  // Fieldset styling
+  --yambo-fieldset-bg: var(--yambo-mono-1);
+  --yambo-fieldset-border-color: var(--yambo-brand-2);
+  --yambo-fieldset-border-radius: 10px;
+  --yambo-fieldset-box-shadow: none;
+
+  // Typography
+  --yambo-font-family: 'Trebuchet MS', Arial, sans-serif;
+  --yambo-font-family-heading: var(--yambo-font-family);
+  --yambo-font-size: 14px;
+  --yambo-text-color: var(--yambo-white);
+  --yambo-legend-color: var(--yambo-brand-1);
+  --yambo-label-color: var(--yambo-white);
+
+  // Toolbar
+  --yambo-toolbar-bg: var(--yambo-mono-1);
+  --yambo-toolbar-border: var(--yambo-brand-2);
+
+  // Dice
+  --yambo-dice-border: var(--yambo-brand-1);
+  --yambo-dice-selected-glow: var(--yambo-brand-1);
+
+  // Log message area
+  --yambo-log-bg: var(--yambo-mono-2);
+  --yambo-log-border: var(--yambo-brand-2);
+  --yambo-log-text: var(--yambo-white);
+
+  // Inputs
+  --yambo-input-bg: rgba(255, 255, 255, 0.9);
+  --yambo-input-border: #ccc;
+  --yambo-input-focus-border: var(--yambo-brand-1);
+
+  // Buttons
+  --yambo-btn-bg: var(--yambo-brand-2);
+  --yambo-btn-border: var(--yambo-brand-1);
+  --yambo-btn-text: var(--yambo-white);
+  --yambo-btn-hover-bg: var(--yambo-brand-1);
+}
+
+// ==========================================================================
+// Apply CSS Custom Properties to body
+// ==========================================================================
+body {
+  font-family: var(--yambo-font-family);
+  font-size: var(--yambo-font-size);
+  color: var(--yambo-text-color);
+  background: var(--yambo-body-bg-image) var(--yambo-body-bg);
+  min-height: 100vh;
+}

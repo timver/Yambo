@@ -49,3 +49,10 @@ Temporary Items
 /YamboClient/bower_components
 /YamboClient/node_modules
 /YamboClient/.ntvs_analysis.dat
+/YamboClient/obj/
+
+# Visual Studio
+.vs/
+
+# Claude Code
+.claude/

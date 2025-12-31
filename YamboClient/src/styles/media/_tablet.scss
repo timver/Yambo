@@ -1,0 +1,13 @@
+// ==========================================================================
+// Media Queries: Tablet
+// ==========================================================================
+
+// Tablet portrait and landscape
+@include media-breakpoint-between(md, lg) {
+  // Tablet-specific styles can be added here
+}
+
+// Tablet portrait only
+@include media-breakpoint-only(md) {
+  // Portrait-specific styles
+}

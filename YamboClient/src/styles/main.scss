@@ -1,0 +1,54 @@
+/*!
+ * Yambo v3.0.0
+ * Bootstrap 5 + CSS Custom Properties theming
+ */
+
+// ==========================================================================
+// 1. Custom Variables (before Bootstrap)
+// ==========================================================================
+@import "variables";
+
+// ==========================================================================
+// 2. Bootstrap 5 (selective imports)
+// ==========================================================================
+@import "bootstrap";
+
+// ==========================================================================
+// 3. Base Styles
+// ==========================================================================
+@import "partials/reset";
+@import "partials/fonts";
+@import "partials/helpers";
+
+// ==========================================================================
+// 4. Layout Modules
+// ==========================================================================
+@import "modules/shared";
+@import "modules/sublayouts";
+@import "modules/widgets";
+
+// ==========================================================================
+// 5. Themes (CSS Custom Properties)
+// ==========================================================================
+@import "themes/abstract";
+@import "themes/basketball";
+@import "themes/future";
+@import "themes/halloween";
+@import "themes/nature";
+@import "themes/ocean";
+@import "themes/space";
+@import "themes/tron";
+
+// ==========================================================================
+// 6. Responsive Styles
+// ==========================================================================
+@import "media/desktop";
+@import "media/tablet";
+@import "media/mobile";
+
+// ==========================================================================
+// 7. Adaptive Layouts
+// ==========================================================================
+@import "adaptive/desktop";
+@import "adaptive/tablet";
+@import "adaptive/mobile";

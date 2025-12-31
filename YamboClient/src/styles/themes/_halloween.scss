@@ -1,0 +1,58 @@
+// ==========================================================================
+// Theme: Halloween
+// ==========================================================================
+
+@font-face {
+  font-family: 'bloodthirstyregular';
+  src: url('#{$font-path}themes/halloween/bloodthirsty-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.theme-halloween {
+  // Brand colors (local overrides)
+  --yambo-brand-2: #111222;
+  --yambo-brand-3: #8b0d0e;
+
+  // Background
+  --yambo-body-bg: transparent;
+  --yambo-body-bg-image: url('#{$img-path}bg_halloween.jpg') repeat fixed 0 0;
+
+  // Panel styling
+  --yambo-panel-bg: var(--yambo-brand-2);
+  --yambo-panel-border-color: var(--yambo-mono-1);
+  --yambo-panel-border-width: 3px;
+  --yambo-panel-border-radius: 10px;
+  --yambo-panel-opacity: 0.9;
+
+  // Fieldset styling
+  --yambo-fieldset-bg: url('#{$img-path}bg_blood_black.jpg') repeat scroll 0 0 transparent;
+  --yambo-fieldset-border-color: var(--yambo-mono-1);
+  --yambo-fieldset-border-radius: 10px;
+
+  // Typography
+  --yambo-font-family-heading: 'bloodthirstyregular', sans-serif;
+  --yambo-legend-color: var(--yambo-brand-3);
+
+  // Toolbar
+  --yambo-toolbar-bg: var(--yambo-brand-2);
+  --yambo-toolbar-border: var(--yambo-mono-1);
+
+  // Log message area
+  --yambo-log-bg: var(--yambo-brand-2);
+  --yambo-log-border: var(--yambo-mono-1);
+  --yambo-log-text: var(--yambo-white);
+
+  legend {
+    font-family: var(--yambo-font-family-heading);
+    font-size: 20px;
+    text-shadow: none;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  #message {
+    border-radius: 10px;
+  }
+}

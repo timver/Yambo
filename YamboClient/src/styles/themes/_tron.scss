@@ -1,0 +1,77 @@
+// ==========================================================================
+// Theme: Tron
+// ==========================================================================
+
+@font-face {
+  font-family: 'tr2nregular';
+  src: url('#{$font-path}themes/tron/tr2n-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.theme-tron {
+  // Brand colors
+  --yambo-brand-1: #28f6f4;
+  --yambo-brand-2: #001b26;
+
+  // Background
+  --yambo-body-bg: transparent;
+  --yambo-body-bg-image: url('#{$img-path}bg_movie_tron.jpg') repeat fixed 0 0;
+
+  // Panel styling
+  --yambo-panel-bg: var(--yambo-mono-1);
+  --yambo-panel-border-color: var(--yambo-brand-1);
+  --yambo-panel-border-width: 2px;
+  --yambo-panel-border-radius: 20px;
+  --yambo-panel-box-shadow: 0 0 5px 1px var(--yambo-brand-1);
+  --yambo-panel-opacity: 0.9;
+
+  // Fieldset styling
+  --yambo-fieldset-bg: var(--yambo-brand-2);
+  --yambo-fieldset-border-color: var(--yambo-brand-1);
+  --yambo-fieldset-border-radius: 20px;
+  --yambo-fieldset-box-shadow: 0 0 5px 1px var(--yambo-brand-1);
+
+  // Typography
+  --yambo-font-family-heading: 'tr2nregular', sans-serif;
+  --yambo-legend-color: var(--yambo-brand-1);
+  --yambo-label-color: var(--yambo-brand-1);
+
+  // Toolbar
+  --yambo-toolbar-bg: var(--yambo-mono-1);
+  --yambo-toolbar-border: var(--yambo-brand-1);
+
+  // Log message area
+  --yambo-log-bg: var(--yambo-mono-1);
+  --yambo-log-border: var(--yambo-brand-1);
+  --yambo-log-text: var(--yambo-brand-1);
+
+  // Dice
+  --yambo-dice-border: var(--yambo-brand-1);
+  --yambo-dice-selected-glow: var(--yambo-brand-1);
+
+  // Minimize button
+  .minimize {
+    border: 2px solid var(--yambo-brand-1);
+    box-shadow: 0 0 5px 1px var(--yambo-brand-1);
+    background-color: var(--yambo-mono-2);
+
+    &:hover {
+      box-shadow: 0 0 5px 1px var(--yambo-brand-1);
+      background-color: var(--yambo-white);
+    }
+  }
+
+  legend {
+    font-family: var(--yambo-font-family-heading);
+    font-size: 20px;
+    text-shadow: none;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .log input[type="text"] {
+    color: var(--yambo-brand-1);
+  }
+}

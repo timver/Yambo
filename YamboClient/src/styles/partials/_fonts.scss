@@ -1,0 +1,14 @@
+// ==========================================================================
+// Font Face Definitions
+// ==========================================================================
+
+// Icon fonts
+@font-face {
+  font-family: 'yambo-icons';
+  src: url('#{$font-path}icons/yambo.woff') format('woff'),
+       url('#{$font-path}icons/yambo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Theme-specific fonts will be imported via theme files

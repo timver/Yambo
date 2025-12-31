@@ -1,0 +1,40 @@
+// ==========================================================================
+// Media Queries: Desktop (general responsive breakpoints)
+// ==========================================================================
+
+// Medium devices (tablets, 992px and below)
+@include media-breakpoint-down(lg) {
+  .panel {
+    padding: 30px 20px 20px;
+
+    + .panel {
+      margin-top: 20px;
+    }
+  }
+}
+
+// Small devices (landscape phones, 768px and below)
+@include media-breakpoint-down(md) {
+  .panel {
+    padding: 30px 10px 10px;
+
+    + .panel {
+      margin-top: 10px;
+    }
+  }
+}
+
+// Extra small devices (350px and below)
+@media only screen and (max-width: 350px) {
+  .panel {
+    padding: 1px;
+
+    fieldset {
+      padding: 1px;
+    }
+
+    legend {
+      display: none;
+    }
+  }
+}
